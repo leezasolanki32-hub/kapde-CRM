@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-coffee-dark: #561C24;
+  --color-coffee-mid: #6D2932;
+  --color-coffee-light: #C7B7A3;
+  --color-coffee-cream: #E8D8C4;
+}html,
+body,
+#root {
+  height: 100%;
+}
+
+:root {
+  --bg-main: #561C24;
+  --bg-section-1: #6D2932;
+  --bg-section-2: #3A1116;
+  --text-primary: #E8D8C4;
+  --text-secondary: #C7B7A3;
+  --text-muted: rgba(232, 216, 196, 0.7);
+  --border-color: rgba(232, 216, 196, 0.15);
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --brand-primary: #E8D8C4;
+  --brand-accent: #C7B7A3;
+  --brand-accent-light: rgba(232, 216, 196, 0.2);
+  --bg-gradient-start: #561C24;
+  --bg-gradient-end: #3A1116;
+}
+
+.dark {
+  --bg-main: #3A1116;
+  --bg-section-1: #2C0E12;
+  --bg-section-2: #48171E;
+  --text-primary: #E8D8C4;
+  --text-secondary: #C7B7A3;
+  --text-muted: #A39180;
+  --border-color: rgba(232, 216, 196, 0.15);
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --brand-primary: #C7B7A3;
+  --brand-accent: #E8D8C4;
+  --brand-accent-light: #6D2932;
+  --bg-gradient-start: #2C0E12;
+  --bg-gradient-end: #3A1116;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar Utils */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -1,0 +1,192 @@
+.hero-3d-wrapper {
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-3d-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18vw;
+  font-weight: 900;
+  color: #ffffff;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.05em;
+  line-height: 0.8;
+  user-select: none;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+}
+
+.hero-3d-scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.hero-cards-container {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 60px;
+  z-index: 10;
+  width: max-content;
+  will-change: transform;
+}
+
+.hero-card {
+  width: 260px;
+  height: 390px;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, filter;
+  border-radius: 20px;
+  background: rgba(20, 20, 20, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.hero-card:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-10px) scale(1.02);
+}
+
+.hero-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-card-info {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 25%;
+  background: linear-gradient(to bottom, rgba(20,20,20,0), rgba(10,10,10,0.8));
+}
+
+.hero-card-title {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hero-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero-card-category {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.hero-card-price {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Card sizing classes */
+.card-size-main {
+  width: 400px;
+  height: 580px;
+}
+
+.card-size-lg {
+  width: 360px;
+  height: 520px;
+}
+
+.card-size-md {
+  width: 320px;
+  height: 460px;
+}
+
+.card-size-sm {
+  width: 280px;
+  height: 400px;
+}
+
+/* Layout for the standard hero text to stay somewhat visible or come in at end */
+.hero-3d-overlay-content {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-3d-cta {
+  background: #fff;
+  color: #000;
+  padding: 16px 32px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s, background 0.2s;
+  pointer-events: auto;
+}
+
+.hero-3d-cta:hover {
+  transform: scale(1.05);
+  background: #f0f0f0;
+}
+
+@media (max-width: 1024px) {
+  .hero-3d-bg-text {
+    font-size: 22vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-3d-bg-text {
+    font-size: 26vw;
+  }
+  .card-size-main { width: 300px; height: 440px; }
+  .card-size-lg { width: 280px; height: 400px; }
+  .card-size-md { width: 240px; height: 350px; }
+  .card-size-sm { width: 200px; height: 290px; }
+}

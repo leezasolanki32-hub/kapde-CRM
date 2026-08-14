@@ -1,0 +1,250 @@
+.hero-story-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  pointer-events: none;
+  z-index: 0; /* Behind the text */
+  overflow: hidden;
+  opacity: 0.8; /* Slightly faded so text is legible */
+}
+
+.story-ground {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(26, 26, 46, 0.1);
+}
+
+.story-shop {
+  position: absolute;
+  bottom: 30px;
+  left: calc(65vw - 100px);
+  width: 800px;
+  height: 450px;
+}
+
+.shop-rack {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.05));
+}
+
+.story-target-cloth {
+  position: absolute;
+  bottom: 170px;
+  left: calc(65vw + 60px); /* 80px aligns hook to hanger exactly */
+  width: 50px;
+  height: 120px;
+  animation: pullCloth 6s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+.story-person-wrapper {
+  position: absolute;
+  bottom: 30px;
+  left: -200px; /* Start offscreen */
+  width: 150px;
+  height: 250px;
+  animation: personWalkAndStop 6s infinite;
+}
+
+.story-person {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+.person-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Legs walking animation */
+@keyframes walk {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(20deg); }
+  75% { transform: rotate(-20deg); }
+}
+
+.leg-left {
+  transform-origin: 40px 120px;
+  animation: walk 0.6s infinite alternate;
+}
+.leg-right {
+  transform-origin: 60px 120px;
+  animation: walk 0.6s infinite alternate-reverse;
+}
+
+.arm-left {
+  transform-origin: 40px 70px;
+  animation: walk 0.6s infinite alternate-reverse;
+}
+
+/* Stop legs and arm when person stops */
+.story-person-wrapper.stopped .leg-left,
+.story-person-wrapper.stopped .leg-right,
+.story-person-wrapper.stopped .arm-left {
+  animation-play-state: paused;
+  transform: rotate(0deg);
+}
+
+@keyframes personWalkAndStop {
+  0% { transform: translateX(0); }
+  15% { transform: translateX(calc(10vw + 200px)); } /* Walks in to 10vw */
+  85% { transform: translateX(calc(10vw + 200px)); } /* Stays */
+  100% { transform: translateX(0); } /* Runs back / resets */
+}
+
+/* The Front Arm and Stick */
+.story-arm {
+  position: absolute;
+  top: 85px;
+  left: 70px;
+  width: 40px;
+  height: 12px;
+  background: #7c3aed;
+  border-radius: 6px;
+  transform-origin: 6px 6px;
+  animation: armSwing 6s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.story-hand {
+  position: absolute;
+  right: -6px;
+  width: 14px;
+  height: 14px;
+  background: #1a1a2e; /* Black hand */
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.story-stick-base {
+  position: absolute;
+  right: -20px;
+  width: 40px;
+  height: 6px;
+  background: #8B4513;
+  border-radius: 3px;
+  z-index: 1;
+}
+
+.story-hook-line {
+  position: absolute;
+  left: calc(100% - 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 6px;
+  background: #8B4513;
+  transform-origin: left center;
+  animation: throwLine 6s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.story-hook-head {
+  position: absolute;
+  right: -10px;
+  top: -7px;
+  width: 20px;
+  height: 20px;
+  border: 4px solid #8B4513;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+
+@keyframes armSwing {
+  0%, 10% { transform: rotate(75deg); }
+  /* Start spinning up and backwards */
+  14% { transform: rotate(-120deg); }
+  /* Spin 1 */
+  18% { transform: rotate(-480deg); }
+  /* Spin 2 */
+  22% { transform: rotate(-840deg); }
+  /* Spin 3 and throw! (-1080 + 5deg to aim exactly at the cloth) */
+  26% { transform: rotate(-1075deg); }
+  
+  /* Hold the throw exactly where the hook reaches the cloth */
+  30%, 60% { transform: rotate(-1075deg); }
+  
+  /* Yank back to pull cloth (-1075 - 20deg) */
+  70% { transform: rotate(-1095deg); }
+  
+  /* Relax arm down (-1080 + 75deg) */
+  85%, 100% { transform: rotate(-1005deg); }
+}
+
+@keyframes throwLine {
+  0%, 25% { width: 0; }
+  30%, 65% { width: 55vw; } /* Thrown to shop */
+  75%, 100% { width: 0; } /* Retracted */
+}
+
+@keyframes pullCloth {
+  0%, 65% { transform: translateX(0) scale(1); opacity: 1; }
+  75% { transform: translateX(-55vw) scale(0.5); opacity: 1; } /* Pulled in */
+  80%, 100% { opacity: 0; transform: translateX(-55vw) scale(0); } /* Disappears */
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .hero-story-container {
+    height: 300px;
+    opacity: 0.6; /* More faded on mobile to prioritize text */
+  }
+
+  .story-shop {
+    width: 400px; /* Half size */
+    height: 225px;
+    left: calc(100vw - 120px); /* Move further right offscreen/edge */
+    bottom: 20px;
+  }
+
+  .story-target-cloth {
+    left: calc(100vw - 30px);
+    bottom: 90px;
+    width: 30px;
+    height: 70px;
+  }
+
+  .story-person-wrapper {
+    width: 100px;
+    height: 160px;
+    bottom: 20px;
+  }
+
+  @keyframes personWalkAndStop {
+    0% { transform: translateX(0); }
+    15% { transform: translateX(calc(5vw + 150px)); } /* Shorter walk */
+    85% { transform: translateX(calc(5vw + 150px)); }
+    100% { transform: translateX(0); }
+  }
+
+  .story-arm {
+    top: 55px;
+    left: 45px;
+    width: 30px;
+    height: 8px;
+  }
+
+  @keyframes throwLine {
+    0%, 25% { width: 0; }
+    30%, 65% { width: 85vw; } /* Needs to reach further relatively */
+    75%, 100% { width: 0; }
+  }
+
+  @keyframes pullCloth {
+    0%, 65% { transform: translateX(0) scale(1); opacity: 1; }
+    75% { transform: translateX(-85vw) scale(0.5); opacity: 1; }
+    80%, 100% { opacity: 0; transform: translateX(-85vw) scale(0); }
+  }
+}
