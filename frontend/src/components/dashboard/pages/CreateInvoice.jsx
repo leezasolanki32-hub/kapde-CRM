@@ -68,7 +68,7 @@ const CreateInvoice = ({ setActiveTab }) => {
     };
 
     try {
-      const response = await fetch(`\${import.meta.env.VITE_API_URL}/invoices`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/invoices`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(invoiceData)
@@ -251,39 +251,39 @@ const CreateInvoice = ({ setActiveTab }) => {
       <div className="flex items-center gap-4 mb-8">
         <button
           onClick={() => setActiveTab('Invoices')}
-          className="p-2 hover:bg-[#f3e8ff] rounded-full transition text-[#6B6B70] hover:text-[#a855f7]"
+          className="p-2 hover:bg-[#132847] rounded-full transition text-[#93c5fd] hover:text-[#3b82f6]"
         >
           <ArrowLeft size={24} />
         </button>
-        <h1 className="text-[28px] font-bold text-[#1C1C1E]">Create New Invoice</h1>
+        <h1 className="text-[28px] font-bold text-[#e8f0fe]">Create New Invoice</h1>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-6">
           {/* Customer Details */}
-          <div className="bg-white border border-[#E2DED6] rounded-2xl p-6 shadow-sm">
-            <h2 className="text-[18px] font-bold text-[#1C1C1E] mb-4 flex items-center gap-2">
-              <span className="w-2 h-2 bg-[#a855f7] rounded-full"></span>
+          <div className="bg-[#0a1628] border border-[#1e3a5f] rounded-2xl p-6 shadow-sm">
+            <h2 className="text-[18px] font-bold text-[#e8f0fe] mb-4 flex items-center gap-2">
+              <span className="w-2 h-2 bg-[#3b82f6] rounded-full"></span>
               Billing Information
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-[13px] font-bold text-[#6B6B70] mb-1.5 uppercase tracking-wide">Customer Name</label>
+                <label className="block text-[13px] font-bold text-[#93c5fd] mb-1.5 uppercase tracking-wide">Customer Name</label>
                 <input
                   type="text"
                   value={invoice.customerName}
                   onChange={(e) => setInvoice({ ...invoice, customerName: e.target.value })}
-                  className="w-full border border-[#E2DED6] rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#a855f7]/20 focus:border-[#a855f7] transition"
+                  className="w-full border border-[#1e3a5f] rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]/20 focus:border-[#3b82f6] transition"
                   placeholder="e.g. Raj Patel"
                 />
               </div>
               <div>
-                <label className="block text-[13px] font-bold text-[#6B6B70] mb-1.5 uppercase tracking-wide">Phone Number</label>
+                <label className="block text-[13px] font-bold text-[#93c5fd] mb-1.5 uppercase tracking-wide">Phone Number</label>
                 <input
                   type="text"
                   value={invoice.customerPhone}
                   onChange={(e) => setInvoice({ ...invoice, customerPhone: e.target.value })}
-                  className="w-full border border-[#E2DED6] rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#a855f7]/20 focus:border-[#a855f7] transition"
+                  className="w-full border border-[#1e3a5f] rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#3b82f6]/20 focus:border-[#3b82f6] transition"
                   placeholder="+91 98765 43210"
                 />
               </div>
@@ -291,15 +291,15 @@ const CreateInvoice = ({ setActiveTab }) => {
           </div>
 
           {/* Items Section */}
-          <div className="bg-white border border-[#E2DED6] rounded-2xl p-6 shadow-sm">
+          <div className="bg-[#0a1628] border border-[#1e3a5f] rounded-2xl p-6 shadow-sm">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-[18px] font-bold text-[#1C1C1E] flex items-center gap-2">
-                <span className="w-2 h-2 bg-[#a855f7] rounded-full"></span>
+              <h2 className="text-[18px] font-bold text-[#e8f0fe] flex items-center gap-2">
+                <span className="w-2 h-2 bg-[#3b82f6] rounded-full"></span>
                 Line Items
               </h2>
               <button
                 onClick={handleAddItem}
-                className="text-[#a855f7] text-[13px] font-bold flex items-center gap-1 hover:underline"
+                className="text-[#3b82f6] text-[13px] font-bold flex items-center gap-1 hover:underline"
               >
                 <Plus size={16} /> Add Item
               </button>
@@ -307,38 +307,38 @@ const CreateInvoice = ({ setActiveTab }) => {
 
             <div className="space-y-4">
               {invoice.items.map((item, index) => (
-                <div key={index} className="flex flex-col md:flex-row gap-4 p-4 bg-[#FAF8F4] rounded-xl border border-[#E2DED6]/50 group transition hover:border-[#a855f7]/30">
+                <div key={index} className="flex flex-col md:flex-row gap-4 p-4 bg-[#080d1a] rounded-xl border border-[#1e3a5f]/50 group transition hover:border-[#3b82f6]/30">
                   <div className="flex-1">
-                    <label className="block text-[11px] font-bold text-[#6B6B70] mb-1 uppercase">Description</label>
+                    <label className="block text-[11px] font-bold text-[#93c5fd] mb-1 uppercase">Description</label>
                     <input
                       type="text"
                       value={item.description}
                       onChange={(e) => handleItemChange(index, 'description', e.target.value)}
-                      className="w-full bg-white border border-[#E2DED6] rounded-lg px-3 py-2 text-[14px] focus:outline-none focus:border-[#a855f7]"
+                      className="w-full bg-[#0a1628] border border-[#1e3a5f] rounded-lg px-3 py-2 text-[14px] focus:outline-none focus:border-[#3b82f6]"
                       placeholder="e.g. Silk Saree - Product Code X"
                     />
                   </div>
                   <div className="w-full md:w-24">
-                    <label className="block text-[11px] font-bold text-[#6B6B70] mb-1 uppercase">Qty</label>
+                    <label className="block text-[11px] font-bold text-[#93c5fd] mb-1 uppercase">Qty</label>
                     <input
                       type="number"
                       value={item.quantity}
                       onChange={(e) => handleItemChange(index, 'quantity', parseInt(e.target.value) || 0)}
-                      className="w-full bg-white border border-[#E2DED6] rounded-lg px-3 py-2 text-[14px] focus:outline-none focus:border-[#a855f7]"
+                      className="w-full bg-[#0a1628] border border-[#1e3a5f] rounded-lg px-3 py-2 text-[14px] focus:outline-none focus:border-[#3b82f6]"
                     />
                   </div>
                   <div className="w-full md:w-32">
-                    <label className="block text-[11px] font-bold text-[#6B6B70] mb-1 uppercase">Price (₹)</label>
+                    <label className="block text-[11px] font-bold text-[#93c5fd] mb-1 uppercase">Price (₹)</label>
                     <input
                       type="number"
                       value={item.price}
                       onChange={(e) => handleItemChange(index, 'price', parseFloat(e.target.value) || 0)}
-                      className="w-full bg-white border border-[#E2DED6] rounded-lg px-3 py-2 text-[14px] focus:outline-none focus:border-[#a855f7]"
+                      className="w-full bg-[#0a1628] border border-[#1e3a5f] rounded-lg px-3 py-2 text-[14px] focus:outline-none focus:border-[#3b82f6]"
                     />
                   </div>
                   <div className="w-full md:w-32">
-                    <label className="block text-[11px] font-bold text-[#6B6B70] mb-1 uppercase">Total</label>
-                    <div className="w-full py-2 px-3 text-[14px] font-bold text-[#1C1C1E]">
+                    <label className="block text-[11px] font-bold text-[#93c5fd] mb-1 uppercase">Total</label>
+                    <div className="w-full py-2 px-3 text-[14px] font-bold text-[#e8f0fe]">
                       ₹{item.total.toLocaleString()}
                     </div>
                   </div>
@@ -358,23 +358,23 @@ const CreateInvoice = ({ setActiveTab }) => {
 
           {/* Notes & Terms */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white border border-[#E2DED6] rounded-2xl p-6 shadow-sm">
-              <label className="block text-[13px] font-bold text-[#6B6B70] mb-2 uppercase tracking-wide">Notes</label>
+            <div className="bg-[#0a1628] border border-[#1e3a5f] rounded-2xl p-6 shadow-sm">
+              <label className="block text-[13px] font-bold text-[#93c5fd] mb-2 uppercase tracking-wide">Notes</label>
               <textarea
                 rows="3"
                 value={invoice.notes}
                 onChange={(e) => setInvoice({ ...invoice, notes: e.target.value })}
-                className="w-full border border-[#E2DED6] rounded-xl px-4 py-2.5 focus:outline-none focus:border-[#a855f7] transition resize-none"
+                className="w-full border border-[#1e3a5f] rounded-xl px-4 py-2.5 focus:outline-none focus:border-[#3b82f6] transition resize-none"
                 placeholder="Message displayed on invoice..."
               ></textarea>
             </div>
-            <div className="bg-white border border-[#E2DED6] rounded-2xl p-6 shadow-sm">
-              <label className="block text-[13px] font-bold text-[#6B6B70] mb-2 uppercase tracking-wide">Terms & Conditions</label>
+            <div className="bg-[#0a1628] border border-[#1e3a5f] rounded-2xl p-6 shadow-sm">
+              <label className="block text-[13px] font-bold text-[#93c5fd] mb-2 uppercase tracking-wide">Terms & Conditions</label>
               <textarea
                 rows="3"
                 value={invoice.terms}
                 onChange={(e) => setInvoice({ ...invoice, terms: e.target.value })}
-                className="w-full border border-[#E2DED6] rounded-xl px-4 py-2.5 focus:outline-none focus:border-[#a855f7] transition resize-none"
+                className="w-full border border-[#1e3a5f] rounded-xl px-4 py-2.5 focus:outline-none focus:border-[#3b82f6] transition resize-none"
               ></textarea>
             </div>
           </div>
@@ -382,7 +382,7 @@ const CreateInvoice = ({ setActiveTab }) => {
 
         <div className="space-y-6">
           {/* Summary Card */}
-          <div className="bg-[#1C1C1E] text-white rounded-2xl p-6 shadow-xl sticky top-8">
+          <div className="bg-[#e8f0fe] text-[#0a1628] rounded-2xl p-6 shadow-xl sticky top-8">
             <h2 className="text-[16px] font-bold mb-6 uppercase tracking-widest opacity-60">Invoice Summary</h2>
 
             <div className="space-y-4 mb-8">
@@ -398,12 +398,12 @@ const CreateInvoice = ({ setActiveTab }) => {
                 <span className="opacity-60 font-medium">Due Date</span>
                 <span className="font-bold">{invoice.dueDate}</span>
               </div>
-              <div className="border-t border-white/10 pt-4 mt-4">
+              <div className="border-t border-[#3b82f6]/20/10 pt-4 mt-4">
                 <div className="flex justify-between items-center mb-2">
                   <span className="opacity-60 font-medium">Subtotal</span>
                   <span className="font-bold">₹{calculateSubtotal().toLocaleString()}</span>
                 </div>
-                <div className="flex justify-between items-center text-[24px] font-bold mt-4 text-[#a855f7]">
+                <div className="flex justify-between items-center text-[24px] font-bold mt-4 text-[#3b82f6]">
                   <span>Total Due</span>
                   <span>₹{calculateTotal().toLocaleString()}</span>
                 </div>
@@ -414,7 +414,7 @@ const CreateInvoice = ({ setActiveTab }) => {
               <button
                 onClick={handleSaveInvoice}
                 disabled={isSaving || isSaved}
-                className={`w-full text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition shadow-lg ${isSaved ? 'bg-green-500 hover:bg-green-600 shadow-green-500/20' : 'bg-[#a855f7] hover:bg-[#9333ea] shadow-[#a855f7]/20'
+                className={`w-full text-[#0a1628] py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition shadow-lg ${isSaved ? 'bg-green-500 hover:bg-green-600 shadow-green-500/20' : 'bg-[#3b82f6] hover:bg-[#2563eb] shadow-[#3b82f6]/20'
                   } ${isSaving ? 'opacity-70 cursor-not-allowed' : ''}`}
               >
                 {isSaving ? (
@@ -428,16 +428,16 @@ const CreateInvoice = ({ setActiveTab }) => {
               <div className="relative">
                 <button
                   onClick={() => setShowSendOptions(!showSendOptions)}
-                  className="w-full bg-white/10 hover:bg-white/20 text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition"
+                  className="w-full bg-[#0a1628]/10 hover:bg-[#132847]/20 text-[#0a1628] py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition"
                 >
                   <Send size={18} /> Send to Customer
                 </button>
 
                 {showSendOptions && (
-                  <div className="absolute top-full left-0 w-full mt-2 bg-[#2D2D30] border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50 animate-[slideDownFade_0.2s_ease-out]">
+                  <div className="absolute top-full left-0 w-full mt-2 bg-[#2D2D30] border border-[#3b82f6]/20/10 rounded-xl overflow-hidden shadow-2xl z-50 animate-[slideDownFade_0.2s_ease-out]">
                     <button
                       onClick={handleSendViaWhatsApp}
-                      className="w-full text-left px-4 py-3 text-[13px] text-white hover:bg-white/5 transition flex items-center gap-3"
+                      className="w-full text-left px-4 py-3 text-[13px] text-[#0a1628] hover:bg-[#132847]/5 transition flex items-center gap-3"
                     >
                       <span className="text-green-500">WhatsApp</span>
                     </button>
@@ -446,16 +446,16 @@ const CreateInvoice = ({ setActiveTab }) => {
               </div>
               <button
                 onClick={handleDownloadPDF}
-                className="w-full bg-transparent border border-white/20 hover:border-white/40 text-white/80 py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition"
+                className="w-full bg-transparent border border-[#3b82f6]/20 hover:border-[#3b82f6]/20 text-[#0a1628]/80 py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition"
               >
                 <Download size={18} /> Download PDF
               </button>
             </div>
           </div>
 
-          <div className="bg-[#FAF8F4] border border-[#E2DED6] rounded-2xl p-6">
-            <h3 className="text-[14px] font-bold text-[#1C1C1E] mb-2 uppercase">Billing Note</h3>
-            <p className="text-[13px] text-[#6B6B70] leading-relaxed">
+          <div className="bg-[#080d1a] border border-[#1e3a5f] rounded-2xl p-6">
+            <h3 className="text-[14px] font-bold text-[#e8f0fe] mb-2 uppercase">Billing Note</h3>
+            <p className="text-[13px] text-[#93c5fd] leading-relaxed">
               Ensure the customer details match the shipping record to avoid delivery delays. Professional invoices build trust!
             </p>
           </div>

@@ -82,7 +82,7 @@ const CreatePurchaseOrder = ({ setActiveTab, previousTab = 'PurchaseOrders', edi
   };
 
   return (
-    <div className="max-w-[1000px] mx-auto p-6 bg-white rounded-2xl shadow-sm">
+    <div className="max-w-[1000px] mx-auto p-6 bg-[#0a1628] rounded-2xl shadow-sm">
       <div className="flex items-center gap-4 mb-6">
         <button onClick={() => { if (clearEdit) clearEdit(); setActiveTab(previousTab); }} className="p-2 hover:bg-gray-100 rounded-full">
           <ArrowLeft size={24} />
@@ -119,7 +119,7 @@ const CreatePurchaseOrder = ({ setActiveTab, previousTab = 'PurchaseOrders', edi
           <h3 className="text-xl font-bold">Total: ₹{total.toFixed(2)}</h3>
         </div>
 
-        <button type="submit" disabled={isSaving || isSaved} className="w-full bg-blue-500 text-white p-3 rounded font-bold">
+        <button type="submit" disabled={isSaving || isSaved} className="w-full bg-blue-500 text-[#e8f0fe] p-3 rounded font-bold">
           {isSaved ? 'Saved!' : 'Save Purchase Order'}
         </button>
       </form>

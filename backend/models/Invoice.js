@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 const invoiceItemSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
   description: String,
   quantity: Number,
   price: Number,
@@ -8,6 +9,7 @@ const invoiceItemSchema = new mongoose.Schema({
 });
 
 const invoiceSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
   invoiceNumber: { type: String, required: true, unique: true },
   customerName: String,
   customerPhone: String,

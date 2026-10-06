@@ -107,7 +107,7 @@
   left: 70px;
   width: 40px;
   height: 12px;
-  background: #7c3aed;
+  background: #1d4ed8;
   border-radius: 6px;
   transform-origin: 6px 6px;
   animation: armSwing 6s infinite cubic-bezier(0.4, 0, 0.2, 1);

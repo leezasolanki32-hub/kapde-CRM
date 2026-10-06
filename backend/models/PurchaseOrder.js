@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 const purchaseOrderItemSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
   description: String,
   qty: Number,
   unit: String,
@@ -9,6 +10,7 @@ const purchaseOrderItemSchema = new mongoose.Schema({
 });
 
 const purchaseOrderSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
   supplier: { type: String, required: true },
   contact: String,
   orderNumber: { type: String, required: true, unique: true },

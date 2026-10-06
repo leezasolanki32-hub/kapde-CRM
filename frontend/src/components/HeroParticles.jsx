@@ -152,7 +152,7 @@ const HeroParticles = () => {
         this.friction = 0.82 + Math.random() * 0.08;
         this.ease = 0.03 + Math.random() * 0.05;
 
-        const colors = ['#a855f7', '#f472b6', '#c084fc', '#e879f9'];
+        const colors = ['#3b82f6', '#f472b6', '#c084fc', '#e879f9'];
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }
 

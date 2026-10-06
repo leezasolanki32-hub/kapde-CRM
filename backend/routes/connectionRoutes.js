@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 // Add a new connection
 router.post('/', async (req, res) => {
   try {
-    const connection = new Connection(req.body);
+    const connection = new Connection({ ...req.body, userId: req.headers['user-id'] });
     const newConnection = await connection.save();
     res.status(201).json(newConnection);
   } catch (error) {
@@ -32,8 +32,8 @@ router.post('/', async (req, res) => {
 // Update a connection
 router.put('/:id', async (req, res) => {
   try {
-    const updatedConnection = await Connection.findByIdAndUpdate(
-      req.params.id,
+    const updatedConnection = await Connection.findOneAndUpdate(
+      { _id: req.params.id, userId: req.headers['user-id'] },
       req.body,
       { new: true }
     );
@@ -46,7 +46,7 @@ router.put('/:id', async (req, res) => {
 // Delete a connection
 router.delete('/:id', async (req, res) => {
   try {
-    await Connection.findByIdAndDelete(req.params.id);
+    await Connection.findOneAndDelete({ _id: req.params.id, userId: req.headers['user-id'] });
     res.json({ message: 'Connection deleted' });
   } catch (error) {
     res.status(500).json({ message: error.message });

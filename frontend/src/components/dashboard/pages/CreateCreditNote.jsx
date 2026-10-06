@@ -66,7 +66,7 @@ const CreateCreditNote = ({ setActiveTab }) => {
     };
 
     try {
-      const response = await fetch(`\${import.meta.env.VITE_API_URL}/credit-notes`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/credit-notes`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(noteData)
@@ -249,49 +249,49 @@ const CreateCreditNote = ({ setActiveTab }) => {
       <div className="flex items-center gap-4 mb-8">
         <button
           onClick={() => setActiveTab('Invoices')}
-          className="p-2 hover:bg-[#f1f5f9] rounded-full transition text-[#6B6B70] hover:text-[#0f172a]"
+          className="p-2 hover:bg-[#f1f5f9] rounded-full transition text-[#93c5fd] hover:text-[#0f172a]"
         >
           <ArrowLeft size={24} />
         </button>
-        <h1 className="text-[28px] font-bold text-[#1C1C1E]">Create Credit Note</h1>
+        <h1 className="text-[28px] font-bold text-[#e8f0fe]">Create Credit Note</h1>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-6">
           {/* Customer Details */}
-          <div className="bg-white border border-[#E2DED6] rounded-2xl p-6 shadow-sm">
-            <h2 className="text-[18px] font-bold text-[#1C1C1E] mb-4 flex items-center gap-2">
+          <div className="bg-[#0a1628] border border-[#1e3a5f] rounded-2xl p-6 shadow-sm">
+            <h2 className="text-[18px] font-bold text-[#e8f0fe] mb-4 flex items-center gap-2">
               <span className="w-2 h-2 bg-[#0f172a] rounded-full"></span>
               Credit Information
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-[13px] font-bold text-[#6B6B70] mb-1.5 uppercase tracking-wide">Customer Name</label>
+                <label className="block text-[13px] font-bold text-[#93c5fd] mb-1.5 uppercase tracking-wide">Customer Name</label>
                 <input
                   type="text"
                   value={creditNote.customerName}
                   onChange={(e) => setCreditNote({ ...creditNote, customerName: e.target.value })}
-                  className="w-full border border-[#E2DED6] rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#0f172a]/20 focus:border-[#0f172a] transition"
+                  className="w-full border border-[#1e3a5f] rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#0f172a]/20 focus:border-[#0f172a] transition"
                   placeholder="e.g. Raj Patel"
                 />
               </div>
               <div>
-                <label className="block text-[13px] font-bold text-[#6B6B70] mb-1.5 uppercase tracking-wide">Original Invoice Ref.</label>
+                <label className="block text-[13px] font-bold text-[#93c5fd] mb-1.5 uppercase tracking-wide">Original Invoice Ref.</label>
                 <input
                   type="text"
                   value={creditNote.originalInvoiceRef}
                   onChange={(e) => setCreditNote({ ...creditNote, originalInvoiceRef: e.target.value })}
-                  className="w-full border border-[#E2DED6] rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#0f172a]/20 focus:border-[#0f172a] transition"
+                  className="w-full border border-[#1e3a5f] rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#0f172a]/20 focus:border-[#0f172a] transition"
                   placeholder="e.g. INV-1234"
                 />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-[13px] font-bold text-[#6B6B70] mb-1.5 uppercase tracking-wide">Phone Number</label>
+                <label className="block text-[13px] font-bold text-[#93c5fd] mb-1.5 uppercase tracking-wide">Phone Number</label>
                 <input
                   type="text"
                   value={creditNote.customerPhone}
                   onChange={(e) => setCreditNote({ ...creditNote, customerPhone: e.target.value })}
-                  className="w-full border border-[#E2DED6] rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#0f172a]/20 focus:border-[#0f172a] transition"
+                  className="w-full border border-[#1e3a5f] rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#0f172a]/20 focus:border-[#0f172a] transition"
                   placeholder="+91 98765 43210"
                 />
               </div>
@@ -299,9 +299,9 @@ const CreateCreditNote = ({ setActiveTab }) => {
           </div>
 
           {/* Items Section */}
-          <div className="bg-white border border-[#E2DED6] rounded-2xl p-6 shadow-sm">
+          <div className="bg-[#0a1628] border border-[#1e3a5f] rounded-2xl p-6 shadow-sm">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-[18px] font-bold text-[#1C1C1E] flex items-center gap-2">
+              <h2 className="text-[18px] font-bold text-[#e8f0fe] flex items-center gap-2">
                 <span className="w-2 h-2 bg-[#0f172a] rounded-full"></span>
                 Returned / Adjusted Items
               </h2>
@@ -315,38 +315,38 @@ const CreateCreditNote = ({ setActiveTab }) => {
 
             <div className="space-y-4">
               {creditNote.items.map((item, index) => (
-                <div key={index} className="flex flex-col md:flex-row gap-4 p-5 bg-white rounded-xl border border-[#E2DED6] shadow-sm group transition-all hover:border-[#0f172a] hover:shadow-md">
+                <div key={index} className="flex flex-col md:flex-row gap-4 p-5 bg-[#0a1628] rounded-xl border border-[#1e3a5f] shadow-sm group transition-all hover:border-[#0f172a] hover:shadow-md">
                   <div className="flex-1">
-                    <label className="block text-[11px] font-bold text-[#6B6B70] mb-2 uppercase tracking-wider">Item Description</label>
+                    <label className="block text-[11px] font-bold text-[#93c5fd] mb-2 uppercase tracking-wider">Item Description</label>
                     <input
                       type="text"
                       value={item.description}
                       onChange={(e) => handleItemChange(index, 'description', e.target.value)}
-                      className="w-full bg-[#FAF8F4] border border-[#E2DED6] rounded-lg px-4 py-2.5 text-[14px] focus:outline-none focus:ring-2 focus:ring-[#0f172a]/20 focus:border-[#0f172a] transition"
+                      className="w-full bg-[#080d1a] border border-[#1e3a5f] rounded-lg px-4 py-2.5 text-[14px] focus:outline-none focus:ring-2 focus:ring-[#0f172a]/20 focus:border-[#0f172a] transition"
                       placeholder="e.g. Return: Silk Saree"
                     />
                   </div>
                   <div className="w-full md:w-24">
-                    <label className="block text-[11px] font-bold text-[#6B6B70] mb-2 uppercase tracking-wider">Qty</label>
+                    <label className="block text-[11px] font-bold text-[#93c5fd] mb-2 uppercase tracking-wider">Qty</label>
                     <input
                       type="number"
                       value={item.quantity}
                       onChange={(e) => handleItemChange(index, 'quantity', parseInt(e.target.value) || 0)}
-                      className="w-full bg-[#FAF8F4] border border-[#E2DED6] rounded-lg px-4 py-2.5 text-[14px] focus:outline-none focus:border-[#0f172a] text-center"
+                      className="w-full bg-[#080d1a] border border-[#1e3a5f] rounded-lg px-4 py-2.5 text-[14px] focus:outline-none focus:border-[#0f172a] text-center"
                     />
                   </div>
                   <div className="w-full md:w-32">
-                    <label className="block text-[11px] font-bold text-[#6B6B70] mb-2 uppercase tracking-wider">Credit Val (₹)</label>
+                    <label className="block text-[11px] font-bold text-[#93c5fd] mb-2 uppercase tracking-wider">Credit Val (₹)</label>
                     <input
                       type="number"
                       value={item.price}
                       onChange={(e) => handleItemChange(index, 'price', parseFloat(e.target.value) || 0)}
-                      className="w-full bg-[#FAF8F4] border border-[#E2DED6] rounded-lg px-4 py-2.5 text-[14px] focus:outline-none focus:border-[#0f172a]"
+                      className="w-full bg-[#080d1a] border border-[#1e3a5f] rounded-lg px-4 py-2.5 text-[14px] focus:outline-none focus:border-[#0f172a]"
                     />
                   </div>
                   <div className="w-full md:w-32">
-                    <label className="block text-[11px] font-bold text-[#6B6B70] mb-2 uppercase tracking-wider">Total</label>
-                    <div className="w-full py-2.5 px-2 text-[15px] font-bold text-[#1C1C1E]">
+                    <label className="block text-[11px] font-bold text-[#93c5fd] mb-2 uppercase tracking-wider">Total</label>
+                    <div className="w-full py-2.5 px-2 text-[15px] font-bold text-[#e8f0fe]">
                       ₹{item.total.toLocaleString()}
                     </div>
                   </div>
@@ -366,23 +366,23 @@ const CreateCreditNote = ({ setActiveTab }) => {
 
           {/* Notes & Terms */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-12">
-            <div className="bg-white border border-[#E2DED6] rounded-2xl p-6 shadow-sm">
-              <label className="block text-[13px] font-bold text-[#6B6B70] mb-2 uppercase tracking-wide">Reason for Credit</label>
+            <div className="bg-[#0a1628] border border-[#1e3a5f] rounded-2xl p-6 shadow-sm">
+              <label className="block text-[13px] font-bold text-[#93c5fd] mb-2 uppercase tracking-wide">Reason for Credit</label>
               <textarea
                 rows="3"
                 value={creditNote.notes}
                 onChange={(e) => setCreditNote({ ...creditNote, notes: e.target.value })}
-                className="w-full border border-[#E2DED6] rounded-xl px-4 py-3 focus:outline-none focus:border-[#0f172a] transition resize-none bg-[#FAF8F4]"
+                className="w-full border border-[#1e3a5f] rounded-xl px-4 py-3 focus:outline-none focus:border-[#0f172a] transition resize-none bg-[#080d1a]"
                 placeholder="Message displayed on credit note..."
               ></textarea>
             </div>
-            <div className="bg-white border border-[#E2DED6] rounded-2xl p-6 shadow-sm">
-              <label className="block text-[13px] font-bold text-[#6B6B70] mb-2 uppercase tracking-wide">Terms</label>
+            <div className="bg-[#0a1628] border border-[#1e3a5f] rounded-2xl p-6 shadow-sm">
+              <label className="block text-[13px] font-bold text-[#93c5fd] mb-2 uppercase tracking-wide">Terms</label>
               <textarea
                 rows="3"
                 value={creditNote.terms}
                 onChange={(e) => setCreditNote({ ...creditNote, terms: e.target.value })}
-                className="w-full border border-[#E2DED6] rounded-xl px-4 py-3 focus:outline-none focus:border-[#0f172a] transition resize-none bg-[#FAF8F4]"
+                className="w-full border border-[#1e3a5f] rounded-xl px-4 py-3 focus:outline-none focus:border-[#0f172a] transition resize-none bg-[#080d1a]"
               ></textarea>
             </div>
           </div>
@@ -390,33 +390,33 @@ const CreateCreditNote = ({ setActiveTab }) => {
 
         <div className="space-y-6">
           {/* Summary Card */}
-          <div className="bg-[#1C1C1E] text-white rounded-3xl p-8 shadow-2xl sticky top-8 border border-white/5 overflow-hidden">
+          <div className="bg-[#e8f0fe] text-[#0a1628] rounded-3xl p-8 shadow-2xl sticky top-8 border border-[#3b82f6]/20/5 overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-[#0f172a] blur-[80px] opacity-40 -mr-16 -mt-16"></div>
             
             <h2 className="text-[14px] font-bold mb-8 uppercase tracking-[0.2em] text-[#94a3b8]">Credit Summary</h2>
 
             <div className="space-y-5 mb-10 relative z-10">
               <div className="flex justify-between items-center text-[14px]">
-                <span className="text-white/50 font-medium">CN Number</span>
+                <span className="text-[#0a1628]/50 font-medium">CN Number</span>
                 <span className="font-bold tracking-tight">{creditNote.creditNoteNumber}</span>
               </div>
               <div className="flex justify-between items-center text-[14px]">
-                <span className="text-white/50 font-medium">Date</span>
+                <span className="text-[#0a1628]/50 font-medium">Date</span>
                 <span className="font-bold">{creditNote.date}</span>
               </div>
               <div className="flex justify-between items-center text-[14px]">
-                <span className="text-white/50 font-medium">Linked Invoice</span>
+                <span className="text-[#0a1628]/50 font-medium">Linked Invoice</span>
                 <span className="font-bold">{creditNote.originalInvoiceRef || '-'}</span>
               </div>
               
-              <div className="pt-6 border-t border-white/10 mt-6">
+              <div className="pt-6 border-t border-[#3b82f6]/20/10 mt-6">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-white/50 font-medium text-[13px]">Subtotal</span>
+                  <span className="text-[#0a1628]/50 font-medium text-[13px]">Subtotal</span>
                   <span className="font-bold text-[15px]">₹{calculateSubtotal().toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between items-end mt-6">
-                  <span className="text-white/50 font-bold uppercase text-[11px] tracking-widest mb-1">Total Credit</span>
-                  <span className="text-[32px] font-bold text-white tracking-tighter leading-none">
+                  <span className="text-[#0a1628]/50 font-bold uppercase text-[11px] tracking-widest mb-1">Total Credit</span>
+                  <span className="text-[32px] font-bold text-[#0a1628] tracking-tighter leading-none">
                     ₹{calculateTotal().toLocaleString()}
                   </span>
                 </div>
@@ -430,12 +430,12 @@ const CreateCreditNote = ({ setActiveTab }) => {
                 className={`w-full py-4 rounded-2xl font-bold flex items-center justify-center gap-3 transition-all duration-300 shadow-xl ${
                   isSaved 
                     ? 'bg-green-500 hover:bg-green-600 shadow-green-500/20' 
-                    : 'bg-[#0f172a] hover:bg-[#1e293b] shadow-[#0f172a]/30 hover:-translate-y-0.5 active:translate-y-0 border border-white/10'
+                    : 'bg-[#0f172a] hover:bg-[#1e293b] shadow-[#0f172a]/30 hover:-translate-y-0.5 active:translate-y-0 border border-[#3b82f6]/20/10'
                 } ${isSaving ? 'opacity-70 cursor-not-allowed' : ''}`}
               >
                 {isSaving ? (
                   <>
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    <div className="w-5 h-5 border-2 border-[#3b82f6]/20/30 border-t-white rounded-full animate-spin"></div>
                     <span>Generating...</span>
                   </>
                 ) : isSaved ? (
@@ -448,21 +448,21 @@ const CreateCreditNote = ({ setActiveTab }) => {
               <div className="relative">
                 <button
                   onClick={() => setShowSendOptions(!showSendOptions)}
-                  className={`w-full bg-white/5 border border-white/10 hover:bg-white/10 text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-3 transition-all ${showSendOptions ? 'bg-white/10 ring-2 ring-[#0f172a]/50' : ''}`}
+                  className={`w-full bg-[#0a1628]/5 border border-[#3b82f6]/20/10 hover:bg-[#132847]/10 text-[#0a1628] py-4 rounded-2xl font-bold flex items-center justify-center gap-3 transition-all ${showSendOptions ? 'bg-[#0a1628]/10 ring-2 ring-[#0f172a]/50' : ''}`}
                 >
                   <Send size={20} /> Send to Customer
                 </button>
 
                 {showSendOptions && (
-                  <div className="absolute bottom-full left-0 w-full mb-3 bg-[#2D2D30] border border-white/10 rounded-2xl overflow-hidden shadow-2xl z-50 animate-[slideUpFade_0.2s_ease-out]">
+                  <div className="absolute bottom-full left-0 w-full mb-3 bg-[#2D2D30] border border-[#3b82f6]/20/10 rounded-2xl overflow-hidden shadow-2xl z-50 animate-[slideUpFade_0.2s_ease-out]">
                     <button
                       onClick={handleSendViaWhatsApp}
-                      className="w-full text-left px-5 py-4 text-[14px] text-white hover:bg-[#0f172a] transition-all flex items-center justify-between group"
+                      className="w-full text-left px-5 py-4 text-[14px] text-[#0a1628] hover:bg-[#0f172a] transition-all flex items-center justify-between group"
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-green-400 group-hover:text-white">WhatsApp</span>
+                        <span className="text-green-400 group-hover:text-[#0a1628]">WhatsApp</span>
                       </div>
-                      <span className="text-[10px] bg-white/10 px-2 py-0.5 rounded-full uppercase opacity-50 group-hover:opacity-100 group-hover:bg-black/20">Fast</span>
+                      <span className="text-[10px] bg-[#0a1628]/10 px-2 py-0.5 rounded-full uppercase opacity-50 group-hover:opacity-100 group-hover:bg-black/20">Fast</span>
                     </button>
                   </div>
                 )}
@@ -470,19 +470,19 @@ const CreateCreditNote = ({ setActiveTab }) => {
 
               <button
                 onClick={handleDownloadPDF}
-                className="w-full bg-transparent border border-white/10 hover:border-white/30 hover:bg-white/5 text-white/60 hover:text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-3 transition-all"
+                className="w-full bg-transparent border border-[#3b82f6]/20/10 hover:border-[#3b82f6]/20/30 hover:bg-[#132847]/5 text-[#0a1628]/60 hover:text-[#0a1628] py-4 rounded-2xl font-bold flex items-center justify-center gap-3 transition-all"
               >
                 <Download size={20} /> Download PDF
               </button>
             </div>
           </div>
 
-          <div className="bg-[#FAF8F4] border border-[#E2DED6] rounded-2xl p-6 relative overflow-hidden">
+          <div className="bg-[#080d1a] border border-[#1e3a5f] rounded-2xl p-6 relative overflow-hidden">
             <div className="absolute top-0 right-0 p-2 opacity-10">
               <LifeBuoy size={48} />
             </div>
-            <h3 className="text-[14px] font-bold text-[#1C1C1E] mb-2 uppercase tracking-wide">Credit Pro-Tip</h3>
-            <p className="text-[13px] text-[#6B6B70] leading-relaxed relative z-10">
+            <h3 className="text-[14px] font-bold text-[#e8f0fe] mb-2 uppercase tracking-wide">Credit Pro-Tip</h3>
+            <p className="text-[13px] text-[#93c5fd] leading-relaxed relative z-10">
               Always link a credit note to the original invoice to keep your accounting books clean and easily traceable.
             </p>
           </div>

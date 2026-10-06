@@ -25,8 +25,8 @@ const CreateVoucher = ({ setActiveTab, previousTab = 'Accounts' }) => {
     setActiveTab(previousTab);
   };
 
-  const inputClass = "w-full px-4 py-2.5 rounded-xl border border-[#E2DED6] focus:outline-none focus:border-[#a855f7] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-white";
-  const labelClass = "block text-[12px] font-bold text-[#6B6B70] uppercase mb-1.5 flex items-center gap-1.5";
+  const inputClass = "w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]";
+  const labelClass = "block text-[12px] font-bold text-[#93c5fd] uppercase mb-1.5 flex items-center gap-1.5";
 
   const voucherTypes = ['Payment', 'Receipt', 'Contra', 'Journal', 'Sales', 'Purchase'];
   const ledgers = [
@@ -43,20 +43,20 @@ const CreateVoucher = ({ setActiveTab, previousTab = 'Accounts' }) => {
           onClick={() => setActiveTab(previousTab)}
           className="p-2 hover:bg-slate-100 rounded-full transition-colors"
         >
-          <ArrowLeft size={24} className="text-[#6B6B70]" />
+          <ArrowLeft size={24} className="text-[#93c5fd]" />
         </button>
         <div>
-          <h1 className="text-[28px] font-bold text-[#1C1C1E] tracking-tight">Enter Voucher</h1>
-          <p className="text-[14px] text-[#6B6B70] mt-1 font-medium">Record a new accounting transaction entry</p>
+          <h1 className="text-[28px] font-bold text-[#e8f0fe] tracking-tight">Enter Voucher</h1>
+          <p className="text-[14px] text-[#93c5fd] mt-1 font-medium">Record a new accounting transaction entry</p>
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl border border-[#E2DED6] shadow-sm overflow-hidden">
+      <div className="bg-[#0a1628] rounded-2xl border border-[#1e3a5f] shadow-sm overflow-hidden">
         <form onSubmit={handleSubmit} className="p-6 md:p-8 space-y-8">
 
           {/* Voucher Type Tabs */}
           <div>
-            <label className={labelClass}><Layers size={14} className="text-[#a855f7]" /> Voucher Type</label>
+            <label className={labelClass}><Layers size={14} className="text-[#3b82f6]" /> Voucher Type</label>
             <div className="flex flex-wrap gap-2">
               {voucherTypes.map(type => (
                 <button
@@ -65,8 +65,8 @@ const CreateVoucher = ({ setActiveTab, previousTab = 'Accounts' }) => {
                   onClick={() => setFormData(prev => ({ ...prev, voucherType: type }))}
                   className={`px-4 py-2 rounded-xl text-[13px] font-bold border transition-all ${
                     formData.voucherType === type
-                      ? 'bg-[#a855f7] text-white border-[#a855f7] shadow-md shadow-purple-200'
-                      : 'bg-white text-[#6B6B70] border-[#E2DED6] hover:bg-[#f3e8ff] hover:border-[#a855f7] hover:text-[#a855f7]'
+                      ? 'bg-[#3b82f6] text-[#e8f0fe] border-[#3b82f6] shadow-md shadow-purple-200'
+                      : 'bg-[#0a1628] text-[#93c5fd] border-[#1e3a5f] hover:bg-[#132847] hover:border-[#3b82f6] hover:text-[#3b82f6]'
                   }`}
                 >
                   {type}
@@ -78,7 +78,7 @@ const CreateVoucher = ({ setActiveTab, previousTab = 'Accounts' }) => {
           {/* Voucher Number & Date */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className={labelClass}><FileText size={14} className="text-[#a855f7]" /> Voucher No.</label>
+              <label className={labelClass}><FileText size={14} className="text-[#3b82f6]" /> Voucher No.</label>
               <input
                 type="text"
                 name="voucherNumber"
@@ -89,7 +89,7 @@ const CreateVoucher = ({ setActiveTab, previousTab = 'Accounts' }) => {
               />
             </div>
             <div>
-              <label className={labelClass}><Calendar size={14} className="text-[#a855f7]" /> Date <span className="text-red-500">*</span></label>
+              <label className={labelClass}><Calendar size={14} className="text-[#3b82f6]" /> Date <span className="text-red-500">*</span></label>
               <input
                 type="date"
                 name="voucherDate"
@@ -122,9 +122,9 @@ const CreateVoucher = ({ setActiveTab, previousTab = 'Accounts' }) => {
           {/* Amount & Payment Mode */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className={labelClass}><IndianRupee size={14} className="text-[#a855f7]" /> Amount <span className="text-red-500">*</span></label>
+              <label className={labelClass}><IndianRupee size={14} className="text-[#3b82f6]" /> Amount <span className="text-red-500">*</span></label>
               <div className="relative">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6B6B70] font-bold">₹</span>
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#93c5fd] font-bold">₹</span>
                 <input
                   type="number"
                   name="amount"
@@ -176,17 +176,17 @@ const CreateVoucher = ({ setActiveTab, previousTab = 'Accounts' }) => {
           </div>
 
           {/* Actions */}
-          <div className="pt-6 border-t border-[#f0f0f0] flex flex-col sm:flex-row justify-end gap-3">
+          <div className="pt-6 border-t border-[#1e3a5f] flex flex-col sm:flex-row justify-end gap-3">
             <button
               type="button"
               onClick={() => setActiveTab(previousTab)}
-              className="px-6 py-2.5 rounded-xl border border-[#E2DED6] text-[#6B6B70] font-bold text-[14px] hover:bg-slate-50 transition-colors"
+              className="px-6 py-2.5 rounded-xl border border-[#1e3a5f] text-[#93c5fd] font-bold text-[14px] hover:bg-slate-50 transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="flex items-center justify-center gap-2 px-8 py-2.5 bg-[#a855f7] text-white rounded-xl font-bold text-[14px] hover:bg-[#9333ea] transition-all shadow-md shadow-purple-200"
+              className="flex items-center justify-center gap-2 px-8 py-2.5 bg-[#3b82f6] text-[#e8f0fe] rounded-xl font-bold text-[14px] hover:bg-[#2563eb] transition-all shadow-md shadow-purple-200"
             >
               <CheckCircle size={18} /> Save Voucher
             </button>

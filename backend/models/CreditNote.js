@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 const creditNoteItemSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
   description: String,
   quantity: Number,
   price: Number,
@@ -8,6 +9,7 @@ const creditNoteItemSchema = new mongoose.Schema({
 });
 
 const creditNoteSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
   creditNoteNumber: { type: String, required: true, unique: true },
   customerName: String,
   customerPhone: String,

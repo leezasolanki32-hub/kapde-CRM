@@ -14,9 +14,7 @@ const CreateDebitNote = ({ setActiveTab, previousTab = 'Purchases' }) => {
     narration: '',
   });
 
-  const [items, setItems] = useState([
-    { description: '', qty: '', unit: 'Pcs', rate: '', amount: '' }
-  ]);
+  const [items, setItems] = useState([]);
   const [showMore, setShowMore] = useState(false);
   const [saved, setSaved] = useState(false);
 
@@ -51,8 +49,8 @@ const CreateDebitNote = ({ setActiveTab, previousTab = 'Purchases' }) => {
     setTimeout(() => setActiveTab(previousTab), 1500);
   };
 
-  const inputClass = "w-full px-4 py-2.5 rounded-xl border border-[#E2DED6] focus:outline-none focus:border-[#a855f7] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-white";
-  const labelClass = "block text-[12px] font-bold text-[#6B6B70] uppercase mb-1.5 flex items-center gap-1.5";
+  const inputClass = "w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]";
+  const labelClass = "block text-[12px] font-bold text-[#93c5fd] uppercase mb-1.5 flex items-center gap-1.5";
 
   const reasons = [
     'Goods Returned',
@@ -77,50 +75,50 @@ const CreateDebitNote = ({ setActiveTab, previousTab = 'Purchases' }) => {
       {/* Header */}
       <div className="flex items-center gap-4 mb-8">
         <button onClick={() => setActiveTab(previousTab)} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-          <ArrowLeft size={24} className="text-[#6B6B70]" />
+          <ArrowLeft size={24} className="text-[#93c5fd]" />
         </button>
         <div>
-          <h1 className="text-[28px] font-bold text-[#1C1C1E] tracking-tight">Enter Debit Note</h1>
-          <p className="text-[14px] text-[#6B6B70] mt-1 font-medium">Record a debit note against a supplier invoice</p>
+          <h1 className="text-[28px] font-bold text-[#e8f0fe] tracking-tight">Enter Debit Note</h1>
+          <p className="text-[14px] text-[#93c5fd] mt-1 font-medium">Record a debit note against a supplier invoice</p>
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
 
         {/* Supplier Info */}
-        <div className="bg-white rounded-2xl border border-[#E2DED6] shadow-sm p-6 space-y-6">
-          <h3 className="text-[14px] font-bold text-[#1C1C1E] flex items-center gap-2 border-b border-[#f0f0f0] pb-3">
-            <Building size={16} className="text-[#a855f7]" /> Supplier Information
+        <div className="bg-[#0a1628] rounded-2xl border border-[#1e3a5f] shadow-sm p-6 space-y-6">
+          <h3 className="text-[14px] font-bold text-[#e8f0fe] flex items-center gap-2 border-b border-[#1e3a5f] pb-3">
+            <Building size={16} className="text-[#3b82f6]" /> Supplier Information
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className={labelClass}><Truck size={14} className="text-[#a855f7]" /> Supplier Name <span className="text-red-500">*</span></label>
+              <label className={labelClass}><Truck size={14} className="text-[#3b82f6]" /> Supplier Name <span className="text-red-500">*</span></label>
               <input type="text" name="supplier" required value={formData.supplier} onChange={handleInputChange} className={inputClass} placeholder="Select or enter supplier" />
             </div>
             <div>
-              <label className={labelClass}><User size={14} className="text-[#a855f7]" /> Contact Person</label>
+              <label className={labelClass}><User size={14} className="text-[#3b82f6]" /> Contact Person</label>
               <input type="text" name="contact" value={formData.contact} onChange={handleInputChange} className={inputClass} placeholder="Contact name" />
             </div>
           </div>
         </div>
 
         {/* Debit Note Details */}
-        <div className="bg-white rounded-2xl border border-[#E2DED6] shadow-sm p-6 space-y-6">
-          <h3 className="text-[14px] font-bold text-[#1C1C1E] flex items-center gap-2 border-b border-[#f0f0f0] pb-3">
-            <FileText size={16} className="text-[#a855f7]" /> Debit Note Details
+        <div className="bg-[#0a1628] rounded-2xl border border-[#1e3a5f] shadow-sm p-6 space-y-6">
+          <h3 className="text-[14px] font-bold text-[#e8f0fe] flex items-center gap-2 border-b border-[#1e3a5f] pb-3">
+            <FileText size={16} className="text-[#3b82f6]" /> Debit Note Details
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <label className={labelClass}><Hash size={14} className="text-[#a855f7]" /> Debit Note No. <span className="text-red-500">*</span></label>
+              <label className={labelClass}><Hash size={14} className="text-[#3b82f6]" /> Debit Note No. <span className="text-red-500">*</span></label>
               <input type="text" name="debitNoteNumber" required value={formData.debitNoteNumber} onChange={handleInputChange} className={inputClass} placeholder="e.g. DN-001" />
             </div>
             <div>
-              <label className={labelClass}><Calendar size={14} className="text-[#a855f7]" /> Date <span className="text-red-500">*</span></label>
+              <label className={labelClass}><Calendar size={14} className="text-[#3b82f6]" /> Date <span className="text-red-500">*</span></label>
               <input type="date" name="debitNoteDate" required value={formData.debitNoteDate} onChange={handleInputChange} className={inputClass} />
             </div>
             <div>
-              <label className={labelClass}><Hash size={14} className="text-[#a855f7]" /> Linked Invoice No.</label>
+              <label className={labelClass}><Hash size={14} className="text-[#3b82f6]" /> Linked Invoice No.</label>
               <input type="text" name="linkedInvoice" value={formData.linkedInvoice} onChange={handleInputChange} className={inputClass} placeholder="e.g. Inv422" />
             </div>
           </div>
@@ -145,14 +143,14 @@ const CreateDebitNote = ({ setActiveTab, previousTab = 'Purchases' }) => {
         </div>
 
         {/* Items Table */}
-        <div className="bg-white rounded-2xl border border-[#E2DED6] shadow-sm p-6">
-          <h3 className="text-[14px] font-bold text-[#1C1C1E] flex items-center gap-2 border-b border-[#f0f0f0] pb-3 mb-4">
+        <div className="bg-[#0a1628] rounded-2xl border border-[#1e3a5f] shadow-sm p-6">
+          <h3 className="text-[14px] font-bold text-[#e8f0fe] flex items-center gap-2 border-b border-[#1e3a5f] pb-3 mb-4">
             Returned / Adjusted Items
           </h3>
           <div className="overflow-x-auto">
             <table className="w-full text-[13px]">
               <thead>
-                <tr className="text-[11px] font-bold text-[#6B6B70] uppercase tracking-wider border-b border-[#f0f0f0]">
+                <tr className="text-[11px] font-bold text-[#93c5fd] uppercase tracking-wider border-b border-[#1e3a5f]">
                   <th className="pb-2 text-left w-[40%]">Description</th>
                   <th className="pb-2 text-center w-[10%]">Qty</th>
                   <th className="pb-2 text-center w-[12%]">Unit</th>
@@ -165,21 +163,21 @@ const CreateDebitNote = ({ setActiveTab, previousTab = 'Purchases' }) => {
                 {items.map((item, index) => (
                   <tr key={index}>
                     <td className="py-2 pr-3">
-                      <input type="text" value={item.description} onChange={(e) => handleItemChange(index, 'description', e.target.value)} className="w-full px-3 py-2 rounded-lg border border-[#E2DED6] focus:outline-none focus:border-[#a855f7] text-[13px] bg-slate-50 focus:bg-white transition" placeholder="Item description" />
+                      <input type="text" value={item.description} onChange={(e) => handleItemChange(index, 'description', e.target.value)} className="w-full px-3 py-2 rounded-lg border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] text-[13px] bg-slate-50 focus:bg-[#0a1628] transition" placeholder="Item description" />
                     </td>
                     <td className="py-2 px-2">
-                      <input type="number" min="0" value={item.qty} onChange={(e) => handleItemChange(index, 'qty', e.target.value)} className="w-full px-3 py-2 rounded-lg border border-[#E2DED6] focus:outline-none focus:border-[#a855f7] text-[13px] text-center bg-slate-50 focus:bg-white transition" placeholder="0" />
+                      <input type="number" min="0" value={item.qty} onChange={(e) => handleItemChange(index, 'qty', e.target.value)} className="w-full px-3 py-2 rounded-lg border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] text-[13px] text-center bg-slate-50 focus:bg-[#0a1628] transition" placeholder="0" />
                     </td>
                     <td className="py-2 px-2">
-                      <select value={item.unit} onChange={(e) => handleItemChange(index, 'unit', e.target.value)} className="w-full px-2 py-2 rounded-lg border border-[#E2DED6] focus:outline-none focus:border-[#a855f7] text-[13px] bg-slate-50 focus:bg-white transition">
+                      <select value={item.unit} onChange={(e) => handleItemChange(index, 'unit', e.target.value)} className="w-full px-2 py-2 rounded-lg border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] text-[13px] bg-slate-50 focus:bg-[#0a1628] transition">
                         <option>Pcs</option><option>Mtr</option><option>Kg</option><option>Box</option><option>Set</option>
                       </select>
                     </td>
                     <td className="py-2 px-2">
-                      <input type="number" min="0" value={item.rate} onChange={(e) => handleItemChange(index, 'rate', e.target.value)} className="w-full px-3 py-2 rounded-lg border border-[#E2DED6] focus:outline-none focus:border-[#a855f7] text-[13px] text-right bg-slate-50 focus:bg-white transition" placeholder="0.00" />
+                      <input type="number" min="0" value={item.rate} onChange={(e) => handleItemChange(index, 'rate', e.target.value)} className="w-full px-3 py-2 rounded-lg border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] text-[13px] text-right bg-slate-50 focus:bg-[#0a1628] transition" placeholder="0.00" />
                     </td>
                     <td className="py-2 px-2">
-                      <input type="text" readOnly value={item.amount ? `₹${item.amount}` : ''} className="w-full px-3 py-2 rounded-lg border border-[#f0f0f0] text-[13px] text-right bg-[#fafafa] text-[#1C1C1E] font-bold" placeholder="₹0.00" />
+                      <input type="text" readOnly value={item.amount ? `₹${item.amount}` : ''} className="w-full px-3 py-2 rounded-lg border border-[#1e3a5f] text-[13px] text-right bg-[#0a1628] text-[#e8f0fe] font-bold" placeholder="₹0.00" />
                     </td>
                     <td className="py-2 pl-2 text-center">
                       {items.length > 1 && (
@@ -191,42 +189,42 @@ const CreateDebitNote = ({ setActiveTab, previousTab = 'Purchases' }) => {
               </tbody>
             </table>
           </div>
-          <button type="button" onClick={addItem} className="mt-4 text-[#a855f7] text-[13px] font-bold hover:underline flex items-center gap-1">
+          <button type="button" onClick={addItem} className="mt-4 text-[#3b82f6] text-[13px] font-bold hover:underline flex items-center gap-1">
             + Add Item
           </button>
 
           {/* Totals */}
-          <div className="mt-6 border-t border-[#f0f0f0] pt-4 flex flex-col items-end gap-2 text-[13px]">
-            <div className="flex justify-between w-full max-w-[280px] text-[#6B6B70]">
+          <div className="mt-6 border-t border-[#1e3a5f] pt-4 flex flex-col items-end gap-2 text-[13px]">
+            <div className="flex justify-between w-full max-w-[280px] text-[#93c5fd]">
               <span>Subtotal</span>
-              <span className="font-bold text-[#1C1C1E]">₹{subtotal.toFixed(2)}</span>
+              <span className="font-bold text-[#e8f0fe]">₹{subtotal.toFixed(2)}</span>
             </div>
             <div className="flex justify-between w-full max-w-[280px] items-center gap-3">
-              <span className="text-[#6B6B70]">GST %</span>
-              <select name="taxPercent" value={formData.taxPercent} onChange={handleInputChange} className="border border-[#E2DED6] rounded-lg px-2 py-1 text-[13px] focus:outline-none focus:border-[#a855f7] bg-white w-[80px]">
+              <span className="text-[#93c5fd]">GST %</span>
+              <select name="taxPercent" value={formData.taxPercent} onChange={handleInputChange} className="border border-[#1e3a5f] rounded-lg px-2 py-1 text-[13px] focus:outline-none focus:border-[#3b82f6] bg-[#0a1628] w-[80px]">
                 <option value="0">0%</option>
                 <option value="5">5%</option>
                 <option value="12">12%</option>
                 <option value="18">18%</option>
                 <option value="28">28%</option>
               </select>
-              <span className="font-bold text-[#1C1C1E]">₹{tax.toFixed(2)}</span>
+              <span className="font-bold text-[#e8f0fe]">₹{tax.toFixed(2)}</span>
             </div>
-            <div className="flex justify-between w-full max-w-[280px] border-t border-[#f0f0f0] pt-2 text-[15px]">
-              <span className="font-bold text-[#1C1C1E]">Total Debit</span>
+            <div className="flex justify-between w-full max-w-[280px] border-t border-[#1e3a5f] pt-2 text-[15px]">
+              <span className="font-bold text-[#e8f0fe]">Total Debit</span>
               <span className="font-bold text-[#ef4444]">₹{total.toFixed(2)}</span>
             </div>
           </div>
         </div>
 
         {/* More Details */}
-        <div className="bg-white rounded-2xl border border-[#E2DED6] shadow-sm p-6">
-          <button type="button" onClick={() => setShowMore(!showMore)} className="flex items-center gap-2 text-[14px] font-bold text-[#1C1C1E] hover:text-[#a855f7] transition-colors w-full">
+        <div className="bg-[#0a1628] rounded-2xl border border-[#1e3a5f] shadow-sm p-6">
+          <button type="button" onClick={() => setShowMore(!showMore)} className="flex items-center gap-2 text-[14px] font-bold text-[#e8f0fe] hover:text-[#3b82f6] transition-colors w-full">
             {showMore ? <ChevronUp size={18} /> : <ChevronDown size={18} />} Additional Notes
           </button>
           {showMore && (
             <div className="mt-4">
-              <label className={labelClass}><IndianRupee size={14} className="text-[#a855f7]" /> Narration / Notes</label>
+              <label className={labelClass}><IndianRupee size={14} className="text-[#3b82f6]" /> Narration / Notes</label>
               <textarea name="narration" value={formData.narration} onChange={handleInputChange} rows="3" className={`${inputClass} resize-none`} placeholder="Reason or additional notes about this debit note..."></textarea>
             </div>
           )}
@@ -234,10 +232,10 @@ const CreateDebitNote = ({ setActiveTab, previousTab = 'Purchases' }) => {
 
         {/* Actions */}
         <div className="flex flex-col sm:flex-row justify-end gap-3 pt-2">
-          <button type="button" onClick={() => setActiveTab(previousTab)} className="px-6 py-2.5 rounded-xl border border-[#E2DED6] text-[#6B6B70] font-bold text-[14px] hover:bg-slate-50 transition-colors">
+          <button type="button" onClick={() => setActiveTab(previousTab)} className="px-6 py-2.5 rounded-xl border border-[#1e3a5f] text-[#93c5fd] font-bold text-[14px] hover:bg-slate-50 transition-colors">
             Cancel
           </button>
-          <button type="submit" className="flex items-center justify-center gap-2 px-8 py-2.5 bg-[#1C1C1E] text-white rounded-xl font-bold text-[14px] hover:bg-[#333] transition-all shadow-md">
+          <button type="submit" className="flex items-center justify-center gap-2 px-8 py-2.5 bg-[#e8f0fe] text-[#0a1628] rounded-xl font-bold text-[14px] hover:bg-[#333] transition-all shadow-md">
             <CheckCircle size={18} /> Save Debit Note
           </button>
         </div>

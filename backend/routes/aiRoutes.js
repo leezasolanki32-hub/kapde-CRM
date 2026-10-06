@@ -1,8 +1,11 @@
 import express from 'express';
 import axios from 'axios';
 import dotenv from 'dotenv';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 dotenv.config();
+
+const genAI = process.env.GEMINI_API_KEY ? new GoogleGenerativeAI(process.env.GEMINI_API_KEY) : null;
 
 const router = express.Router();
 const ML_SERVICE_URL = process.env.ML_SERVICE_URL || 'http://localhost:8000';
@@ -96,7 +99,7 @@ router.post('/chat', async (req, res) => {
       return res.json({ message: "You currently have 12 Hot Leads requiring action within 24 hours. Would you like me to create follow-up tasks for them?" });
     }
 
-    if (msgLower.includes('task') || msgLower.includes('follow-up')) {
+    if (msgLower.includes('create task') || msgLower.includes('follow-up task') || msgLower.includes('add task')) {
       return res.json({
         actionRequired: true,
         action: 'create_task',
@@ -104,7 +107,74 @@ router.post('/chat', async (req, res) => {
       });
     }
 
-    // Default response
+    // FAQ / Manual Overrides
+    if (msgLower.includes('creat') && msgLower.includes('invoice')) {
+      return res.json({ message: "To create an invoice:\n1. Go to the 'Invoices' tab on the left sidebar.\n2. Click the '+ New Invoice' button at the top right.\n3. Select the customer from the dropdown.\n4. Add the items, quantities, and prices.\n5. Click 'Save' to generate the invoice." });
+    }
+
+    // Default response using Gemini if available
+    if (genAI) {
+      try {
+        const CRM_CONTEXT = `
+Here are the step-by-step processes for Kaapde CRM:
+1. Invoices: Go to 'Invoices' tab, click '+ New Invoice', select customer, add items/quantities, click 'Save'.
+2. Quotations (Quotes): Go to 'Quotes' tab, click '+ New Quote', select customer, add items and estimated prices, click 'Save'.
+3. Orders: Go to 'Orders' tab, click '+ New Order', link it to a quotation or invoice, assign tracking details, click 'Save'.
+4. Connections (CRM Contacts): Go to 'Connections' tab, click '+ New Connection', enter Name, Phone, Email, and Type (Lead/Customer/Supplier), click 'Save'.
+5. Purchase Orders: Go to 'Purchase Orders' tab, click '+ New PO', select Supplier, add raw materials/products, set expected date, click 'Save'.
+6. Credit Notes: Go to 'Accounts' > 'Credit Notes', click '+ New Credit Note', link the original invoice, enter refund amount, click 'Save'.
+7. Leads: Go to 'Leads' tab, click '+ New Lead', enter lead details and source, assign a status (Hot/Warm/Cold).
+8. Manufacturing: Go to 'Manufacturing' tab, create a new production batch, link raw materials, set status to 'In Progress' or 'Completed'.
+9. Support Tickets: Go to 'Support' tab, click '+ New Ticket', enter issue description, assign priority, click 'Submit'.
+`;
+        const model = genAI.getGenerativeModel({ model: "gemini-3.7-flash" });
+        const prompt = `You are Kaapde AI, an intelligent CRM assistant for a boutique CRM called Kaapde. 
+The user is asking: "${message}". 
+Context: ${context}.
+${CRM_CONTEXT}
+Based on the above processes, answer the user's question accurately, helpfully, professionally, and concisely. Keep the tone friendly. Give step-by-step instructions if asked about a process.`;
+        const result = await model.generateContent(prompt);
+        return res.json({ message: result.response.text() });
+      } catch (err) {
+        console.error('Gemini API Error:', err.message);
+        
+        // Local Fallback Logic if Gemini is down
+        if (msgLower.includes('customer') || msgLower.includes('connection')) {
+          return res.json({ message: "To add a Customer/Connection: Go to 'Connections' tab, click '+ New Connection', enter Name, Phone, Email, and set Type to 'Customer', then click 'Save'." });
+        }
+        if (msgLower.includes('quotation') || msgLower.includes('quote')) {
+          return res.json({ message: "To create a Quotation: Go to 'Quotes' tab, click '+ New Quote', select customer, add items and estimated prices, click 'Save'." });
+        }
+        if (msgLower.includes('order')) {
+          return res.json({ message: "To create an Order: Go to 'Orders' tab, click '+ New Order', link it to a quotation or invoice, assign tracking details, click 'Save'." });
+        }
+        if (msgLower.includes('purchase')) {
+          return res.json({ message: "To create a Purchase Order: Go to 'Purchase Orders' tab, click '+ New PO', select Supplier, add raw materials/products, set expected date, click 'Save'." });
+        }
+        if (msgLower.includes('credit')) {
+          return res.json({ message: "To create a Credit Note: Go to 'Accounts' > 'Credit Notes', click '+ New Credit Note', link the original invoice, enter refund amount, click 'Save'." });
+        }
+        if (msgLower.includes('lead')) {
+          return res.json({ message: "To add a Lead: Go to 'Leads' tab, click '+ New Lead', enter lead details and source, assign a status (Hot/Warm/Cold)." });
+        }
+        if (msgLower.includes('manufactur')) {
+          return res.json({ message: "Manufacturing Process: Go to 'Manufacturing' tab, create a new production batch, link raw materials, set status to 'In Progress' or 'Completed'." });
+        }
+        if (msgLower.includes('support') || msgLower.includes('ticket')) {
+          return res.json({ message: "To create a Support Ticket: Go to 'Support' tab, click '+ New Ticket', enter issue description, assign priority, click 'Submit'." });
+        }
+
+        if (msgLower.includes('stock') || msgLower.includes('inventory')) {
+          return res.json({ message: "To manage Stock/Inventory: Go to the 'Inventory' tab, click '+ Add Product' to add new stock or update existing quantities, then click 'Save'." });
+        }
+
+        if (err.message.includes('503')) {
+          return res.json({ message: "Kaapde AI is currently experiencing very high demand from Google servers. However, I can still instantly help you with step-by-step processes for: **Customers, Invoices, Quotations, Orders, Purchase Orders, Leads, Manufacturing, Stock, or Support**. Please ask about one of these specifically!" });
+        }
+      }
+    }
+
+    // Fallback if no Gemini key or Gemini fails
     return res.json({ message: "I can help you with sales forecasts, pending invoices, hot leads, or creating tasks. What would you like to do?" });
   } catch (error) {
     console.error('AI Chat Error:', error.message);

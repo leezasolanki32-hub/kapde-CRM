@@ -91,49 +91,49 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
     switch (activeTab) {
       case 'Overview':
       case 'CRM':
-        return <Overview plan={plan} setPlan={setPlan} activeTab={activeTab} setActiveTab={setActiveTab} />;
+        return <Overview plan={plan} setPlan={setPlan} activeTab={activeTab} setActiveTab={setActiveTab} currentUser={currentUser} />;
       case 'Leads':
-        return <Leads setActiveTab={setActiveTab} />;
+        return <Leads setActiveTab={setActiveTab} currentUser={currentUser} />;
       case 'CreateLead':
-        return <CreateLead setActiveTab={setActiveTab} previousTab={previousTab} />;
+        return <CreateLead setActiveTab={setActiveTab} previousTab={previousTab} currentUser={currentUser} />;
       case 'Quotes':
-        return <Quotes setActiveTab={setActiveTab} />;
+        return <Quotes setActiveTab={setActiveTab} currentUser={currentUser} />;
       case 'CreateQuotation':
-        return <CreateQuotation setActiveTab={setActiveTab} />;
+        return <CreateQuotation setActiveTab={setActiveTab} currentUser={currentUser} />;
       case 'Orders':
-        return <Orders />;
+        return <Orders currentUser={currentUser} />;
       case 'Invoices':
-        return <Invoices setActiveTab={setActiveTab} />;
+        return <Invoices setActiveTab={setActiveTab} currentUser={currentUser} />;
       case 'CreateInvoice':
-        return <CreateInvoice setActiveTab={setActiveTab} />;
+        return <CreateInvoice setActiveTab={setActiveTab} currentUser={currentUser} />;
       case 'CreditNotes':
-        return <CreditNotes setActiveTab={setActiveTab} />;
+        return <CreditNotes setActiveTab={setActiveTab} currentUser={currentUser} />;
       case 'CreateCreditNote':
-        return <CreateCreditNote setActiveTab={setActiveTab} />;
+        return <CreateCreditNote setActiveTab={setActiveTab} currentUser={currentUser} />;
       case 'Proforma Invoices':
-        return <ProformaInvoices setActiveTab={setActiveTab} />;
+        return <ProformaInvoices setActiveTab={setActiveTab} currentUser={currentUser} />;
       case 'CreateProformaInvoice':
-        return <CreateProformaInvoice setActiveTab={setActiveTab} />;
+        return <CreateProformaInvoice setActiveTab={setActiveTab} currentUser={currentUser} />;
       case 'CreateAppointment':
-        return <CreateAppointment setActiveTab={setActiveTab} previousTab={previousTab} />;
+        return <CreateAppointment setActiveTab={setActiveTab} previousTab={previousTab} currentUser={currentUser} />;
       case 'CreateRecoveryEntry':
-        return <CreateRecoveryEntry setActiveTab={setActiveTab} />;
+        return <CreateRecoveryEntry setActiveTab={setActiveTab} currentUser={currentUser} />;
       case 'Recovery':
-        return <Recovery setActiveTab={setActiveTab} />;
+        return <Recovery setActiveTab={setActiveTab} currentUser={currentUser} />;
       case 'Support':
-        return <Support setActiveTab={setActiveTab} />;
+        return <Support setActiveTab={setActiveTab} currentUser={currentUser} />;
       case 'CreateTicket':
-        return <CreateTicket setActiveTab={setActiveTab} />;
+        return <CreateTicket setActiveTab={setActiveTab} currentUser={currentUser} />;
       case 'CreateConnection':
-        return <CreateConnection setActiveTab={setActiveTab} previousTab={previousTab} />;
+        return <CreateConnection setActiveTab={setActiveTab} previousTab={previousTab} currentUser={currentUser} />;
       case 'Customers':
-        return <Customers setActiveTab={setActiveTab} />;
+        return <Customers setActiveTab={setActiveTab} currentUser={currentUser} />;
       case 'Accounts':
-        return <Accounts setActiveTab={setActiveTab} />;
+        return <Accounts setActiveTab={setActiveTab} currentUser={currentUser} />;
       case 'CreateVoucher':
-        return <CreateVoucher setActiveTab={setActiveTab} previousTab={previousTab} />;
+        return <CreateVoucher setActiveTab={setActiveTab} previousTab={previousTab} currentUser={currentUser} />;
       case 'Purchases':
-        return <Purchases setActiveTab={setActiveTab} setEditingInvoice={setEditingInvoice} />;
+        return <Purchases setActiveTab={setActiveTab} setEditingInvoice={setEditingInvoice} currentUser={currentUser} />;
       case 'CreateSupplierInvoice':
         return <CreateSupplierInvoice
           setActiveTab={setActiveTab}
@@ -142,9 +142,9 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
           clearEdit={() => setEditingInvoice(null)}
         />;
       case 'CreateDebitNote':
-        return <CreateDebitNote setActiveTab={setActiveTab} previousTab={previousTab} />;
+        return <CreateDebitNote setActiveTab={setActiveTab} previousTab={previousTab} currentUser={currentUser} />;
       case 'Purch Orders':
-        return <PurchaseOrders setActiveTab={setActiveTab} setEditingOrder={setEditingOrder} />;
+        return <PurchaseOrders setActiveTab={setActiveTab} setEditingOrder={setEditingOrder} currentUser={currentUser} />;
       case 'CreatePurchaseOrder':
         return <CreatePurchaseOrder
           setActiveTab={setActiveTab}
@@ -153,29 +153,29 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
           clearEdit={() => setEditingOrder(null)}
         />;
       case 'Inventory':
-        return <Inventory />;
+        return <Inventory currentUser={currentUser} />;
       case 'Manufacturing':
-        return <Manufacturing />;
+        return <Manufacturing currentUser={currentUser} />;
       case 'Tasks':
-        return <Tasks />;
+        return <Tasks currentUser={currentUser} />;
       case 'Suppliers':
-        return <Suppliers />;
+        return <Suppliers currentUser={currentUser} />;
       case 'Connections':
-        return <Connections />;
+        return <Connections currentUser={currentUser} />;
       case 'Your Store':
-        return <YourStore />;
+        return <YourStore currentUser={currentUser} />;
       case 'Search':
-        return <Search />;
+        return <Search currentUser={currentUser} />;
       case 'Reports':
-        return <Reports />;
+        return <Reports currentUser={currentUser} />;
       case 'Notifications':
-        return <Notifications />;
+        return <Notifications currentUser={currentUser} />;
       case 'AI Insights':
-        return <AIInsights />;
+        return <AIInsights currentUser={currentUser} />;
       case 'User':
         return <UserAccount currentUser={currentUser} />;
       default:
-        return <Overview plan={plan} setPlan={setPlan} activeTab={activeTab} setActiveTab={setActiveTab} />;
+        return <Overview plan={plan} setPlan={setPlan} activeTab={activeTab} setActiveTab={setActiveTab} currentUser={currentUser} />;
     }
   };
 
@@ -192,15 +192,11 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
   };
 
   return (
-    <div className="flex min-h-screen font-sans text-[#1C1C1E] relative" style={{ background: 'linear-gradient(135deg, #f3e8ff 0%, #ede9fe 20%, #faf5ff 50%, #f5f3ff 80%, #faf5ff 100%)' }}>
+    <div className="flex min-h-screen font-sans text-[#e8f0fe] relative bg-[#05080f]">
 
-      {/* Animated Soft Purple Background */}
+      {/* Animated Soft Blue Background */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-[-5%] left-[5%] w-[600px] h-[600px] rounded-full opacity-40 animate-pulse" style={{ background: 'radial-gradient(circle, #d8b4fe, transparent 70%)' }}></div>
-        <div className="absolute bottom-[-10%] right-[10%] w-[500px] h-[500px] rounded-full opacity-30" style={{ background: 'radial-gradient(circle, #e9d5ff, transparent 70%)', animation: 'float 14s ease-in-out infinite reverse' }}></div>
-        <div className="absolute top-[40%] right-[15%] w-[400px] h-[400px] rounded-full opacity-25" style={{ background: 'radial-gradient(circle, #c4b5fd, transparent 70%)', animation: 'float 10s ease-in-out infinite' }}></div>
-        <div className="absolute top-[20%] left-[50%] w-[350px] h-[350px] rounded-full opacity-20" style={{ background: 'radial-gradient(circle, #ddd6fe, transparent 70%)', animation: 'float 16s ease-in-out infinite reverse' }}></div>
-        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(#a855f7 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(#3b82f6 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
       </div>
 
       {/* Sidebar Overlay for Mobile */}
@@ -213,7 +209,7 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 bottom-0 left-0 z-50 transition-all duration-300 flex flex-col p-4 overflow-y-auto no-scrollbar shadow-sm bg-[#f3e8ff]/30 backdrop-blur-xl border-r border-[#a855f7]/10
+        className={`fixed top-0 bottom-0 left-0 z-50 transition-all duration-300 flex flex-col p-4 overflow-y-auto no-scrollbar shadow-sm bg-[#0a1628]/30 backdrop-blur-xl border-r border-[#3b82f6]/10
           ${isCollapsed ? 'w-[80px]' : 'w-[260px]'} 
           ${showMobileSidebar ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
         `}
@@ -223,16 +219,16 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
           <div className={`flex ${isCollapsed ? 'flex-col gap-4 items-center' : 'items-center justify-between'} mb-2`}>
             {!isCollapsed && (
               <div className="flex items-center gap-2 animate-[fadeIn_0.3s_ease-out]">
-                <div className="w-8 h-8 bg-[#a855f7] rounded-lg flex items-center justify-center text-white font-bold text-[20px] shadow-sm">K</div>
-                <span className="text-[22px] font-bold tracking-tight text-[#1C1C1E] whitespace-nowrap" style={{ fontFamily: "'Playfair Display', serif" }}>Kapde</span>
+                <div className="w-8 h-8 bg-[#3b82f6] rounded-lg flex items-center justify-center text-[#e8f0fe] font-bold text-[20px] shadow-sm">K</div>
+                <span className="text-[22px] font-bold tracking-tight text-[#e8f0fe] whitespace-nowrap" style={{ fontFamily: "'Playfair Display', serif" }}>Kapde</span>
               </div>
             )}
             {isCollapsed && (
-              <div className="w-8 h-8 bg-[#a855f7] rounded-lg flex items-center justify-center text-white font-bold text-[18px] shadow-sm mb-1">K</div>
+              <div className="w-8 h-8 bg-[#3b82f6] rounded-lg flex items-center justify-center text-[#e8f0fe] font-bold text-[18px] shadow-sm mb-1">K</div>
             )}
             <button
               onClick={() => setIsCollapsed(!isCollapsed)}
-              className={`p-1.5 rounded-lg hover:bg-[#f3e8ff] text-[#6B6B70] hover:text-[#a855f7] transition-all`}
+              className={`p-1.5 rounded-lg hover:bg-[#0a1628] text-[#93c5fd] hover:text-[#3b82f6] transition-all`}
             >
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -242,13 +238,13 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
             </button>
           </div>
           {!isCollapsed && (
-            <div className="text-[10px] text-[#6B6B70] tracking-[0.12em] uppercase font-bold animate-[fadeIn_0.3s_ease-out]" style={{ fontFamily: "'DM Sans', sans-serif", opacity: 0.8 }}>
+            <div className="text-[10px] text-[#93c5fd] tracking-[0.12em] uppercase font-bold animate-[fadeIn_0.3s_ease-out]" style={{ fontFamily: "'DM Sans', sans-serif", opacity: 0.8 }}>
               Manage your clothing business
             </div>
           )}
         </div>
 
-        <div className={`text-[11px] font-bold text-[#a855f7]/60 uppercase tracking-wider mb-2 ${isCollapsed ? 'text-center' : 'px-4'}`}>
+        <div className={`text-[11px] font-bold text-[#3b82f6]/60 uppercase tracking-wider mb-2 ${isCollapsed ? 'text-center' : 'px-4'}`}>
           {isCollapsed ? '•••' : 'Sales'}
         </div>
         <div className="flex flex-col gap-1 mb-6">
@@ -264,7 +260,7 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
           <SidebarItem icon={<ClipboardList size={18} />} label="Leads" active={activeTab === 'Leads'} onClick={() => setActiveTab('Leads')} isCollapsed={isCollapsed} locked={isLocked('Leads')} />
         </div>
 
-        <div className={`text-[11px] font-bold text-[#a855f7]/60 uppercase tracking-wider mb-2 ${isCollapsed ? 'text-center' : 'px-4'}`}>
+        <div className={`text-[11px] font-bold text-[#3b82f6]/60 uppercase tracking-wider mb-2 ${isCollapsed ? 'text-center' : 'px-4'}`}>
           {isCollapsed ? '•••' : 'Operations'}
         </div>
         <div className="flex flex-col gap-1 mb-6">
@@ -277,7 +273,7 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
           <SidebarItem icon={<Users size={18} />} label="Suppliers" active={activeTab === 'Suppliers'} onClick={() => setActiveTab('Suppliers')} isCollapsed={isCollapsed} locked={isLocked('Suppliers')} />
         </div>
 
-        <div className={`text-[11px] font-bold text-[#a855f7]/60 uppercase tracking-wider mb-2 ${isCollapsed ? 'text-center' : 'px-4'}`}>
+        <div className={`text-[11px] font-bold text-[#3b82f6]/60 uppercase tracking-wider mb-2 ${isCollapsed ? 'text-center' : 'px-4'}`}>
           {isCollapsed ? '•••' : 'Network'}
         </div>
         <div className="flex flex-col gap-1 mb-6">
@@ -288,16 +284,16 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
         </div>
 
         {plan !== 'Business' && !isCollapsed && (
-          <div className="mx-2 mb-6 p-4 rounded-xl bg-gradient-to-br from-[#f3e8ff] to-[#ffffff] border border-[#d8b4fe] shadow-sm">
-            <div className="text-[12px] font-bold text-[#9333ea] mb-1">
+          <div className="mx-2 mb-6 p-4 rounded-xl bg-gradient-to-br from-[#0a1628] to-[#ffffff] border border-[#93c5fd] shadow-sm">
+            <div className="text-[12px] font-bold text-[#2563eb] mb-1">
               {plan === 'Starter' ? 'Trial Period: 5 Days left' : 'Upgrade to Business'}
             </div>
-            <div className="text-[10px] text-[#6B6B70] mb-3">
+            <div className="text-[10px] text-[#93c5fd] mb-3">
               {plan === 'Starter' ? 'Enjoy full access to all features' : 'Unlock Multi-Store & AI'}
             </div>
             <button
               onClick={() => setShowUpgradeModal(true)}
-              className="w-full py-2 bg-[#a855f7] text-white text-[11px] font-bold rounded-lg hover:bg-[#9333ea] transition shadow-md"
+              className="w-full py-2 bg-[#3b82f6] text-[#e8f0fe] text-[11px] font-bold rounded-lg hover:bg-[#2563eb] transition shadow-md"
             >
               {plan === 'Starter' ? 'View Plans & Upgrade' : 'Upgrade Now'}
             </button>
@@ -305,7 +301,7 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
         )}
 
         <div
-          className="mt-12 flex items-center gap-2 text-[#6B6B70] hover:bg-red-50 hover:text-red-500 px-4 py-2 rounded-lg cursor-pointer text-[14px] font-semibold transition"
+          className="mt-12 flex items-center gap-2 text-[#93c5fd] hover:bg-red-50 hover:text-red-500 px-4 py-2 rounded-lg cursor-pointer text-[14px] font-semibold transition"
           onClick={() => {
             if (setCurrentUser) setCurrentUser(null);
             setView('home');
@@ -324,7 +320,7 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
           <div className="flex items-center gap-3">
             {/* Mobile Menu Toggle */}
             <button 
-              className="md:hidden p-2 bg-white/60 backdrop-blur-md rounded-lg text-[#a855f7] border border-[#a855f7]/20"
+              className="md:hidden p-2 bg-[#0a1628]/60 backdrop-blur-md rounded-lg text-[#3b82f6] border border-[#3b82f6]/20"
               onClick={() => setShowMobileSidebar(true)}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -333,8 +329,8 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
                 <line x1="3" y1="18" x2="21" y2="18"></line>
               </svg>
             </button>
-            <div className="flex items-center gap-2 bg-white/60 backdrop-blur-md border border-white/40 rounded-full px-3 md:px-4 py-1 md:py-1.5 shadow-sm">
-              <span className="text-[10px] md:text-[13px] font-bold uppercase px-2 md:px-3 bg-[#a855f7]/10 text-[#a855f7] rounded-full py-0.5 border border-[#a855f7]/20">
+            <div className="flex items-center gap-2 bg-[#0a1628]/60 backdrop-blur-md border border-[#3b82f6]/20 rounded-full px-3 md:px-4 py-1 md:py-1.5 shadow-sm">
+              <span className="text-[10px] md:text-[13px] font-bold uppercase px-2 md:px-3 bg-[#3b82f6]/10 text-[#3b82f6] rounded-full py-0.5 border border-[#3b82f6]/20">
                 {plan === 'Starter' ? 'Trial' : `${plan}`}
               </span>
             </div>
@@ -343,23 +339,23 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
           <div className="flex items-center gap-6">
             <div
               onClick={() => setActiveTab('Notifications')}
-              className={`flex items-center gap-1.5 text-[14px] font-medium cursor-pointer transition p-2 rounded-lg ${activeTab === 'Notifications' ? 'bg-[#a855f7]/10 text-[#a855f7]' : 'text-[#1C1C1E] hover:bg-white/40'}`}
+              className={`flex items-center gap-1.5 text-[14px] font-medium cursor-pointer transition p-2 rounded-lg ${activeTab === 'Notifications' ? 'bg-[#3b82f6]/10 text-[#3b82f6]' : 'text-[#e8f0fe] hover:bg-[#0a1628]/40'}`}
             >
               <span className="text-lg"><Bell size={16} className="inline-block" /></span>
-              <span className="bg-[#f43f5e] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center -ml-3 -mt-3 border-2 border-white font-bold shadow-sm">2</span>
+              <span className="bg-[#f43f5e] text-[#e8f0fe] text-[10px] w-4 h-4 rounded-full flex items-center justify-center -ml-3 -mt-3 border-2 border-[#3b82f6]/20 font-bold shadow-sm">2</span>
             </div>
             <div
               onClick={() => setActiveTab('User')}
-              className={`flex items-center gap-3 cursor-pointer group p-1.5 pr-4 rounded-xl transition ${activeTab === 'User' ? 'bg-white/80 border border-[#d8b4fe] shadow-sm' : 'border border-white/20 bg-white/40 hover:bg-white/60'}`}
+              className={`flex items-center gap-3 cursor-pointer group p-1.5 pr-4 rounded-xl transition ${activeTab === 'User' ? 'bg-[#0a1628]/80 border border-[#93c5fd] shadow-sm' : 'border border-[#3b82f6]/20 bg-[#0a1628]/40 hover:bg-[#0a1628]/60'}`}
             >
-              <div className={`w-9 h-9 rounded-full flex items-center justify-center font-bold transition shadow-sm ${activeTab === 'User' ? 'bg-[#a855f7] text-white' : 'bg-white text-[#a855f7] border border-[#d8b4fe] group-hover:bg-[#a855f7] group-hover:text-white'}`}>
+              <div className={`w-9 h-9 rounded-full flex items-center justify-center font-bold transition shadow-sm ${activeTab === 'User' ? 'bg-[#3b82f6] text-[#e8f0fe]' : 'bg-[#0a1628] text-[#3b82f6] border border-[#93c5fd] group-hover:bg-[#3b82f6] group-hover:text-[#e8f0fe]'}`}>
                 {currentUser?.ownerName ? currentUser.ownerName.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) : 'JD'}
               </div>
               <div className="hidden md:block">
-                <div className={`text-[14px] font-bold ${activeTab === 'User' ? 'text-[#9333ea]' : 'text-[#1C1C1E]'}`}>
+                <div className={`text-[14px] font-bold ${activeTab === 'User' ? 'text-[#2563eb]' : 'text-[#e8f0fe]'}`}>
                   {currentUser?.ownerName || 'John Doe'}
                 </div>
-                <div className="text-[11px] text-[#6B6B70] font-medium opacity-80 uppercase tracking-wide">
+                <div className="text-[11px] text-[#93c5fd] font-medium opacity-80 uppercase tracking-wide">
                   {currentUser?.shopName || 'User'}
                 </div>
               </div>
@@ -373,28 +369,28 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
       {/* Upgrade Pricing Modal */}
       {showUpgradeModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl w-full max-w-4xl shadow-2xl animate-[scaleIn_0.2s_ease-out] overflow-hidden max-h-[90vh] overflow-y-auto">
+          <div className="bg-[#0a1628] rounded-2xl w-full max-w-4xl shadow-2xl animate-[scaleIn_0.2s_ease-out] overflow-hidden max-h-[90vh] overflow-y-auto">
             {/* Modal Header */}
-            <div className="p-6 border-b border-[#f0f0f0] bg-gradient-to-r from-[#f3e8ff] to-white flex justify-between items-center">
+            <div className="p-6 border-b border-[#1e3a5f] bg-gradient-to-r from-[#0a1628] to-[#05080f] flex justify-between items-center">
               <div>
-                <h2 className="text-[22px] font-bold text-[#1C1C1E]">Choose Your Plan</h2>
-                <p className="text-[13px] text-[#6B6B70] mt-1">Unlock more features to grow your clothing business</p>
+                <h2 className="text-[22px] font-bold text-[#e8f0fe]">Choose Your Plan</h2>
+                <p className="text-[13px] text-[#93c5fd] mt-1">Unlock more features to grow your clothing business</p>
               </div>
-              <button onClick={() => setShowUpgradeModal(false)} className="w-8 h-8 rounded-full bg-white border border-[#E2DED6] flex items-center justify-center text-[#6B6B70] hover:text-[#1C1C1E] hover:border-[#a855f7] transition text-lg">&times;</button>
+              <button onClick={() => setShowUpgradeModal(false)} className="w-8 h-8 rounded-full bg-[#0a1628] border border-[#1e3a5f] flex items-center justify-center text-[#93c5fd] hover:text-[#e8f0fe] hover:border-[#3b82f6] transition text-lg">&times;</button>
             </div>
 
             {/* Pricing Cards */}
             <div className="p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Starter */}
-              <div className={`rounded-xl p-6 border-2 transition-all ${plan === 'Starter' ? 'border-[#a855f7] bg-[#f3e8ff]/30 shadow-lg' : 'border-[#E2DED6] hover:border-[#d8b4fe]'}`}>
-                <div className="text-[11px] font-bold text-[#6B6B70] uppercase tracking-wider mb-1">Starter</div>
+              <div className={`rounded-xl p-6 border-2 transition-all ${plan === 'Starter' ? 'border-[#3b82f6] bg-[#0a1628]/30 shadow-lg' : 'border-[#1e3a5f] hover:border-[#93c5fd]'}`}>
+                <div className="text-[11px] font-bold text-[#93c5fd] uppercase tracking-wider mb-1">Starter</div>
                 <div className="flex items-end gap-1 mb-1">
-                  <span className="text-[36px] font-bold text-[#1C1C1E]">Free</span>
+                  <span className="text-[36px] font-bold text-[#e8f0fe]">Free</span>
                 </div>
                 <div className="text-[12px] text-[#10b981] font-semibold mb-4">5-Day Free Trial</div>
-                <div className="border-t border-[#f0f0f0] pt-4 mb-4">
-                  <div className="text-[12px] font-bold text-[#1C1C1E] mb-3">Includes:</div>
-                  <ul className="space-y-2 text-[13px] text-[#6B6B70]">
+                <div className="border-t border-[#1e3a5f] pt-4 mb-4">
+                  <div className="text-[12px] font-bold text-[#e8f0fe] mb-3">Includes:</div>
+                  <ul className="space-y-2 text-[13px] text-[#93c5fd]">
                     <li className="flex items-center gap-2"><span className="text-[#10b981]">✓</span> Full Dashboard Access</li>
                     <li className="flex items-center gap-2"><span className="text-[#10b981]">✓</span> Up to 200 Customers</li>
                     <li className="flex items-center gap-2"><span className="text-[#10b981]">✓</span> All Modules (Trial)</li>
@@ -404,24 +400,24 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
                   </ul>
                 </div>
                 {plan === 'Starter' ? (
-                  <div className="w-full py-2.5 bg-[#f3e8ff] text-[#a855f7] text-[13px] font-bold rounded-lg text-center border border-[#d8b4fe]">Current Plan</div>
+                  <div className="w-full py-2.5 bg-[#0a1628] text-[#3b82f6] text-[13px] font-bold rounded-lg text-center border border-[#93c5fd]">Current Plan</div>
                 ) : (
-                  <button onClick={() => { setPlan('Starter'); setShowUpgradeModal(false); }} className="w-full py-2.5 bg-white text-[#6B6B70] text-[13px] font-bold rounded-lg border border-[#E2DED6] hover:border-[#a855f7] transition">Switch to Starter</button>
+                  <button onClick={() => { setPlan('Starter'); setShowUpgradeModal(false); }} className="w-full py-2.5 bg-[#0a1628] text-[#93c5fd] text-[13px] font-bold rounded-lg border border-[#1e3a5f] hover:border-[#3b82f6] transition">Switch to Starter</button>
                 )}
               </div>
 
               {/* Professional — Recommended */}
-              <div className={`rounded-xl p-6 border-2 relative transition-all ${plan === 'Professional' ? 'border-[#a855f7] bg-[#f3e8ff]/30 shadow-lg' : 'border-[#a855f7]/50 hover:border-[#a855f7]'}`}>
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#a855f7] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">Recommended</div>
-                <div className="text-[11px] font-bold text-[#6B6B70] uppercase tracking-wider mb-1">Professional</div>
+              <div className={`rounded-xl p-6 border-2 relative transition-all ${plan === 'Professional' ? 'border-[#3b82f6] bg-[#0a1628]/30 shadow-lg' : 'border-[#3b82f6]/50 hover:border-[#3b82f6]'}`}>
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#3b82f6] text-[#e8f0fe] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">Recommended</div>
+                <div className="text-[11px] font-bold text-[#93c5fd] uppercase tracking-wider mb-1">Professional</div>
                 <div className="flex items-end gap-1 mb-1">
-                  <span className="text-[36px] font-bold text-[#1C1C1E]">₹999</span>
-                  <span className="text-[14px] text-[#6B6B70] mb-1">/month</span>
+                  <span className="text-[36px] font-bold text-[#e8f0fe]">₹999</span>
+                  <span className="text-[14px] text-[#93c5fd] mb-1">/month</span>
                 </div>
-                <div className="text-[12px] text-[#a855f7] font-semibold mb-4">Save 20% on annual</div>
-                <div className="border-t border-[#f0f0f0] pt-4 mb-4">
-                  <div className="text-[12px] font-bold text-[#1C1C1E] mb-3">Everything in Starter, plus:</div>
-                  <ul className="space-y-2 text-[13px] text-[#6B6B70]">
+                <div className="text-[12px] text-[#3b82f6] font-semibold mb-4">Save 20% on annual</div>
+                <div className="border-t border-[#1e3a5f] pt-4 mb-4">
+                  <div className="text-[12px] font-bold text-[#e8f0fe] mb-3">Everything in Starter, plus:</div>
+                  <ul className="space-y-2 text-[13px] text-[#93c5fd]">
                     <li className="flex items-center gap-2"><span className="text-[#10b981]">✓</span> Unlimited Customers</li>
                     <li className="flex items-center gap-2"><span className="text-[#10b981]">✓</span> Quotes & Invoicing</li>
                     <li className="flex items-center gap-2"><span className="text-[#10b981]">✓</span> Inventory Management</li>
@@ -431,23 +427,23 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
                   </ul>
                 </div>
                 {plan === 'Professional' ? (
-                  <div className="w-full py-2.5 bg-[#f3e8ff] text-[#a855f7] text-[13px] font-bold rounded-lg text-center border border-[#d8b4fe]">Current Plan</div>
+                  <div className="w-full py-2.5 bg-[#0a1628] text-[#3b82f6] text-[13px] font-bold rounded-lg text-center border border-[#93c5fd]">Current Plan</div>
                 ) : (
-                  <button onClick={() => { setPlan('Professional'); setShowUpgradeModal(false); }} className="w-full py-2.5 bg-[#a855f7] text-white text-[13px] font-bold rounded-lg hover:bg-[#9333ea] transition shadow-md">Upgrade to Professional</button>
+                  <button onClick={() => { setPlan('Professional'); setShowUpgradeModal(false); }} className="w-full py-2.5 bg-[#3b82f6] text-[#e8f0fe] text-[13px] font-bold rounded-lg hover:bg-[#2563eb] transition shadow-md">Upgrade to Professional</button>
                 )}
               </div>
 
               {/* Business */}
-              <div className={`rounded-xl p-6 border-2 transition-all ${plan === 'Business' ? 'border-[#a855f7] bg-[#f3e8ff]/30 shadow-lg' : 'border-[#E2DED6] hover:border-[#d8b4fe]'}`}>
-                <div className="text-[11px] font-bold text-[#6B6B70] uppercase tracking-wider mb-1">Business</div>
+              <div className={`rounded-xl p-6 border-2 transition-all ${plan === 'Business' ? 'border-[#3b82f6] bg-[#0a1628]/30 shadow-lg' : 'border-[#1e3a5f] hover:border-[#93c5fd]'}`}>
+                <div className="text-[11px] font-bold text-[#93c5fd] uppercase tracking-wider mb-1">Business</div>
                 <div className="flex items-end gap-1 mb-1">
-                  <span className="text-[36px] font-bold text-[#1C1C1E]">₹2,499</span>
-                  <span className="text-[14px] text-[#6B6B70] mb-1">/month</span>
+                  <span className="text-[36px] font-bold text-[#e8f0fe]">₹2,499</span>
+                  <span className="text-[14px] text-[#93c5fd] mb-1">/month</span>
                 </div>
-                <div className="text-[12px] text-[#a855f7] font-semibold mb-4">Best for growing teams</div>
-                <div className="border-t border-[#f0f0f0] pt-4 mb-4">
-                  <div className="text-[12px] font-bold text-[#1C1C1E] mb-3">Everything in Professional, plus:</div>
-                  <ul className="space-y-2 text-[13px] text-[#6B6B70]">
+                <div className="text-[12px] text-[#3b82f6] font-semibold mb-4">Best for growing teams</div>
+                <div className="border-t border-[#1e3a5f] pt-4 mb-4">
+                  <div className="text-[12px] font-bold text-[#e8f0fe] mb-3">Everything in Professional, plus:</div>
+                  <ul className="space-y-2 text-[13px] text-[#93c5fd]">
                     <li className="flex items-center gap-2"><span className="text-[#10b981]">✓</span> Advanced Analytics & Reports</li>
                     <li className="flex items-center gap-2"><span className="text-[#10b981]">✓</span> Manufacturing Module</li>
                     <li className="flex items-center gap-2"><span className="text-[#10b981]">✓</span> Multi-Store Management</li>
@@ -457,19 +453,19 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
                   </ul>
                 </div>
                 {plan === 'Business' ? (
-                  <div className="w-full py-2.5 bg-[#f3e8ff] text-[#a855f7] text-[13px] font-bold rounded-lg text-center border border-[#d8b4fe]">Current Plan</div>
+                  <div className="w-full py-2.5 bg-[#0a1628] text-[#3b82f6] text-[13px] font-bold rounded-lg text-center border border-[#93c5fd]">Current Plan</div>
                 ) : (
-                  <button onClick={() => { setPlan('Business'); setShowUpgradeModal(false); }} className="w-full py-2.5 bg-gradient-to-r from-[#a855f7] to-[#7c3aed] text-white text-[13px] font-bold rounded-lg hover:from-[#9333ea] hover:to-[#6d28d9] transition shadow-md">Upgrade to Business</button>
+                  <button onClick={() => { setPlan('Business'); setShowUpgradeModal(false); }} className="w-full py-2.5 bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] text-[#e8f0fe] text-[13px] font-bold rounded-lg hover:from-[#2563eb] hover:to-[#6d28d9] transition shadow-md">Upgrade to Business</button>
                 )}
               </div>
             </div>
 
             {/* Footer */}
-            <div className="px-8 pb-6 flex items-center justify-between border-t border-[#f0f0f0] pt-4">
-              <div className="flex items-center gap-2 text-[12px] text-[#6B6B70]">
+            <div className="px-8 pb-6 flex items-center justify-between border-t border-[#1e3a5f] pt-4">
+              <div className="flex items-center gap-2 text-[12px] text-[#93c5fd]">
                 <span className="text-[#10b981]">🔒</span> Secure payment · Cancel anytime · 30-day money-back guarantee
               </div>
-              <button onClick={() => setShowUpgradeModal(false)} className="text-[13px] font-bold text-[#6B6B70] hover:text-[#a855f7] transition">Maybe Later</button>
+              <button onClick={() => setShowUpgradeModal(false)} className="text-[13px] font-bold text-[#93c5fd] hover:text-[#3b82f6] transition">Maybe Later</button>
             </div>
           </div>
         </div>

@@ -107,21 +107,21 @@ const CreateProformaInvoice = ({ setActiveTab }) => {
     <div className="bg-[#f0f2f5] min-h-screen -m-8 p-8 font-sans">
       {/* Top Header Actions */}
       <div className="flex items-center justify-between mb-6 sticky top-0 bg-[#f0f2f5] z-10 py-2">
-        <h1 className="text-[22px] font-semibold text-[#1C1C1E]">Create Proforma Invoice</h1>
+        <h1 className="text-[22px] font-semibold text-[#e8f0fe]">Create Proforma Invoice</h1>
         <div className="flex items-center gap-2">
-          <button className="bg-white border border-[#d1d5db] text-[#4b5563] px-3 py-1.5 rounded text-[13px] font-medium flex items-center gap-2 hover:bg-gray-50 transition">
+          <button className="bg-[#0a1628] border border-[#d1d5db] text-[#4b5563] px-3 py-1.5 rounded text-[13px] font-medium flex items-center gap-2 hover:bg-gray-50 transition">
             <Printer size={16} /> Print Settings
           </button>
           <button
             onClick={() => setActiveTab('Proforma Invoices')}
-            className="bg-[#1e293b] text-white px-4 py-1.5 rounded text-[13px] font-medium flex items-center gap-2 hover:bg-slate-700 transition"
+            className="bg-[#1e293b] text-[#e8f0fe] px-4 py-1.5 rounded text-[13px] font-medium flex items-center gap-2 hover:bg-slate-700 transition"
           >
             <ArrowLeft size={16} /> Back
           </button>
           <button
             onClick={() => handleSave(false)}
             disabled={isSaving}
-            className="bg-[#166534] text-white px-4 py-1.5 rounded text-[13px] font-medium flex items-center gap-2 hover:bg-green-700 transition"
+            className="bg-[#166534] text-[#e8f0fe] px-4 py-1.5 rounded text-[13px] font-medium flex items-center gap-2 hover:bg-green-700 transition"
           >
             <Save size={16} /> {isSaved ? 'Saved!' : 'Save'}
           </button>
@@ -130,8 +130,8 @@ const CreateProformaInvoice = ({ setActiveTab }) => {
 
       <div className="space-y-4">
         {/* Basic Information Section */}
-        <div className="bg-white border border-[#e5e7eb] rounded shadow-sm overflow-hidden">
-          <div className="bg-[#f8fafc] px-4 py-2 border-b border-[#e5e7eb]">
+        <div className="bg-[#0a1628] border border-[#e5e7eb] rounded shadow-sm overflow-hidden">
+          <div className="bg-[#05080f] px-4 py-2 border-b border-[#e5e7eb]">
             <h2 className="text-[14px] font-bold text-[#334155]">Basic Information</h2>
           </div>
           <div className="p-4 flex items-center gap-4">
@@ -157,8 +157,8 @@ const CreateProformaInvoice = ({ setActiveTab }) => {
         {/* Two Column Layout for Party and Document Details */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
           {/* Party Details */}
-          <div className="lg:col-span-3 bg-white border border-[#e5e7eb] rounded shadow-sm overflow-hidden">
-            <div className="bg-[#f8fafc] px-4 py-2 border-b border-[#e5e7eb]">
+          <div className="lg:col-span-3 bg-[#0a1628] border border-[#e5e7eb] rounded shadow-sm overflow-hidden">
+            <div className="bg-[#05080f] px-4 py-2 border-b border-[#e5e7eb]">
               <h2 className="text-[14px] font-bold text-[#334155]">Party Details</h2>
             </div>
             <div className="p-4 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
@@ -193,7 +193,7 @@ const CreateProformaInvoice = ({ setActiveTab }) => {
                   <select
                     value={invoice.salesCredit}
                     onChange={(e) => setInvoice({ ...invoice, salesCredit: e.target.value })}
-                    className="flex-1 border border-[#d1d5db] rounded px-3 py-1.5 text-[14px] focus:outline-none bg-white"
+                    className="flex-1 border border-[#d1d5db] rounded px-3 py-1.5 text-[14px] focus:outline-none bg-[#0a1628]"
                   >
                     <option>None</option>
                     <option>Credit 30 Days</option>
@@ -226,8 +226,8 @@ const CreateProformaInvoice = ({ setActiveTab }) => {
           </div>
 
           {/* Document Details */}
-          <div className="bg-white border border-[#e5e7eb] rounded shadow-sm overflow-hidden">
-            <div className="bg-[#f8fafc] px-4 py-2 border-b border-[#e5e7eb]">
+          <div className="bg-[#0a1628] border border-[#e5e7eb] rounded shadow-sm overflow-hidden">
+            <div className="bg-[#05080f] px-4 py-2 border-b border-[#e5e7eb]">
               <h2 className="text-[14px] font-bold text-[#334155]">Document Details</h2>
             </div>
             <div className="p-4 space-y-3">
@@ -272,14 +272,14 @@ const CreateProformaInvoice = ({ setActiveTab }) => {
         </div>
 
         {/* Item List Section */}
-        <div className="bg-white border border-[#e5e7eb] rounded shadow-sm overflow-hidden">
-          <div className="bg-[#f8fafc] px-4 py-2 border-b border-[#e5e7eb]">
+        <div className="bg-[#0a1628] border border-[#e5e7eb] rounded shadow-sm overflow-hidden">
+          <div className="bg-[#05080f] px-4 py-2 border-b border-[#e5e7eb]">
             <h2 className="text-[14px] font-bold text-[#334155]">Item List</h2>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="bg-white border-b border-[#e5e7eb]">
+                <tr className="bg-[#0a1628] border-b border-[#e5e7eb]">
                   <th className="px-3 py-2 text-[12px] font-bold text-[#64748b] text-left w-12 border-r border-[#e5e7eb]">No.</th>
                   <th className="px-3 py-2 text-[12px] font-bold text-[#64748b] text-left min-w-[250px] border-r border-[#e5e7eb]">Item & Description</th>
                   <th className="px-3 py-2 text-[12px] font-bold text-[#64748b] text-center w-20 border-r border-[#e5e7eb]">Qty</th>
@@ -378,8 +378,8 @@ const CreateProformaInvoice = ({ setActiveTab }) => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 items-start">
           <div className="lg:col-span-3 space-y-4">
             {/* Terms and Conditions */}
-            <div className="bg-white border border-[#e5e7eb] rounded shadow-sm overflow-hidden">
-              <div className="bg-[#f8fafc] px-4 py-2 border-b border-[#e5e7eb]">
+            <div className="bg-[#0a1628] border border-[#e5e7eb] rounded shadow-sm overflow-hidden">
+              <div className="bg-[#05080f] px-4 py-2 border-b border-[#e5e7eb]">
                 <h2 className="text-[14px] font-bold text-[#334155]">Terms & Conditions</h2>
               </div>
               <div className="p-4">
@@ -391,8 +391,8 @@ const CreateProformaInvoice = ({ setActiveTab }) => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Notes */}
-              <div className="bg-white border border-[#e5e7eb] rounded shadow-sm overflow-hidden">
-                <div className="bg-[#f8fafc] px-4 py-2 border-b border-[#e5e7eb]">
+              <div className="bg-[#0a1628] border border-[#e5e7eb] rounded shadow-sm overflow-hidden">
+                <div className="bg-[#05080f] px-4 py-2 border-b border-[#e5e7eb]">
                   <h2 className="text-[14px] font-bold text-[#334155]">Notes</h2>
                 </div>
                 <div className="p-4">
@@ -405,12 +405,12 @@ const CreateProformaInvoice = ({ setActiveTab }) => {
               </div>
 
               {/* Bank Details */}
-              <div className="bg-white border border-[#e5e7eb] rounded shadow-sm overflow-hidden">
-                <div className="bg-[#f8fafc] px-4 py-2 border-b border-[#e5e7eb]">
+              <div className="bg-[#0a1628] border border-[#e5e7eb] rounded shadow-sm overflow-hidden">
+                <div className="bg-[#05080f] px-4 py-2 border-b border-[#e5e7eb]">
                   <h2 className="text-[14px] font-bold text-[#334155]">Bank Details</h2>
                 </div>
-                <div className="p-4 flex flex-col items-center justify-center min-h-[120px] bg-[#f8fafc]/50">
-                  <button className="flex items-center gap-2 text-[13px] font-medium text-[#64748b] bg-white border border-[#d1d5db] px-4 py-2 rounded shadow-sm hover:bg-gray-50 transition">
+                <div className="p-4 flex flex-col items-center justify-center min-h-[120px] bg-[#05080f]/50">
+                  <button className="flex items-center gap-2 text-[13px] font-medium text-[#64748b] bg-[#0a1628] border border-[#d1d5db] px-4 py-2 rounded shadow-sm hover:bg-gray-50 transition">
                     <Settings size={14} /> Click here to add a bank.
                   </button>
                 </div>
@@ -418,18 +418,18 @@ const CreateProformaInvoice = ({ setActiveTab }) => {
             </div>
 
             {/* Upload File */}
-            <div className="bg-white border border-[#e5e7eb] rounded shadow-sm overflow-hidden max-w-sm">
+            <div className="bg-[#0a1628] border border-[#e5e7eb] rounded shadow-sm overflow-hidden max-w-sm">
               <div className="p-4 flex items-center gap-4">
                 <label className="text-[13px] font-medium text-[#64748b]">Upload File :</label>
-                <button className="bg-orange-500 text-white px-4 py-1.5 rounded text-[13px] font-medium flex items-center gap-2 hover:bg-orange-600 transition shadow-sm">
+                <button className="bg-orange-500 text-[#e8f0fe] px-4 py-1.5 rounded text-[13px] font-medium flex items-center gap-2 hover:bg-orange-600 transition shadow-sm">
                   <FileText size={16} /> Upload File
                 </button>
               </div>
             </div>
 
             {/* Next Actions */}
-            <div className="bg-white border border-[#e5e7eb] rounded shadow-sm overflow-hidden">
-              <div className="bg-[#f8fafc] px-4 py-2 border-b border-[#e5e7eb]">
+            <div className="bg-[#0a1628] border border-[#e5e7eb] rounded shadow-sm overflow-hidden">
+              <div className="bg-[#05080f] px-4 py-2 border-b border-[#e5e7eb]">
                 <h2 className="text-[14px] font-bold text-[#334155]">Next Actions</h2>
               </div>
               <div className="p-4 flex flex-wrap gap-x-8 gap-y-4">
@@ -460,7 +460,7 @@ const CreateProformaInvoice = ({ setActiveTab }) => {
 
           {/* Right Summary Column */}
           <div className="space-y-4">
-            <div className="bg-white border border-[#e5e7eb] rounded shadow-sm overflow-hidden">
+            <div className="bg-[#0a1628] border border-[#e5e7eb] rounded shadow-sm overflow-hidden">
               <div className="p-6 space-y-4">
                 <div className="flex justify-between items-center text-[13px] text-[#64748b]">
                   <span>Total :</span>
@@ -489,14 +489,14 @@ const CreateProformaInvoice = ({ setActiveTab }) => {
           <button
             onClick={() => handleSave(false)}
             disabled={isSaving}
-            className="bg-[#166534] text-white px-6 py-2 rounded font-bold text-[14px] flex items-center gap-2 hover:bg-green-700 transition shadow-sm"
+            className="bg-[#166534] text-[#e8f0fe] px-6 py-2 rounded font-bold text-[14px] flex items-center gap-2 hover:bg-green-700 transition shadow-sm"
           >
             {isSaved ? <><Check size={16} className="inline-block" /> Saved!</> : 'Save'}
           </button>
           <button
             onClick={() => handleSave(true)}
             disabled={isSaving}
-            className="bg-[#166534] text-white px-6 py-2 rounded font-bold text-[14px] flex items-center gap-2 hover:bg-green-700 transition shadow-sm"
+            className="bg-[#166534] text-[#e8f0fe] px-6 py-2 rounded font-bold text-[14px] flex items-center gap-2 hover:bg-green-700 transition shadow-sm"
           >
             Save & Enter Another
           </button>

@@ -6,7 +6,7 @@ const router = express.Router();
 // Get all credit notes
 router.get('/', async (req, res) => {
   try {
-    const notes = await CreditNote.find().sort({ createdAt: -1 });
+    const notes = await CreditNote.find({ userId: req.headers['user-id'] }).sort({ createdAt: -1 });
     res.json(notes);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 // Add a new credit note
 router.post('/', async (req, res) => {
   try {
-    const note = new CreditNote(req.body);
+    const note = new CreditNote({ ...req.body, userId: req.headers['user-id'] });
     const newNote = await note.save();
     res.status(201).json(newNote);
   } catch (error) {
@@ -27,8 +27,8 @@ router.post('/', async (req, res) => {
 // Update a credit note
 router.put('/:id', async (req, res) => {
   try {
-    const updatedNote = await CreditNote.findByIdAndUpdate(
-      req.params.id,
+    const updatedNote = await CreditNote.findOneAndUpdate(
+      { _id: req.params.id, userId: req.headers['user-id'] },
       req.body,
       { new: true }
     );
@@ -41,7 +41,7 @@ router.put('/:id', async (req, res) => {
 // Delete a credit note
 router.delete('/:id', async (req, res) => {
   try {
-    await CreditNote.findByIdAndDelete(req.params.id);
+    await CreditNote.findOneAndDelete({ _id: req.params.id, userId: req.headers['user-id'] });
     res.json({ message: 'Credit Note deleted' });
   } catch (error) {
     res.status(500).json({ message: error.message });

@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 const connectionSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
   business: {
     type: String,
     required: true,

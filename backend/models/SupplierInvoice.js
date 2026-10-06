@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 const supplierInvoiceItemSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
   description: String,
   qty: Number,
   unit: String,
@@ -9,6 +10,7 @@ const supplierInvoiceItemSchema = new mongoose.Schema({
 });
 
 const supplierInvoiceSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
   supplier: { type: String, required: true },
   contact: String,
   invoiceNo: { type: String, required: true, unique: true },

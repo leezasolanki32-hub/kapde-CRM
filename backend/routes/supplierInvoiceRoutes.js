@@ -6,7 +6,7 @@ const router = express.Router();
 // Get all supplier invoices
 router.get('/', async (req, res) => {
   try {
-    const invoices = await SupplierInvoice.find().sort({ createdAt: -1 });
+    const invoices = await SupplierInvoice.find({ userId: req.headers['user-id'] }).sort({ createdAt: -1 });
     res.json(invoices);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 // Add a new supplier invoice
 router.post('/', async (req, res) => {
   try {
-    const invoice = new SupplierInvoice(req.body);
+    const invoice = new SupplierInvoice({ ...req.body, userId: req.headers['user-id'] });
     const newInvoice = await invoice.save();
     res.status(201).json(newInvoice);
   } catch (error) {
@@ -27,8 +27,8 @@ router.post('/', async (req, res) => {
 // Update a supplier invoice
 router.put('/:id', async (req, res) => {
   try {
-    const updatedInvoice = await SupplierInvoice.findByIdAndUpdate(
-      req.params.id,
+    const updatedInvoice = await SupplierInvoice.findOneAndUpdate(
+      { _id: req.params.id, userId: req.headers['user-id'] },
       req.body,
       { new: true }
     );
@@ -41,7 +41,7 @@ router.put('/:id', async (req, res) => {
 // Delete a supplier invoice
 router.delete('/:id', async (req, res) => {
   try {
-    await SupplierInvoice.findByIdAndDelete(req.params.id);
+    await SupplierInvoice.findOneAndDelete({ _id: req.params.id, userId: req.headers['user-id'] });
     res.json({ message: 'Supplier Invoice deleted' });
   } catch (error) {
     res.status(500).json({ message: error.message });

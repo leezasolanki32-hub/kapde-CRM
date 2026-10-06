@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 const quotationItemSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
   description: String,
   quantity: Number,
   price: Number,
@@ -8,6 +9,7 @@ const quotationItemSchema = new mongoose.Schema({
 });
 
 const quotationSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
   quoteNumber: { type: String, required: true, unique: true },
   customerName: String,
   customerPhone: String,

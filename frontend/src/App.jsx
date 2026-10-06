@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Hero3DAnimation } from './components/Hero3DAnimation';
+import { BrandLogoCarousel } from './components/BrandLogoCarousel';
 
 import { RegisterPage, LoginPage } from './components/auth/AuthPages';
 import { Dashboard } from './components/dashboard/Dashboard';
@@ -397,7 +398,19 @@ const Footer = () => (
 function App() {
   const [view, setView] = useState('home');
   const [selectedPlan, setSelectedPlan] = useState({ name: 'Professional', price: '₹999' });
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(() => {
+    const saved = localStorage.getItem('currentUser');
+    return saved ? JSON.parse(saved) : null;
+  });
+
+  useEffect(() => {
+    if (currentUser) {
+      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    } else {
+      localStorage.removeItem('currentUser');
+    }
+  }, [currentUser]);
+
   useScrollReveal();
 
   const handleNavClick = (e, sectionId) => {
@@ -428,7 +441,7 @@ function App() {
             </div>
             <DashboardPreview setView={setView} />
             <CustomerFeatures />
-            <Testimonials />
+            <BrandLogoCarousel />
             <Pricing setView={setView} handlePlanSelection={handlePlanSelection} />
             <About />
             <FAQ />

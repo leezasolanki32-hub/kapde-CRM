@@ -221,7 +221,7 @@ const HeroStoryAnimation = () => {
             {/* Head */}
             <circle cx="50" cy="30" r="20" fill="#1a1a2e" />
             {/* Body */}
-            <rect x="35" y="60" width="30" height="70" rx="15" fill="#7c3aed" />
+            <rect x="35" y="60" width="30" height="70" rx="15" fill="#1d4ed8" />
             {/* Legs */}
             <rect className="leg-left" x="35" y="120" width="10" height="70" rx="5" fill="#1a1a2e" />
             <rect className="leg-right" x="55" y="120" width="10" height="70" rx="5" fill="#1a1a2e" />

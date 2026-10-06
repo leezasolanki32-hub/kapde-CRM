@@ -14,22 +14,22 @@ const AddItemModal = ({ onClose }) => {
 
   const handle = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const inputCls = "w-full border border-[#E2DED6] rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-[#a855f7] focus:ring-1 focus:ring-[#a855f7] transition bg-white";
+  const inputCls = "w-full border border-[#1e3a5f] rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-[#3b82f6] focus:ring-1 focus:ring-[#3b82f6] transition bg-[#0a1628]";
   const labelCls = "block text-[12px] font-semibold text-[#4B4B4F] mb-1";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.35)' }}>
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl mx-4 max-h-[90vh] flex flex-col animate-[slideUpFade_0.3s_ease-out]">
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#E2DED6]">
+      <div className="bg-[#0a1628] rounded-2xl shadow-2xl w-full max-w-2xl mx-4 max-h-[90vh] flex flex-col animate-[slideUpFade_0.3s_ease-out]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[#1e3a5f]">
           <div>
-            <h2 className="text-[18px] font-bold text-[#1C1C1E]">Add New Item</h2>
-            <p className="text-[12px] text-[#6B6B70] mt-0.5">Fill in the details to add a stock item</p>
+            <h2 className="text-[18px] font-bold text-[#e8f0fe]">Add New Item</h2>
+            <p className="text-[12px] text-[#93c5fd] mt-0.5">Fill in the details to add a stock item</p>
           </div>
-          <button onClick={onClose} className="text-[#6B6B70] hover:text-[#1C1C1E] text-[22px] leading-none transition">×</button>
+          <button onClick={onClose} className="text-[#93c5fd] hover:text-[#e8f0fe] text-[22px] leading-none transition">×</button>
         </div>
 
         <div className="overflow-y-auto px-6 py-5 flex-1">
-          <p className="text-[11px] font-bold text-[#a855f7] uppercase tracking-wider mb-3">Basic Information</p>
+          <p className="text-[11px] font-bold text-[#3b82f6] uppercase tracking-wider mb-3">Basic Information</p>
           <div className="grid grid-cols-2 gap-4 mb-5">
             <div>
               <label className={labelCls}>Item Name <span className="text-red-500">*</span></label>
@@ -62,7 +62,7 @@ const AddItemModal = ({ onClose }) => {
             </div>
           </div>
 
-          <p className="text-[11px] font-bold text-[#a855f7] uppercase tracking-wider mb-3">Category</p>
+          <p className="text-[11px] font-bold text-[#3b82f6] uppercase tracking-wider mb-3">Category</p>
           <div className="grid grid-cols-2 gap-4 mb-5">
             <div>
               <label className={labelCls}>Category</label>
@@ -93,7 +93,7 @@ const AddItemModal = ({ onClose }) => {
             </div>
           </div>
 
-          <p className="text-[11px] font-bold text-[#a855f7] uppercase tracking-wider mb-3">Stock Details</p>
+          <p className="text-[11px] font-bold text-[#3b82f6] uppercase tracking-wider mb-3">Stock Details</p>
           <div className="grid grid-cols-2 gap-4 mb-5">
             <div>
               <label className={labelCls}>Opening Stock Quantity</label>
@@ -105,7 +105,7 @@ const AddItemModal = ({ onClose }) => {
             </div>
           </div>
 
-          <p className="text-[11px] font-bold text-[#a855f7] uppercase tracking-wider mb-3">Pricing</p>
+          <p className="text-[11px] font-bold text-[#3b82f6] uppercase tracking-wider mb-3">Pricing</p>
           <div className="grid grid-cols-2 gap-4 mb-5">
             <div>
               <label className={labelCls}>Cost Price (₹)</label>
@@ -117,7 +117,7 @@ const AddItemModal = ({ onClose }) => {
             </div>
           </div>
 
-          <p className="text-[11px] font-bold text-[#a855f7] uppercase tracking-wider mb-3">Additional Details</p>
+          <p className="text-[11px] font-bold text-[#3b82f6] uppercase tracking-wider mb-3">Additional Details</p>
           <div className="mb-4">
             <label className={labelCls}>Tags</label>
             <input name="tags" value={form.tags} onChange={handle} className={inputCls} placeholder="e.g. cotton, fabric, export (comma separated)" />
@@ -128,9 +128,9 @@ const AddItemModal = ({ onClose }) => {
           </div>
         </div>
 
-        <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-[#E2DED6] bg-[#FAFAFA] rounded-b-2xl">
-          <button onClick={onClose} className="px-5 py-2 rounded-md border border-[#E2DED6] text-[13px] text-[#4B4B4F] hover:bg-[#F3F0EC] transition font-medium">Cancel</button>
-          <button className="px-6 py-2 rounded-md bg-[#a855f7] text-white text-[13px] font-bold hover:bg-[#9333ea] transition shadow-sm">+ Save Item</button>
+        <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-[#1e3a5f] bg-[#0a1628] rounded-b-2xl">
+          <button onClick={onClose} className="px-5 py-2 rounded-md border border-[#1e3a5f] text-[13px] text-[#4B4B4F] hover:bg-[#F3F0EC] transition font-medium">Cancel</button>
+          <button className="px-6 py-2 rounded-md bg-[#3b82f6] text-[#e8f0fe] text-[13px] font-bold hover:bg-[#2563eb] transition shadow-sm">+ Save Item</button>
         </div>
       </div>
     </div>
@@ -157,64 +157,64 @@ const ImportModal = ({ onClose }) => {
     if (e.target.files[0]) setFile(e.target.files[0]);
   };
 
-  const inputCls = "w-full border border-[#E2DED6] rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-[#a855f7] focus:ring-1 focus:ring-[#a855f7] transition bg-white";
+  const inputCls = "w-full border border-[#1e3a5f] rounded-md px-3 py-2 text-[13px] focus:outline-none focus:border-[#3b82f6] focus:ring-1 focus:ring-[#3b82f6] transition bg-[#0a1628]";
   const labelCls = "block text-[12px] font-semibold text-[#4B4B4F] mb-1";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.35)' }}>
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-xl mx-4 max-h-[90vh] flex flex-col animate-[slideUpFade_0.3s_ease-out]">
+      <div className="bg-[#0a1628] rounded-2xl shadow-2xl w-full max-w-xl mx-4 max-h-[90vh] flex flex-col animate-[slideUpFade_0.3s_ease-out]">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#E2DED6]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[#1e3a5f]">
           <div>
-            <h2 className="text-[18px] font-bold text-[#1C1C1E]">Import Items from Excel</h2>
-            <p className="text-[12px] text-[#6B6B70] mt-0.5">Upload your Excel file to bulk import stock items</p>
+            <h2 className="text-[18px] font-bold text-[#e8f0fe]">Import Items from Excel</h2>
+            <p className="text-[12px] text-[#93c5fd] mt-0.5">Upload your Excel file to bulk import stock items</p>
           </div>
-          <button onClick={onClose} className="text-[#6B6B70] hover:text-[#1C1C1E] text-[22px] leading-none transition">×</button>
+          <button onClick={onClose} className="text-[#93c5fd] hover:text-[#e8f0fe] text-[22px] leading-none transition">×</button>
         </div>
 
         <div className="overflow-y-auto px-6 py-5 flex-1">
 
           {/* Download Template */}
-          <div className="flex items-center justify-between bg-[#f5f0ff] border border-[#d8b4fe] rounded-xl px-4 py-3 mb-5">
+          <div className="flex items-center justify-between bg-[#f5f0ff] border border-[#93c5fd] rounded-xl px-4 py-3 mb-5">
             <div>
               <p className="text-[13px] font-semibold text-[#6d28d9]"><Download size={16} className="inline-block" /> Download Template</p>
-              <p className="text-[11px] text-[#7c3aed] mt-0.5">Use our Excel template to ensure correct format</p>
+              <p className="text-[11px] text-[#1d4ed8] mt-0.5">Use our Excel template to ensure correct format</p>
             </div>
-            <button className="bg-[#a855f7] text-white px-4 py-1.5 rounded-md text-[12px] font-bold hover:bg-[#9333ea] transition">
+            <button className="bg-[#3b82f6] text-[#e8f0fe] px-4 py-1.5 rounded-md text-[12px] font-bold hover:bg-[#2563eb] transition">
               Download
             </button>
           </div>
 
           {/* File Drop Zone */}
-          <p className="text-[11px] font-bold text-[#a855f7] uppercase tracking-wider mb-3">Upload File</p>
+          <p className="text-[11px] font-bold text-[#3b82f6] uppercase tracking-wider mb-3">Upload File</p>
           <div
             onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
             onDragLeave={() => setDragging(false)}
             onDrop={onDrop}
             onClick={() => fileRef.current.click()}
             className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition mb-5 ${
-              dragging ? 'border-[#a855f7] bg-[#faf5ff]' : 'border-[#d1d5db] bg-[#FAFAFA] hover:border-[#a855f7] hover:bg-[#faf5ff]'
+              dragging ? 'border-[#3b82f6] bg-[#faf5ff]' : 'border-[#d1d5db] bg-[#0a1628] hover:border-[#3b82f6] hover:bg-[#faf5ff]'
             }`}
           >
             <input ref={fileRef} type="file" accept=".xlsx,.xls,.csv" className="hidden" onChange={onFileChange} />
             {file ? (
               <div>
                 <p className="text-[22px] mb-1"><FileText size={16} className="inline-block" /></p>
-                <p className="text-[13px] font-semibold text-[#1C1C1E]">{file.name}</p>
-                <p className="text-[11px] text-[#6B6B70] mt-1">{(file.size / 1024).toFixed(1)} KB · Click to change file</p>
+                <p className="text-[13px] font-semibold text-[#e8f0fe]">{file.name}</p>
+                <p className="text-[11px] text-[#93c5fd] mt-1">{(file.size / 1024).toFixed(1)} KB · Click to change file</p>
               </div>
             ) : (
               <div>
                 <p className="text-[32px] mb-2"><Folder size={16} className="inline-block" /></p>
-                <p className="text-[13px] font-semibold text-[#1C1C1E]">Drag & drop your file here</p>
-                <p className="text-[11px] text-[#6B6B70] mt-1">or <span className="text-[#a855f7] font-semibold">browse</span> to upload</p>
+                <p className="text-[13px] font-semibold text-[#e8f0fe]">Drag & drop your file here</p>
+                <p className="text-[11px] text-[#93c5fd] mt-1">or <span className="text-[#3b82f6] font-semibold">browse</span> to upload</p>
                 <p className="text-[10px] text-[#9CA3AF] mt-2">Supports: .xlsx, .xls, .csv</p>
               </div>
             )}
           </div>
 
           {/* Import Options */}
-          <p className="text-[11px] font-bold text-[#a855f7] uppercase tracking-wider mb-3">Import Options</p>
+          <p className="text-[11px] font-bold text-[#3b82f6] uppercase tracking-wider mb-3">Import Options</p>
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
               <label className={labelCls}>Item Type</label>
@@ -238,7 +238,7 @@ const ImportModal = ({ onClose }) => {
 
           <label className="flex items-center gap-2 cursor-pointer select-none">
             <input type="checkbox" name="overwrite" checked={form.overwrite} onChange={handle}
-              className="accent-[#a855f7] w-4 h-4 rounded" />
+              className="accent-[#3b82f6] w-4 h-4 rounded" />
             <span className="text-[12px] text-[#4B4B4F] font-medium">Overwrite existing items with same SKU</span>
           </label>
 
@@ -250,12 +250,12 @@ const ImportModal = ({ onClose }) => {
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-[#E2DED6] bg-[#FAFAFA] rounded-b-2xl">
-          <button onClick={onClose} className="px-5 py-2 rounded-md border border-[#E2DED6] text-[13px] text-[#4B4B4F] hover:bg-[#F3F0EC] transition font-medium">Cancel</button>
+        <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-[#1e3a5f] bg-[#0a1628] rounded-b-2xl">
+          <button onClick={onClose} className="px-5 py-2 rounded-md border border-[#1e3a5f] text-[13px] text-[#4B4B4F] hover:bg-[#F3F0EC] transition font-medium">Cancel</button>
           <button
             disabled={!file}
             className={`px-6 py-2 rounded-md text-[13px] font-bold transition shadow-sm ${
-              file ? 'bg-[#1C1C1E] text-white hover:bg-[#333]' : 'bg-[#E2DED6] text-[#9CA3AF] cursor-not-allowed'
+              file ? 'bg-[#e8f0fe] text-[#0a1628] hover:bg-[#333]' : 'bg-[#1e3a5f] text-[#9CA3AF] cursor-not-allowed'
             }`}
           >
             <Check size={16} className="inline-block" /> Start Import
@@ -290,24 +290,24 @@ const InventorySettingsModal = ({ onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.35)' }}>
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-xl mx-4 max-h-[85vh] flex flex-col animate-[slideUpFade_0.3s_ease-out]">
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#E2DED6]">
+      <div className="bg-[#0a1628] rounded-2xl shadow-2xl w-full max-w-xl mx-4 max-h-[85vh] flex flex-col animate-[slideUpFade_0.3s_ease-out]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[#1e3a5f]">
           <div>
-            <h2 className="text-[18px] font-bold text-[#1C1C1E]">Inventory Settings</h2>
-            <p className="text-[12px] text-[#6B6B70] mt-0.5">Configure master data for your inventory</p>
+            <h2 className="text-[18px] font-bold text-[#e8f0fe]">Inventory Settings</h2>
+            <p className="text-[12px] text-[#93c5fd] mt-0.5">Configure master data for your inventory</p>
           </div>
-          <button onClick={onClose} className="text-[#6B6B70] hover:text-[#1C1C1E] text-[22px] leading-none transition">×</button>
+          <button onClick={onClose} className="text-[#93c5fd] hover:text-[#e8f0fe] text-[22px] leading-none transition">×</button>
         </div>
 
         <div className="flex flex-1 overflow-hidden">
           {/* Sidebar */}
-          <div className="w-1/3 border-r border-[#E2DED6] bg-[#FAFAFA] p-4 flex flex-col gap-1">
+          <div className="w-1/3 border-r border-[#1e3a5f] bg-[#0a1628] p-4 flex flex-col gap-1">
             {Object.keys(items).map(tab => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`text-left px-4 py-2 rounded-lg text-[13px] font-semibold transition ${
-                  activeTab === tab ? 'bg-[#a855f7] text-white shadow-md' : 'text-[#6B6B70] hover:bg-[#F3F0EC]'
+                  activeTab === tab ? 'bg-[#3b82f6] text-[#e8f0fe] shadow-md' : 'text-[#93c5fd] hover:bg-[#F3F0EC]'
                 }`}
               >
                 {tab}
@@ -317,7 +317,7 @@ const InventorySettingsModal = ({ onClose }) => {
 
           {/* Content */}
           <div className="flex-1 flex flex-col p-6">
-            <h3 className="text-[14px] font-bold text-[#1C1C1E] mb-4">Manage {activeTab}</h3>
+            <h3 className="text-[14px] font-bold text-[#e8f0fe] mb-4">Manage {activeTab}</h3>
             
             <div className="flex gap-2 mb-6">
               <input 
@@ -325,16 +325,16 @@ const InventorySettingsModal = ({ onClose }) => {
                 onChange={(e) => setNewItem(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && addItem()}
                 placeholder={`Add new ${activeTab.slice(0, -1).toLowerCase()}...`}
-                className="flex-1 border border-[#E2DED6] rounded-md px-3 py-1.5 text-[13px] focus:outline-none focus:border-[#a855f7]"
+                className="flex-1 border border-[#1e3a5f] rounded-md px-3 py-1.5 text-[13px] focus:outline-none focus:border-[#3b82f6]"
               />
-              <button onClick={addItem} className="bg-[#a855f7] text-white px-4 py-1.5 rounded-md text-[12px] font-bold hover:bg-[#9333ea] transition">Add</button>
+              <button onClick={addItem} className="bg-[#3b82f6] text-[#e8f0fe] px-4 py-1.5 rounded-md text-[12px] font-bold hover:bg-[#2563eb] transition">Add</button>
             </div>
 
             <div className="flex-1 overflow-y-auto pr-2">
               <div className="space-y-2">
                 {items[activeTab].map((item, idx) => (
-                  <div key={idx} className="flex items-center justify-between bg-white border border-[#E2DED6] rounded-lg px-4 py-2 text-[13px] hover:border-[#a855f7] transition group">
-                    <span className="text-[#1C1C1E] font-medium">{item}</span>
+                  <div key={idx} className="flex items-center justify-between bg-[#0a1628] border border-[#1e3a5f] rounded-lg px-4 py-2 text-[13px] hover:border-[#3b82f6] transition group">
+                    <span className="text-[#e8f0fe] font-medium">{item}</span>
                     <button onClick={() => removeItem(idx)} className="text-[#9CA3AF] hover:text-red-500 transition opacity-0 group-hover:opacity-100 text-lg">×</button>
                   </div>
                 ))}
@@ -343,8 +343,8 @@ const InventorySettingsModal = ({ onClose }) => {
           </div>
         </div>
 
-        <div className="px-6 py-4 border-t border-[#E2DED6] bg-[#FAFAFA] flex justify-end rounded-b-2xl">
-          <button onClick={onClose} className="bg-[#1C1C1E] text-white px-6 py-2 rounded-md text-[13px] font-bold hover:bg-[#333] transition shadow-sm">Done</button>
+        <div className="px-6 py-4 border-t border-[#1e3a5f] bg-[#0a1628] flex justify-end rounded-b-2xl">
+          <button onClick={onClose} className="bg-[#e8f0fe] text-[#0a1628] px-6 py-2 rounded-md text-[13px] font-bold hover:bg-[#333] transition shadow-sm">Done</button>
         </div>
       </div>
     </div>
@@ -370,12 +370,7 @@ const Inventory = () => {
   });
 
   // Sample Data
-  const [inventoryItems, setInventoryItems] = useState([
-    { id: 1, name: 'Cotton Fabric Roll', code: 'SKU-001', type: 'Materials', category: 'Raw Materials', subCategory: 'Woven', stock: 150, unit: 'Meters', price: 450, tags: 'cotton,woven' },
-    { id: 2, name: 'Denim Jeans - Slim Fit', code: 'SKU-002', type: 'Products', category: 'Finished Goods', subCategory: 'Menswear', stock: 45, unit: 'Pcs', price: 1200, tags: 'denim,jeans' },
-    { id: 3, name: 'Polyester Thread', code: 'SKU-003', type: 'Spares', category: 'Packaging', subCategory: 'Accessories', stock: 500, unit: 'Pcs', price: 25, tags: 'thread,sewing' },
-    { id: 4, name: 'Steel Buttons', code: 'SKU-004', type: 'Assemblies', category: 'Tools & Equipment', subCategory: 'Hardware', stock: 2000, unit: 'Pcs', price: 5, tags: 'buttons,metal' },
-  ]);
+  const [inventoryItems, setInventoryItems] = useState([]);
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
@@ -397,18 +392,18 @@ const Inventory = () => {
       {showSettingsModal && <InventorySettingsModal onClose={() => setShowSettingsModal(false)} />}
 
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8">
-        <h1 className="text-[24px] font-medium text-[#1C1C1E]">Inventory</h1>
+        <h1 className="text-[24px] font-medium text-[#e8f0fe]">Inventory</h1>
         <div className="flex flex-wrap items-center gap-2">
           <div className="relative">
             <input 
               type="text" 
               placeholder="Search Items..." 
-              className="border border-[#E2DED6] rounded-md px-3 py-1.5 pl-8 text-[13px] focus:border-[#a855f7] outline-none shadow-sm w-[200px]" 
+              className="border border-[#1e3a5f] rounded-md px-3 py-1.5 pl-8 text-[13px] focus:border-[#3b82f6] outline-none shadow-sm w-[200px]" 
             />
-            <span className="absolute left-2.5 top-2 text-[#6B6B70] text-[12px]"><Search size={16} className="inline-block" /></span>
+            <span className="absolute left-2.5 top-2 text-[#93c5fd] text-[12px]"><Search size={16} className="inline-block" /></span>
           </div>
-          <button onClick={() => setShowAddModal(true)} className="bg-[#a855f7] text-white px-4 py-2 rounded-md text-[12px] font-bold hover:bg-[#9333ea] transition">+ Add Item</button>
-          <button onClick={() => setShowImportModal(true)} className="bg-[#1C1C1E] text-white px-4 py-2 rounded-md text-[12px] font-bold hover:bg-[#333] transition"><Check size={16} className="inline-block" /> Import Items</button>
+          <button onClick={() => setShowAddModal(true)} className="bg-[#3b82f6] text-[#e8f0fe] px-4 py-2 rounded-md text-[12px] font-bold hover:bg-[#2563eb] transition">+ Add Item</button>
+          <button onClick={() => setShowImportModal(true)} className="bg-[#e8f0fe] text-[#0a1628] px-4 py-2 rounded-md text-[12px] font-bold hover:bg-[#333] transition"><Check size={16} className="inline-block" /> Import Items</button>
         </div>
       </div>
 
@@ -420,40 +415,40 @@ const Inventory = () => {
             onClick={() => setActiveTab(tab)}
             className={`px-4 py-1.5 rounded text-[13px] font-medium transition-all ${
               activeTab === tab 
-                ? 'bg-[#a855f7] text-white shadow-md' 
-                : 'bg-white border border-[#E2DED6] text-[#6B6B70] hover:border-[#a855f7] hover:text-[#a855f7]'
+                ? 'bg-[#3b82f6] text-[#e8f0fe] shadow-md' 
+                : 'bg-[#0a1628] border border-[#1e3a5f] text-[#93c5fd] hover:border-[#3b82f6] hover:text-[#3b82f6]'
             }`}
           >
             {tab !== 'All' && <span className="mr-2">■</span>}
             {tab}
           </button>
         ))}
-        <div className="ml-auto bg-white border border-[#d8b4fe] text-[#a855f7] text-[11px] font-bold px-3 py-1.5 rounded shadow-sm">Valuation : Standard Cost</div>
+        <div className="ml-auto bg-[#0a1628] border border-[#93c5fd] text-[#3b82f6] text-[11px] font-bold px-3 py-1.5 rounded shadow-sm">Valuation : Standard Cost</div>
       </div>
 
       {/* Filter Row 1 */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-        <select name="category" value={filters.category} onChange={handleFilterChange} className="bg-white border border-[#E2DED6] rounded-md px-3 py-2 text-[12px] focus:outline-none focus:border-[#a855f7] shadow-sm">
+        <select name="category" value={filters.category} onChange={handleFilterChange} className="bg-[#0a1628] border border-[#1e3a5f] rounded-md px-3 py-2 text-[12px] focus:outline-none focus:border-[#3b82f6] shadow-sm">
           <option>All Categories</option>
           <option>Raw Materials</option>
           <option>Finished Goods</option>
           <option>Packaging</option>
           <option>Tools & Equipment</option>
         </select>
-        <select name="subCategory" value={filters.subCategory} onChange={handleFilterChange} className="bg-white border border-[#E2DED6] rounded-md px-3 py-2 text-[12px] focus:outline-none focus:border-[#a855f7] shadow-sm">
+        <select name="subCategory" value={filters.subCategory} onChange={handleFilterChange} className="bg-[#0a1628] border border-[#1e3a5f] rounded-md px-3 py-2 text-[12px] focus:outline-none focus:border-[#3b82f6] shadow-sm">
           <option>All Sub-Categories</option>
           <option>Woven</option>
           <option>Menswear</option>
           <option>Accessories</option>
           <option>Hardware</option>
         </select>
-        <select name="stockStatus" value={filters.stockStatus} onChange={handleFilterChange} className="bg-white border border-[#E2DED6] rounded-md px-3 py-2 text-[12px] focus:outline-none focus:border-[#a855f7] shadow-sm">
+        <select name="stockStatus" value={filters.stockStatus} onChange={handleFilterChange} className="bg-[#0a1628] border border-[#1e3a5f] rounded-md px-3 py-2 text-[12px] focus:outline-none focus:border-[#3b82f6] shadow-sm">
           <option>All Stock Items</option>
           <option>In Stock</option>
           <option>Low Stock</option>
           <option>Out of Stock</option>
         </select>
-        <select name="importance" value={filters.importance} onChange={handleFilterChange} className="bg-white border border-[#E2DED6] rounded-md px-3 py-2 text-[12px] focus:outline-none focus:border-[#a855f7] shadow-sm">
+        <select name="importance" value={filters.importance} onChange={handleFilterChange} className="bg-[#0a1628] border border-[#1e3a5f] rounded-md px-3 py-2 text-[12px] focus:outline-none focus:border-[#3b82f6] shadow-sm">
           <option>All Importance Levels</option>
           <option>Critical</option>
           <option>High</option>
@@ -464,7 +459,7 @@ const Inventory = () => {
 
       {/* Filter Row 2 */}
       <div className="flex gap-4 mb-8">
-        <select name="itemScope" value={filters.itemScope} onChange={handleFilterChange} className="bg-white border border-[#E2DED6] rounded-md px-3 py-2 text-[12px] focus:outline-none focus:border-[#a855f7] w-1/4 shadow-sm">
+        <select name="itemScope" value={filters.itemScope} onChange={handleFilterChange} className="bg-[#0a1628] border border-[#1e3a5f] rounded-md px-3 py-2 text-[12px] focus:outline-none focus:border-[#3b82f6] w-1/4 shadow-sm">
           <option>All Items</option>
           <option>Active</option>
           <option>Inactive</option>
@@ -476,16 +471,16 @@ const Inventory = () => {
             value={filters.tagSearch}
             onChange={handleFilterChange}
             placeholder="Search by Tag (e.g. cotton, jeans)" 
-            className="w-full border border-[#E2DED6] rounded-md px-3 py-2 text-[12px] focus:outline-none focus:border-[#a855f7] shadow-sm" 
+            className="w-full border border-[#1e3a5f] rounded-md px-3 py-2 text-[12px] focus:outline-none focus:border-[#3b82f6] shadow-sm" 
           />
           <span className="absolute right-3 top-2.5 text-green-500 text-[12px]"><Check size={16} className="inline-block" /></span>
         </div>
       </div>
 
       {/* Table / Results */}
-      <div className="bg-white border border-[#E2DED6] rounded-xl overflow-hidden shadow-sm mb-10">
+      <div className="bg-[#0a1628] border border-[#1e3a5f] rounded-xl overflow-hidden shadow-sm mb-10">
         <table className="w-full text-left text-[13px]">
-          <thead className="bg-[#FAFAFA] border-b border-[#E2DED6] text-[#6B6B70] font-bold uppercase text-[11px] tracking-wider">
+          <thead className="bg-[#0a1628] border-b border-[#1e3a5f] text-[#93c5fd] font-bold uppercase text-[11px] tracking-wider">
             <tr>
               <th className="px-6 py-4">Item Name</th>
               <th className="px-6 py-4">Code</th>
@@ -495,24 +490,24 @@ const Inventory = () => {
               <th className="px-6 py-4 text-right">Price</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#E2DED6]">
+          <tbody className="divide-y divide-[#1e3a5f]">
             {filteredItems.length > 0 ? filteredItems.map(item => (
               <tr key={item.id} className="hover:bg-[#faf5ff] transition-colors cursor-pointer group">
                 <td className="px-6 py-4">
-                  <div className="font-bold text-[#1C1C1E]">{item.name}</div>
-                  <div className="text-[11px] text-[#6B6B70]">{item.unit}</div>
+                  <div className="font-bold text-[#e8f0fe]">{item.name}</div>
+                  <div className="text-[11px] text-[#93c5fd]">{item.unit}</div>
                 </td>
-                <td className="px-6 py-4 text-[#6B6B70] font-medium">{item.code}</td>
+                <td className="px-6 py-4 text-[#93c5fd] font-medium">{item.code}</td>
                 <td className="px-6 py-4">
-                  <span className="px-2 py-1 rounded-md bg-[#f3e8ff] text-[#a855f7] text-[11px] font-bold">{item.type}</span>
+                  <span className="px-2 py-1 rounded-md bg-[#0a1628] text-[#3b82f6] text-[11px] font-bold">{item.type}</span>
                 </td>
-                <td className="px-6 py-4 text-[#6B6B70]">{item.category}</td>
-                <td className="px-6 py-4 text-right font-bold text-[#1C1C1E]">{item.stock}</td>
-                <td className="px-6 py-4 text-right font-bold text-[#a855f7]">₹{item.price}</td>
+                <td className="px-6 py-4 text-[#93c5fd]">{item.category}</td>
+                <td className="px-6 py-4 text-right font-bold text-[#e8f0fe]">{item.stock}</td>
+                <td className="px-6 py-4 text-right font-bold text-[#3b82f6]">₹{item.price}</td>
               </tr>
             )) : (
               <tr>
-                <td colSpan="6" className="px-6 py-10 text-center text-[#6B6B70] italic">
+                <td colSpan="6" className="px-6 py-10 text-center text-[#93c5fd] italic">
                   No stock items found matching your filters.
                 </td>
               </tr>
@@ -522,20 +517,20 @@ const Inventory = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div className="bg-white border border-[#E2DED6] rounded-xl p-6 shadow-sm">
+        <div className="bg-[#0a1628] border border-[#1e3a5f] rounded-xl p-6 shadow-sm">
           <h3 className="font-bold text-[14px] mb-2 uppercase">Add Item Manually</h3>
-          <p className="text-[12px] text-[#6B6B70] mb-6">Add first stock item manually easily.</p>
-          <button onClick={() => setShowAddModal(true)} className="bg-[#a855f7] text-white px-4 py-2 rounded-md text-[11px] font-bold hover:bg-[#9333ea] transition">+ Add Item</button>
+          <p className="text-[12px] text-[#93c5fd] mb-6">Add first stock item manually easily.</p>
+          <button onClick={() => setShowAddModal(true)} className="bg-[#3b82f6] text-[#e8f0fe] px-4 py-2 rounded-md text-[11px] font-bold hover:bg-[#2563eb] transition">+ Add Item</button>
         </div>
-        <div className="bg-white border border-[#E2DED6] rounded-xl p-6 shadow-sm">
+        <div className="bg-[#0a1628] border border-[#1e3a5f] rounded-xl p-6 shadow-sm">
           <h3 className="font-bold text-[14px] mb-2 uppercase">Import Items from Excel</h3>
-          <p className="text-[12px] text-[#6B6B70] mb-6">Import list of Items through Excel by downloading our template.</p>
-          <button onClick={() => setShowImportModal(true)} className="bg-[#1C1C1E] text-white px-4 py-2 rounded-md text-[11px] font-bold hover:bg-[#333] transition"><Check size={16} className="inline-block" /> Import Items</button>
+          <p className="text-[12px] text-[#93c5fd] mb-6">Import list of Items through Excel by downloading our template.</p>
+          <button onClick={() => setShowImportModal(true)} className="bg-[#e8f0fe] text-[#0a1628] px-4 py-2 rounded-md text-[11px] font-bold hover:bg-[#333] transition"><Check size={16} className="inline-block" /> Import Items</button>
         </div>
-        <div className="bg-white border border-[#E2DED6] rounded-xl p-6 shadow-sm">
+        <div className="bg-[#0a1628] border border-[#1e3a5f] rounded-xl p-6 shadow-sm">
           <h3 className="font-bold text-[14px] mb-2 uppercase">Configure Data for Stock</h3>
-          <p className="text-[12px] text-[#6B6B70] mb-6">Configure data for stock like units, Stores, HSN/SAC, Categories etc.</p>
-          <button onClick={() => setShowSettingsModal(true)} className="bg-[#1C1C1E] text-white px-4 py-2 rounded-md text-[11px] font-bold hover:bg-[#333] transition"><Settings size={16} className="inline-block" />️ Inventory Settings</button>
+          <p className="text-[12px] text-[#93c5fd] mb-6">Configure data for stock like units, Stores, HSN/SAC, Categories etc.</p>
+          <button onClick={() => setShowSettingsModal(true)} className="bg-[#e8f0fe] text-[#0a1628] px-4 py-2 rounded-md text-[11px] font-bold hover:bg-[#333] transition"><Settings size={16} className="inline-block" />️ Inventory Settings</button>
         </div>
       </div>
 

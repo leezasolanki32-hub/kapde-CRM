@@ -1,25 +1,14 @@
 import React, { useState, useRef } from 'react';
 import { MapPin, Check, Settings } from "lucide-react";
 
-const STEPS = [
-  { id: 1, label: 'Basic', desc: 'Set up the tagline, business description, logo, etc.' },
-  { id: 2, label: 'Products & Market', desc: 'Define your products and target market.' },
-  { id: 3, label: 'Purchases', desc: 'Configure your purchase preferences.' },
-  { id: 4, label: 'Header', desc: 'Customize your website header.' },
-  { id: 5, label: 'Offer', desc: 'Set up special offers and discounts.' },
-  { id: 6, label: 'Catalog', desc: 'Manage your product catalog.' },
-  { id: 7, label: 'About Company', desc: 'Add information about your company.' },
-  { id: 8, label: 'Team', desc: 'Add team members and roles.' },
-  { id: 9, label: 'FAQs', desc: 'Set up frequently asked questions.' },
-  { id: 10, label: 'Contact', desc: 'Configure contact information.' }
-];
+const STEPS = [];
 
 /* ───────────── Preview Modal ───────────── */
 const PreviewModal = ({ onClose, data }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-10" style={{ background: 'rgba(0,0,0,0.7)' }}>
-      <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl h-full flex flex-col animate-[zoomIn_0.3s_ease-out] overflow-hidden">
-        <div className="flex items-center justify-between p-4 bg-[#1C1C1E] text-white">
+      <div className="bg-[#0a1628] rounded-xl shadow-2xl w-full max-w-5xl h-full flex flex-col animate-[zoomIn_0.3s_ease-out] overflow-hidden">
+        <div className="flex items-center justify-between p-4 bg-[#e8f0fe] text-[#0a1628]">
           <div className="flex items-center gap-3">
             <div className="flex gap-1.5">
               <span className="w-3 h-3 rounded-full bg-red-500"></span>
@@ -28,46 +17,46 @@ const PreviewModal = ({ onClose, data }) => {
             </div>
             <span className="text-[13px] font-medium opacity-70 ml-2">Live Preview - {data.companyName}</span>
           </div>
-          <button onClick={onClose} className="text-white hover:text-red-400 text-[24px] leading-none">&times;</button>
+          <button onClick={onClose} className="text-[#0a1628] hover:text-red-400 text-[24px] leading-none">&times;</button>
         </div>
         
         <div className="flex-1 overflow-y-auto bg-slate-50 relative">
           {/* Mock Website Navbar */}
-          <nav className="bg-white px-8 py-4 flex items-center justify-between shadow-sm sticky top-0 z-10">
+          <nav className="bg-[#0a1628] px-8 py-4 flex items-center justify-between shadow-sm sticky top-0 z-10">
             <div className="flex items-center gap-4">
               {data.logoPreview ? (
                 <img src={data.logoPreview} alt="Logo" className="h-10 object-contain" />
               ) : (
-                <div className="h-10 w-10 bg-[#a855f7] rounded-md flex items-center justify-center text-white font-bold text-xl">
+                <div className="h-10 w-10 bg-[#3b82f6] rounded-md flex items-center justify-center text-[#e8f0fe] font-bold text-xl">
                   {data.companyName.charAt(0)}
                 </div>
               )}
-              <span className="text-[18px] font-bold text-[#1C1C1E]">{data.companyName}</span>
+              <span className="text-[18px] font-bold text-[#e8f0fe]">{data.companyName}</span>
             </div>
-            <div className="hidden md:flex gap-6 text-[14px] text-[#6B6B70] font-medium">
-              <span className="hover:text-[#a855f7] cursor-pointer">Home</span>
-              <span className="hover:text-[#a855f7] cursor-pointer">Shop</span>
-              <span className="hover:text-[#a855f7] cursor-pointer">About Us</span>
-              <span className="hover:text-[#a855f7] cursor-pointer">Contact</span>
+            <div className="hidden md:flex gap-6 text-[14px] text-[#93c5fd] font-medium">
+              <span className="hover:text-[#3b82f6] cursor-pointer">Home</span>
+              <span className="hover:text-[#3b82f6] cursor-pointer">Shop</span>
+              <span className="hover:text-[#3b82f6] cursor-pointer">About Us</span>
+              <span className="hover:text-[#3b82f6] cursor-pointer">Contact</span>
             </div>
           </nav>
 
           {/* Mock Hero Section */}
-          <div className="py-24 px-8 text-center bg-gradient-to-br from-[#f3e8ff] to-[#faf5ff] border-b border-[#e9d5ff]">
-            <h1 className="text-[48px] font-extrabold text-[#1C1C1E] tracking-tight mb-4">{data.companyName}</h1>
-            <p className="text-[20px] text-[#6B6B70] max-w-2xl mx-auto mb-8 font-medium">
+          <div className="py-24 px-8 text-center bg-gradient-to-br from-[#0a1628] to-[#faf5ff] border-b border-[#bfdbfe]">
+            <h1 className="text-[48px] font-extrabold text-[#e8f0fe] tracking-tight mb-4">{data.companyName}</h1>
+            <p className="text-[20px] text-[#93c5fd] max-w-2xl mx-auto mb-8 font-medium">
               {data.tagline || "Your awesome tagline will appear here."}
             </p>
-            <button className="bg-[#1C1C1E] text-white px-8 py-3.5 rounded-full font-bold text-[15px] hover:bg-[#a855f7] transition-colors shadow-lg">Shop Now</button>
+            <button className="bg-[#e8f0fe] text-[#0a1628] px-8 py-3.5 rounded-full font-bold text-[15px] hover:bg-[#3b82f6] transition-colors shadow-lg">Shop Now</button>
           </div>
 
           {/* Mock Content */}
           <div className="py-16 px-8 max-w-4xl mx-auto text-center">
-            <h2 className="text-[24px] font-bold text-[#1C1C1E] mb-6">About Us</h2>
-            <p className="text-[16px] text-[#6B6B70] leading-relaxed">
+            <h2 className="text-[24px] font-bold text-[#e8f0fe] mb-6">About Us</h2>
+            <p className="text-[16px] text-[#93c5fd] leading-relaxed">
               {data.description || "Write a compelling description in the Setup Website tool to see it magically appear here. This space is perfect for telling your brand's unique story."}
             </p>
-            <div className="mt-12 text-[#6B6B70] text-[14px]">
+            <div className="mt-12 text-[#93c5fd] text-[14px]">
               <p><MapPin size={16} className="inline-block" /> {data.location}, {data.state}</p>
               {data.gstin && <p className="mt-2 text-[12px] opacity-70">GSTIN: {data.gstin}</p>}
             </div>
@@ -136,16 +125,16 @@ const YourStore = () => {
       {showPreview && <PreviewModal onClose={() => setShowPreview(false)} data={formData} />}
       
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8">
-        <h1 className="text-[24px] font-medium text-[#1C1C1E]">Setup Website</h1>
+        <h1 className="text-[24px] font-medium text-[#e8f0fe]">Setup Website</h1>
         <div className="flex items-center gap-4">
-          <button onClick={handlePreview} className="bg-[#a855f7] text-white px-6 py-2 rounded-md text-[13px] font-bold shadow-sm hover:bg-[#9333ea] transition-colors">Preview</button>
+          <button onClick={handlePreview} className="bg-[#3b82f6] text-[#e8f0fe] px-6 py-2 rounded-md text-[13px] font-bold shadow-sm hover:bg-[#2563eb] transition-colors">Preview</button>
         </div>
       </div>
 
       <div className="flex flex-col md:flex-row gap-8">
         {/* Sidebar Steps */}
         <div className="md:w-1/4">
-          <div className="flex flex-col gap-1 border-l-2 border-[#f0f0f0]">
+          <div className="flex flex-col gap-1 border-l-2 border-[#1e3a5f]">
             {STEPS.map((step) => {
               const isActive = step.id === activeStep;
               const isCompleted = completedSteps.includes(step.id);
@@ -153,9 +142,9 @@ const YourStore = () => {
                 <button 
                   key={step.id} 
                   onClick={() => setActiveStep(step.id)}
-                  className={`flex items-center text-left gap-3 py-3 px-4 -ml-[1.5px] border-l-4 transition ${isActive ? 'border-[#a855f7] bg-[#FAF8F4] text-[#a855f7] font-bold' : 'border-transparent text-[#6B6B70] hover:bg-[#fafafa]'}`}
+                  className={`flex items-center text-left gap-3 py-3 px-4 -ml-[1.5px] border-l-4 transition ${isActive ? 'border-[#3b82f6] bg-[#080d1a] text-[#3b82f6] font-bold' : 'border-transparent text-[#93c5fd] hover:bg-[#132847]'}`}
                 >
-                  <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold shadow-sm transition-colors ${isActive ? 'bg-[#a855f7] text-white' : isCompleted ? 'bg-[#16a34a] text-white' : 'bg-white border border-[#E2DED6]'}`}>
+                  <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold shadow-sm transition-colors ${isActive ? 'bg-[#3b82f6] text-[#e8f0fe]' : isCompleted ? 'bg-[#16a34a] text-[#e8f0fe]' : 'bg-[#0a1628] border border-[#1e3a5f]'}`}>
                     {isCompleted && !isActive ? '<Check size={16} className="inline-block" />' : step.id}
                   </div>
                   <span className="text-[13px]">{step.label}</span>
@@ -167,35 +156,35 @@ const YourStore = () => {
 
         {/* Content Area */}
         <div className="md:w-3/4 animate-[slideUpFade_0.3s_ease-out]" key={activeStep}>
-          <div className="bg-white border border-[#E2DED6] rounded-xl overflow-hidden shadow-sm">
+          <div className="bg-[#0a1628] border border-[#1e3a5f] rounded-xl overflow-hidden shadow-sm">
             <div className="flex">
-              <div className="bg-[#a855f7] text-white px-8 py-3.5 text-[14px] font-bold slanted-right relative pr-12 min-w-[200px]">
+              <div className="bg-[#3b82f6] text-[#e8f0fe] px-8 py-3.5 text-[14px] font-bold slanted-right relative pr-12 min-w-[200px]">
                 {activeStepData?.label} Info
               </div>
-              <div className="flex-1 bg-[#FAF8F4] border-b border-[#E2DED6] flex items-center px-6">
-                <p className="text-[12px] text-[#6B6B70]">{activeStepData?.desc}</p>
+              <div className="flex-1 bg-[#080d1a] border-b border-[#1e3a5f] flex items-center px-6">
+                <p className="text-[12px] text-[#93c5fd]">{activeStepData?.desc}</p>
               </div>
             </div>
             
             {activeStep === 1 ? (
               <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[13px] font-bold text-[#1C1C1E]">Company Name <span className="text-red-500">*</span></label>
-                  <input name="companyName" value={formData.companyName} onChange={handleInputChange} type="text" className="border border-[#E2DED6] rounded px-4 py-2.5 text-[14px] focus:outline-none focus:border-[#a855f7]" />
+                  <label className="text-[13px] font-bold text-[#e8f0fe]">Company Name <span className="text-red-500">*</span></label>
+                  <input name="companyName" value={formData.companyName} onChange={handleInputChange} type="text" className="border border-[#1e3a5f] rounded px-4 py-2.5 text-[14px] focus:outline-none focus:border-[#3b82f6]" />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[13px] font-bold text-[#1C1C1E]">Tagline</label>
-                  <input name="tagline" value={formData.tagline} onChange={handleInputChange} type="text" placeholder="Tagline" className="border border-[#E2DED6] rounded px-4 py-2.5 text-[14px] focus:outline-none focus:border-[#a855f7]" />
+                  <label className="text-[13px] font-bold text-[#e8f0fe]">Tagline</label>
+                  <input name="tagline" value={formData.tagline} onChange={handleInputChange} type="text" placeholder="Tagline" className="border border-[#1e3a5f] rounded px-4 py-2.5 text-[14px] focus:outline-none focus:border-[#3b82f6]" />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[13px] font-bold text-[#1C1C1E]">Company Logo</label>
+                  <label className="text-[13px] font-bold text-[#e8f0fe]">Company Logo</label>
                   <input type="file" ref={fileInputRef} onChange={handleFileChange} accept="image/*" className="hidden" />
-                  <button onClick={handleLogoUpload} className="border border-dashed border-[#E2DED6] rounded-lg p-10 flex flex-col items-center justify-center gap-2 bg-[#fcfcfc] hover:bg-[#FAF8F4] cursor-pointer transition relative overflow-hidden group min-h-[140px]">
+                  <button onClick={handleLogoUpload} className="border border-dashed border-[#1e3a5f] rounded-lg p-10 flex flex-col items-center justify-center gap-2 bg-[#05080f] hover:bg-[#080d1a] cursor-pointer transition relative overflow-hidden group min-h-[140px]">
                     {formData.logoPreview ? (
                       <>
                         <img src={formData.logoPreview} alt="Logo Preview" className="absolute inset-0 w-full h-full object-contain p-2" />
                         <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                          <span className="text-white text-[13px] font-bold">Change Logo</span>
+                          <span className="text-[#e8f0fe] text-[13px] font-bold">Change Logo</span>
                         </div>
                       </>
                     ) : (
@@ -208,33 +197,33 @@ const YourStore = () => {
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <div className="flex items-center justify-between mb-1">
-                    <label className="text-[13px] font-bold text-[#1C1C1E]">Description</label>
+                    <label className="text-[13px] font-bold text-[#e8f0fe]">Description</label>
                   </div>
-                  <textarea name="description" value={formData.description} onChange={handleInputChange} placeholder="No description yet..." className="flex-1 border border-[#E2DED6] rounded bg-[#fcfcfc] p-4 text-[13px] focus:outline-none focus:border-[#a855f7] resize-none h-full min-h-[100px]"></textarea>
+                  <textarea name="description" value={formData.description} onChange={handleInputChange} placeholder="No description yet..." className="flex-1 border border-[#1e3a5f] rounded bg-[#05080f] p-4 text-[13px] focus:outline-none focus:border-[#3b82f6] resize-none h-full min-h-[100px]"></textarea>
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[13px] font-bold text-[#1C1C1E]">Location <span className="text-red-500">*</span></label>
-                  <input name="location" value={formData.location} onChange={handleInputChange} type="text" className="border border-[#E2DED6] rounded px-4 py-2.5 text-[14px] focus:outline-none focus:border-[#a855f7]" />
+                  <label className="text-[13px] font-bold text-[#e8f0fe]">Location <span className="text-red-500">*</span></label>
+                  <input name="location" value={formData.location} onChange={handleInputChange} type="text" className="border border-[#1e3a5f] rounded px-4 py-2.5 text-[14px] focus:outline-none focus:border-[#3b82f6]" />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[13px] font-bold text-[#1C1C1E] opacity-0">State</label>
-                  <input name="state" value={formData.state} onChange={handleInputChange} type="text" className="border border-[#E2DED6] rounded px-4 py-2.5 text-[14px] focus:outline-none focus:border-[#a855f7]" />
+                  <label className="text-[13px] font-bold text-[#e8f0fe] opacity-0">State</label>
+                  <input name="state" value={formData.state} onChange={handleInputChange} type="text" className="border border-[#1e3a5f] rounded px-4 py-2.5 text-[14px] focus:outline-none focus:border-[#3b82f6]" />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[13px] font-bold text-[#1C1C1E]">GSTIN</label>
-                  <input name="gstin" value={formData.gstin} onChange={handleInputChange} type="text" placeholder="GSTIN" className="border border-[#E2DED6] rounded px-4 py-2.5 text-[14px] focus:outline-none focus:border-[#a855f7]" />
+                  <label className="text-[13px] font-bold text-[#e8f0fe]">GSTIN</label>
+                  <input name="gstin" value={formData.gstin} onChange={handleInputChange} type="text" placeholder="GSTIN" className="border border-[#1e3a5f] rounded px-4 py-2.5 text-[14px] focus:outline-none focus:border-[#3b82f6]" />
                 </div>
               </div>
             ) : (
               <div className="p-16 text-center">
                 <div className="text-[40px] mb-4"><Settings size={16} className="inline-block" />️</div>
-                <h3 className="text-[18px] font-bold text-[#1C1C1E] mb-2">{activeStepData?.label} Configuration</h3>
-                <p className="text-[14px] text-[#6B6B70]">This section is ready to be configured. Fill in your details below to save progress.</p>
+                <h3 className="text-[18px] font-bold text-[#e8f0fe] mb-2">{activeStepData?.label} Configuration</h3>
+                <p className="text-[14px] text-[#93c5fd]">This section is ready to be configured. Fill in your details below to save progress.</p>
               </div>
             )}
 
-            <div className="p-6 flex justify-end bg-[#fafafa] border-t border-[#E2DED6]">
-              <button onClick={handleSaveAndContinue} className="bg-[#a855f7] text-white px-10 py-2.5 rounded-md text-[14px] font-bold shadow-md hover:bg-[#9333ea] transition-colors">Save & Continue</button>
+            <div className="p-6 flex justify-end bg-[#0a1628] border-t border-[#1e3a5f]">
+              <button onClick={handleSaveAndContinue} className="bg-[#3b82f6] text-[#e8f0fe] px-10 py-2.5 rounded-md text-[14px] font-bold shadow-md hover:bg-[#2563eb] transition-colors">Save & Continue</button>
             </div>
           </div>
         </div>

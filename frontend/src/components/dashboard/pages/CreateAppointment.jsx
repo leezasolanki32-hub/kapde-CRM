@@ -32,32 +32,32 @@ const CreateAppointment = ({ setActiveTab, previousTab = 'Recovery' }) => {
           onClick={() => setActiveTab(previousTab)}
           className="p-2 hover:bg-slate-100 rounded-full transition-colors"
         >
-          <ArrowLeft size={24} className="text-[#6B6B70]" />
+          <ArrowLeft size={24} className="text-[#93c5fd]" />
         </button>
         <div>
-          <h1 className="text-[28px] font-bold text-[#1C1C1E] tracking-tight">Schedule Appointment</h1>
-          <p className="text-[14px] text-[#6B6B70] mt-1 font-medium">Set up a meeting or fitting session with a customer</p>
+          <h1 className="text-[28px] font-bold text-[#e8f0fe] tracking-tight">Schedule Appointment</h1>
+          <p className="text-[14px] text-[#93c5fd] mt-1 font-medium">Set up a meeting or fitting session with a customer</p>
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl border border-[#E2DED6] shadow-sm overflow-hidden">
+      <div className="bg-[#0a1628] rounded-2xl border border-[#1e3a5f] shadow-sm overflow-hidden">
         <form onSubmit={handleSubmit} className="p-6 md:p-8 space-y-8">
           
           {/* Customer Details section */}
           <div className="space-y-4">
-            <h3 className="text-[14px] font-bold text-[#1C1C1E] flex items-center gap-2 border-b border-[#f0f0f0] pb-2">
-              <User size={16} className="text-[#a855f7]" /> Customer Information
+            <h3 className="text-[14px] font-bold text-[#e8f0fe] flex items-center gap-2 border-b border-[#1e3a5f] pb-2">
+              <User size={16} className="text-[#3b82f6]" /> Customer Information
             </h3>
             
             <div>
-              <label className="block text-[12px] font-bold text-[#6B6B70] uppercase mb-1.5">Customer Name *</label>
+              <label className="block text-[12px] font-bold text-[#93c5fd] uppercase mb-1.5">Customer Name *</label>
               <input
                 type="text"
                 name="customerName"
                 required
                 value={formData.customerName}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2.5 rounded-xl border border-[#E2DED6] focus:outline-none focus:border-[#a855f7] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-white"
+                className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
                 placeholder="Select or type customer name"
               />
             </div>
@@ -65,13 +65,13 @@ const CreateAppointment = ({ setActiveTab, previousTab = 'Recovery' }) => {
 
           {/* Schedule section */}
           <div className="space-y-4">
-            <h3 className="text-[14px] font-bold text-[#1C1C1E] flex items-center gap-2 border-b border-[#f0f0f0] pb-2">
-              <Calendar size={16} className="text-[#a855f7]" /> Date & Time
+            <h3 className="text-[14px] font-bold text-[#e8f0fe] flex items-center gap-2 border-b border-[#1e3a5f] pb-2">
+              <Calendar size={16} className="text-[#3b82f6]" /> Date & Time
             </h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-[12px] font-bold text-[#6B6B70] uppercase mb-1.5 flex items-center gap-1.5">
+                <label className="block text-[12px] font-bold text-[#93c5fd] uppercase mb-1.5 flex items-center gap-1.5">
                   <Calendar size={14} /> Appointment Date *
                 </label>
                 <input
@@ -80,12 +80,12 @@ const CreateAppointment = ({ setActiveTab, previousTab = 'Recovery' }) => {
                   required
                   value={formData.appointmentDate}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#E2DED6] focus:outline-none focus:border-[#a855f7] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-white"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
                 />
               </div>
               
               <div>
-                <label className="block text-[12px] font-bold text-[#6B6B70] uppercase mb-1.5 flex items-center gap-1.5">
+                <label className="block text-[12px] font-bold text-[#93c5fd] uppercase mb-1.5 flex items-center gap-1.5">
                   <Clock size={14} /> Appointment Time *
                 </label>
                 <input
@@ -94,7 +94,7 @@ const CreateAppointment = ({ setActiveTab, previousTab = 'Recovery' }) => {
                   required
                   value={formData.appointmentTime}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#E2DED6] focus:outline-none focus:border-[#a855f7] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-white"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
                 />
               </div>
             </div>
@@ -102,18 +102,18 @@ const CreateAppointment = ({ setActiveTab, previousTab = 'Recovery' }) => {
 
           {/* Details section */}
           <div className="space-y-4">
-            <h3 className="text-[14px] font-bold text-[#1C1C1E] flex items-center gap-2 border-b border-[#f0f0f0] pb-2">
-              <FileText size={16} className="text-[#a855f7]" /> Appointment Details
+            <h3 className="text-[14px] font-bold text-[#e8f0fe] flex items-center gap-2 border-b border-[#1e3a5f] pb-2">
+              <FileText size={16} className="text-[#3b82f6]" /> Appointment Details
             </h3>
             
             <div>
-              <label className="block text-[12px] font-bold text-[#6B6B70] uppercase mb-1.5">Purpose *</label>
+              <label className="block text-[12px] font-bold text-[#93c5fd] uppercase mb-1.5">Purpose *</label>
               <select
                 name="purpose"
                 required
                 value={formData.purpose}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2.5 rounded-xl border border-[#E2DED6] focus:outline-none focus:border-[#a855f7] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-white"
+                className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
               >
                 <option value="" disabled>Select purpose</option>
                 <option value="Initial Consultation">Initial Consultation</option>
@@ -125,30 +125,30 @@ const CreateAppointment = ({ setActiveTab, previousTab = 'Recovery' }) => {
             </div>
 
             <div>
-              <label className="block text-[12px] font-bold text-[#6B6B70] uppercase mb-1.5">Additional Notes</label>
+              <label className="block text-[12px] font-bold text-[#93c5fd] uppercase mb-1.5">Additional Notes</label>
               <textarea
                 name="notes"
                 value={formData.notes}
                 onChange={handleInputChange}
                 rows="4"
-                className="w-full px-4 py-2.5 rounded-xl border border-[#E2DED6] focus:outline-none focus:border-[#a855f7] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-white resize-none"
+                className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628] resize-none"
                 placeholder="Any special requirements or instructions..."
               ></textarea>
             </div>
           </div>
 
           {/* Actions */}
-          <div className="pt-6 border-t border-[#f0f0f0] flex flex-col sm:flex-row justify-end gap-3">
+          <div className="pt-6 border-t border-[#1e3a5f] flex flex-col sm:flex-row justify-end gap-3">
             <button
               type="button"
               onClick={() => setActiveTab(previousTab)}
-              className="px-6 py-2.5 rounded-xl border border-[#E2DED6] text-[#6B6B70] font-bold text-[14px] hover:bg-slate-50 transition-colors"
+              className="px-6 py-2.5 rounded-xl border border-[#1e3a5f] text-[#93c5fd] font-bold text-[14px] hover:bg-slate-50 transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="flex items-center justify-center gap-2 px-8 py-2.5 bg-[#a855f7] text-white rounded-xl font-bold text-[14px] hover:bg-[#9333ea] transition-all shadow-md shadow-purple-200"
+              className="flex items-center justify-center gap-2 px-8 py-2.5 bg-[#3b82f6] text-[#e8f0fe] rounded-xl font-bold text-[14px] hover:bg-[#2563eb] transition-all shadow-md shadow-purple-200"
             >
               <CheckCircle size={18} /> Schedule Appointment
             </button>

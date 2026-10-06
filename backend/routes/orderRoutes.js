@@ -6,7 +6,7 @@ const router = express.Router();
 // Get all orders
 router.get('/', async (req, res) => {
   try {
-    const orders = await Order.find().sort({ createdAt: -1 });
+    const orders = await Order.find({ userId: req.headers['user-id'] }).sort({ createdAt: -1 });
     res.json(orders);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 // Add a new order
 router.post('/', async (req, res) => {
   try {
-    const order = new Order(req.body);
+    const order = new Order({ ...req.body, userId: req.headers['user-id'] });
     const newOrder = await order.save();
     res.status(201).json(newOrder);
   } catch (error) {
@@ -27,8 +27,8 @@ router.post('/', async (req, res) => {
 // Update an order
 router.put('/:id', async (req, res) => {
   try {
-    const updatedOrder = await Order.findByIdAndUpdate(
-      req.params.id,
+    const updatedOrder = await Order.findOneAndUpdate(
+      { _id: req.params.id, userId: req.headers['user-id'] },
       req.body,
       { new: true }
     );
@@ -41,7 +41,7 @@ router.put('/:id', async (req, res) => {
 // Delete an order
 router.delete('/:id', async (req, res) => {
   try {
-    await Order.findByIdAndDelete(req.params.id);
+    await Order.findOneAndDelete({ _id: req.params.id, userId: req.headers['user-id'] });
     res.json({ message: 'Order deleted' });
   } catch (error) {
     res.status(500).json({ message: error.message });

@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 const orderItemSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
   productId: String,
   productName: String,
   category: String,
@@ -10,6 +11,7 @@ const orderItemSchema = new mongoose.Schema({
 });
 
 const orderSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
   id: { type: String, required: true, unique: true },
   cust: { type: String, required: true },
   amt: { type: mongoose.Schema.Types.Mixed, required: true }, // Mixed to allow backward compatibility before migration script runs
