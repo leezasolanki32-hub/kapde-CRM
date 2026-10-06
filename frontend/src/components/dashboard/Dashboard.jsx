@@ -192,7 +192,7 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
   };
 
   return (
-    <div className="flex min-h-screen font-sans text-[#e8f0fe] relative bg-[#05080f]">
+    <div className="flex min-h-screen font-sans text-[#e8f0fe] relative bg-[#0a1628]">
 
       {/* Animated Soft Blue Background */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -313,10 +313,11 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
       </div>
 
       {/* Main Content */}
-      <div className={`flex-1 transition-all duration-300 relative z-10 p-4 md:p-8 pb-20 
+      <div className={`flex-1 transition-all duration-300 relative z-10 p-4 md:p-8 
         ${isCollapsed ? 'md:ml-[80px]' : 'md:ml-[260px]'}
       `}>
-        <header className="flex justify-between items-center mb-6 md:mb-10">
+        <div className="bg-[#f8f9fa] w-full min-h-[calc(100vh-64px)] rounded-[32px] overflow-hidden p-6 md:p-8 text-[#0f172a] shadow-xl">
+        <header className="flex justify-between items-center mb-0 md:mb-2 min-h-[40px]">
           <div className="flex items-center gap-3">
             {/* Mobile Menu Toggle */}
             <button 
@@ -329,33 +330,28 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
                 <line x1="3" y1="18" x2="21" y2="18"></line>
               </svg>
             </button>
-            <div className="flex items-center gap-2 bg-[#0a1628]/60 backdrop-blur-md border border-[#3b82f6]/20 rounded-full px-3 md:px-4 py-1 md:py-1.5 shadow-sm">
-              <span className="text-[10px] md:text-[13px] font-bold uppercase px-2 md:px-3 bg-[#3b82f6]/10 text-[#3b82f6] rounded-full py-0.5 border border-[#3b82f6]/20">
-                {plan === 'Starter' ? 'Trial' : `${plan}`}
-              </span>
-            </div>
           </div>
 
           <div className="flex items-center gap-6">
             <div
               onClick={() => setActiveTab('Notifications')}
-              className={`flex items-center gap-1.5 text-[14px] font-medium cursor-pointer transition p-2 rounded-lg ${activeTab === 'Notifications' ? 'bg-[#3b82f6]/10 text-[#3b82f6]' : 'text-[#e8f0fe] hover:bg-[#0a1628]/40'}`}
+              className={`flex items-center gap-1.5 text-[14px] font-medium cursor-pointer transition p-2 rounded-lg ${activeTab === 'Notifications' ? 'bg-[#3b82f6]/10 text-[#3b82f6]' : 'text-[#64748b] hover:bg-gray-100'}`}
             >
               <span className="text-lg"><Bell size={16} className="inline-block" /></span>
-              <span className="bg-[#f43f5e] text-[#e8f0fe] text-[10px] w-4 h-4 rounded-full flex items-center justify-center -ml-3 -mt-3 border-2 border-[#3b82f6]/20 font-bold shadow-sm">2</span>
+              <span className="bg-[#f43f5e] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center -ml-3 -mt-3 border-2 border-white font-bold shadow-sm">2</span>
             </div>
             <div
               onClick={() => setActiveTab('User')}
-              className={`flex items-center gap-3 cursor-pointer group p-1.5 pr-4 rounded-xl transition ${activeTab === 'User' ? 'bg-[#0a1628]/80 border border-[#93c5fd] shadow-sm' : 'border border-[#3b82f6]/20 bg-[#0a1628]/40 hover:bg-[#0a1628]/60'}`}
+              className={`flex items-center gap-3 cursor-pointer group p-1.5 pr-4 rounded-xl transition ${activeTab === 'User' ? 'bg-white border border-[#3b82f6]/30 shadow-sm' : 'border border-gray-200 bg-white hover:border-[#3b82f6]/30'}`}
             >
-              <div className={`w-9 h-9 rounded-full flex items-center justify-center font-bold transition shadow-sm ${activeTab === 'User' ? 'bg-[#3b82f6] text-[#e8f0fe]' : 'bg-[#0a1628] text-[#3b82f6] border border-[#93c5fd] group-hover:bg-[#3b82f6] group-hover:text-[#e8f0fe]'}`}>
+              <div className={`w-9 h-9 rounded-full flex items-center justify-center font-bold transition shadow-sm ${activeTab === 'User' ? 'bg-[#3b82f6] text-white' : 'bg-[#f1f5f9] text-[#3b82f6] border border-gray-200 group-hover:bg-[#3b82f6] group-hover:text-white'}`}>
                 {currentUser?.ownerName ? currentUser.ownerName.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) : 'JD'}
               </div>
               <div className="hidden md:block">
-                <div className={`text-[14px] font-bold ${activeTab === 'User' ? 'text-[#2563eb]' : 'text-[#e8f0fe]'}`}>
+                <div className={`text-[14px] font-bold ${activeTab === 'User' ? 'text-[#3b82f6]' : 'text-[#0f172a]'}`}>
                   {currentUser?.ownerName || 'John Doe'}
                 </div>
-                <div className="text-[11px] text-[#93c5fd] font-medium opacity-80 uppercase tracking-wide">
+                <div className="text-[11px] text-[#64748b] font-medium uppercase tracking-wide">
                   {currentUser?.shopName || 'User'}
                 </div>
               </div>
@@ -364,6 +360,7 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
         </header>
 
         {renderContent()}
+        </div>
       </div>
 
       {/* Upgrade Pricing Modal */}

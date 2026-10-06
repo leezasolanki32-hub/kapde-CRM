@@ -148,7 +148,7 @@ const Recovery = ({ setActiveTab }) => {
                 >
                   <Filter size={14} />
                 </button>
-                <select className="bg-[#0a1628] border border-[#1e3a5f] rounded-lg px-3 py-1.5 text-[12px] font-bold text-[#0a1628] focus:outline-none focus:border-[#3b82f6]">
+                <select className="bg-[#0a1628] border border-[#1e3a5f] rounded-lg px-3 py-1.5 text-[12px] font-bold text-[#e8f0fe] focus:outline-none focus:border-[#3b82f6]">
                   <option>Newest First</option>
                   <option>Highest Amount</option>
                   <option>Risk Level</option>

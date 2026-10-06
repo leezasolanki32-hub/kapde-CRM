@@ -11,18 +11,37 @@ const AIAssistantButton = ({ context = 'dashboard' }) => {
 
   return (
     <>
-      {/* Floating Button */}
-      <motion.button
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 bg-[#3b82f6] text-white p-4 rounded-full shadow-2xl flex items-center gap-2 hover:bg-[#2563eb] transition group"
-      >
-        <Sparkles size={24} />
-        <span className="font-bold hidden group-hover:block whitespace-nowrap overflow-hidden px-1">✨ Kaapde AI</span>
-      </motion.button>
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        {/* Speech Bubble */}
+        {!isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.5 }}
+            className="mb-4 relative bg-white text-[#0f172a] px-4 py-2.5 rounded-2xl rounded-br-none shadow-xl font-bold text-[13px] whitespace-nowrap border border-gray-100 animate-bounce"
+          >
+            Need any help?
+            {/* Cloud tail */}
+            <div className="absolute -bottom-2 right-4 w-4 h-4 bg-white border-b border-r border-gray-100 transform rotate-45"></div>
+          </motion.div>
+        )}
+        
+        <motion.button
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setIsOpen(true)}
+          className="relative bg-transparent border-none p-0 outline-none flex items-center justify-center cursor-pointer w-24 h-24 drop-shadow-xl hover:drop-shadow-2xl transition-all"
+        >
+          {/* Using the user uploaded robot avatar without circle */}
+          <img 
+            src="/robot-assistant-transparent.png" 
+            alt="AI Assistant" 
+            className="w-full h-full object-contain"
+          />
+        </motion.button>
+      </div>
 
       {/* Chat Panel */}
       <AnimatePresence>

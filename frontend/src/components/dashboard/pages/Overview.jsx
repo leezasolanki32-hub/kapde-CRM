@@ -1,110 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { StatCard, Bar, SegmentRow } from '../DashboardComponents';
-import { ClipboardList, AlertTriangle, Check, ShoppingBag, Truck, Lightbulb, BarChart2 } from "lucide-react";
 import { api } from '../../../api';
 
-const PercentageAreaChart = () => (
-  <div className="w-full mt-6 animate-[slideDownFade_0.5s_ease-out] h-full flex flex-col">
-    <div className="relative flex-1 w-full bg-[#0a1628]/20 rounded-xl p-8 border border-[#93c5fd]/15 overflow-hidden flex flex-col justify-center">
-      {/* Y-Axis Labels */}
-      <div className="absolute left-6 top-10 bottom-16 flex flex-col justify-between text-[11px] text-[#93c5fd] font-bold">
-        <span>5 —</span><span>4 —</span><span>3 —</span><span>2 —</span><span>1 —</span>
-      </div>
-
-      {/* SVG Chart */}
-      <div className="ml-8 h-full relative">
-        <svg viewBox="0 0 1000 300" className="w-full h-[180px] preserve-3d">
-          <path d="M 0 50 L 300 100 L 400 150 L 400 300 L 0 300 Z" fill="#00C4CC" className="opacity-90 hover:opacity-100 transition-opacity cursor-pointer" />
-          <text x="150" y="180" fill="white" fontSize="40" fontWeight="bold" className="pointer-events-none">75%</text>
-
-          <path d="M 400 150 L 600 160 L 750 220 L 750 300 L 400 300 Z" fill="#3B82F6" className="opacity-90 hover:opacity-100 transition-opacity cursor-pointer" />
-          <text x="520" y="240" fill="white" fontSize="40" fontWeight="bold" className="pointer-events-none">50%</text>
-
-          <path d="M 750 220 L 900 230 L 1000 250 L 1000 300 L 750 300 Z" fill="#FF6B9B" className="opacity-90 hover:opacity-100 transition-opacity cursor-pointer" />
-          <text x="850" y="270" fill="white" fontSize="40" fontWeight="bold" className="pointer-events-none">15%</text>
-          <line x1="0" y1="300" x2="1000" y2="300" stroke="#1e3a5f" strokeWidth="2" />
-        </svg>
-        <div className="flex justify-between mt-2 text-[10px] text-[#93c5fd] px-2 font-bold">
-          <span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>60</span><span>70</span><span>80</span><span>90</span>
-        </div>
-      </div>
-    </div>
-
-    <div className="grid grid-cols-3 gap-6 mt-6 px-4">
-      <div className="flex flex-col">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-[12px] text-[#00C4CC] font-bold">Option</span>
-          <span className="text-[20px] text-[#00C4CC] font-bold">03</span>
-        </div>
-        <ul className="text-[10px] text-[#93c5fd] space-y-1 border-t border-[#1e3a5f] pt-2">
-          <li>Capture audience attention</li>
-          <li>Detailed revenue trends</li>
-        </ul>
-      </div>
-      <div className="flex flex-col">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-[12px] text-[#3B82F6] font-bold">Option</span>
-          <span className="text-[20px] text-[#3B82F6] font-bold">02</span>
-        </div>
-        <ul className="text-[10px] text-[#93c5fd] space-y-1 border-t border-[#1e3a5f] pt-2">
-          <li>Customer reach</li>
-          <li>Engagement metrics</li>
-        </ul>
-      </div>
-      <div className="flex flex-col">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-[12px] text-[#FF6B9B] font-bold">Option</span>
-          <span className="text-[20px] text-[#FF6B9B] font-bold">01</span>
-        </div>
-        <ul className="text-[10px] text-[#93c5fd] space-y-1 border-t border-[#1e3a5f] pt-2">
-          <li>Final conversion</li>
-          <li>Return on investment</li>
-        </ul>
-      </div>
-    </div>
+const MiniBarChart = ({ color }) => (
+  <div className="flex items-end gap-1.5 h-10">
+    <div className={`w-2 h-[40%] rounded-sm ${color} opacity-60`}></div>
+    <div className={`w-2 h-[70%] rounded-sm ${color}`}></div>
+    <div className={`w-2 h-[50%] rounded-sm ${color} opacity-80`}></div>
+    <div className={`w-2 h-[100%] rounded-sm ${color}`}></div>
+    <div className={`w-2 h-[60%] rounded-sm ${color} opacity-60`}></div>
   </div>
 );
 
-const SalesFunnel = () => {
-  const stages = [
-    { label: 'Raw', value: '₹12.4L', count: 184, color: 'bg-[#0a1628]', text: 'text-[#3b82f6]' },
-    { label: 'New', value: '₹8.9L', count: 112, color: 'bg-[#080d1a]', text: 'text-[#0ea5e9]' },
-    { label: 'Discussion', value: '₹5.2L', count: 64, color: 'bg-[#dcfce7]', text: 'text-[#16a34a]' },
-    { label: 'Demo', value: '₹2.1L', count: 32, color: 'bg-[#fff7ed]', text: 'text-[#ea580c]' },
-    { label: 'Proposal', value: '₹1.4L', count: 14, color: 'bg-[#fef2f2]', text: 'text-[#dc2626]' },
-    { label: 'Decided', value: '₹95K', count: 9, color: 'bg-[#fafaf9]', text: 'text-[#44403c]' },
-  ];
-
-  return (
-    <div className="bg-gradient-to-br from-[#0a1628]/70 to-[#0a1628]/80 backdrop-blur-md border border-[#93c5fd]/30 rounded-xl p-6 shadow-sm h-full flex flex-col hover:shadow-lg hover:border-[#3b82f6]/40 transition-all duration-300 relative overflow-hidden card-hover-lift animate-fade-in-up" style={{ animationDelay: '150ms' }}>
-      <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b from-[#3b82f6] to-[#93c5fd]"></div>
-      <div className="flex justify-between items-center mb-6">
-        <h3 className="font-bold text-[#1d4ed8]">Sales Funnel</h3>
-        <span className="text-[11px] font-bold text-[#93c5fd] uppercase">4.8% Conv.</span>
-      </div>
-      <div className="flex flex-col gap-2 flex-1">
-        {stages.map((s, i) => (
-          <div key={i} className={`flex items-center justify-between p-2.5 rounded-lg border border-transparent hover:border-[#1e3a5f] transition-all cursor-default ${s.color} bg-opacity-40`} style={{ width: `${100 - (i * 6)}%` }}>
-            <div className="flex flex-col">
-              <span className={`text-[10px] font-bold uppercase tracking-wider ${s.text}`}>{s.label}</span>
-              <span className="text-[13px] font-bold text-[#e8f0fe]">{s.value}</span>
-            </div>
-            <span className="text-[11px] font-bold text-[#93c5fd]">({s.count})</span>
-          </div>
-        ))}
+const StatCardImageStyle = ({ title, value, change, isPositive, color }) => (
+  <div className="bg-white p-5 rounded-2xl flex justify-between items-center shadow-sm border border-gray-100">
+    <div>
+      <div className="text-[12px] text-gray-500 font-medium mb-1.5">{title}</div>
+      <div className="text-[28px] font-bold text-[#0f172a] mb-1.5">{value}</div>
+      <div className={`text-[11px] font-medium flex items-center gap-1 ${isPositive ? 'text-green-500' : 'text-red-500'}`}>
+        {isPositive ? '↗' : '↘'} {change} than last month
       </div>
     </div>
-  );
-};
-
-const TaskNotification = ({ onManageTasks }) => (
-  <div className="flex items-center gap-4 bg-[#080d1a]/80 backdrop-blur-sm border border-[#f59e0b]/60 rounded-xl p-4 mb-8 animate-[pulse_3s_infinite] shadow-sm">
-    <div className="w-10 h-10 rounded-full bg-[#f59e0b] bg-opacity-10 flex items-center justify-center text-[#f59e0b] text-xl border border-[#f59e0b] border-opacity-20 shadow-inner"><ClipboardList size={16} className="inline-block" /></div>
-    <div className="flex-1">
-      <div className="text-[14px] font-bold text-[#fcd34d] flex items-center gap-2">Priority Tasks Due Today <span className="bg-[#f59e0b] text-[#e8f0fe] text-[10px] px-1.5 py-0.5 rounded-full">3</span></div>
-      <div className="text-[12px] text-[#fbbf24] font-medium opacity-80 mt-0.5">Follow up with Priya R. (VIP) · Restock Lavender Blazer · Process Shopify Batch</div>
-    </div>
-    <button onClick={onManageTasks} className="text-[12px] font-bold text-[#f59e0b] hover:bg-[#f59e0b]/20 px-4 py-2 rounded-lg transition-all border border-[#f59e0b]">Manage Tasks</button>
+    <MiniBarChart color={color.split(' ')[0]} />
   </div>
 );
 
@@ -143,124 +59,201 @@ const Overview = ({ plan, setPlan, setActiveTab, currentUser }) => {
   }, [currentUser]);
 
   return (
-    <div className="animate-[slideUpFade_0.4s_ease-out] w-full max-w-[1600px] mx-auto">
-      <TaskNotification onManageTasks={() => setActiveTab('Tasks')} />
-
+    <div className="animate-[slideUpFade_0.4s_ease-out] w-full max-w-[1600px] mx-auto pb-10">
+      
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between mb-10">
-        <div>
-          <h1 className="text-[20px] font-bold text-[#e8f0fe] flex items-center gap-2">Overview <span className="text-[#93c5fd] font-normal">— Summer 2026</span></h1>
-          <p className="text-[#93c5fd] text-[13px] mt-1">Last updated: today, 10:42 AM</p>
-        </div>
-        <div className="flex items-center gap-4 mt-4 md:mt-0">
-          <div className="bg-[#0a1628] px-2 py-1.5 rounded-md border border-[#93c5fd] flex items-center gap-2 mr-2">
-            <span className="text-[11px] font-bold text-[#2563eb] uppercase">Plan:</span>
-            <select value={plan} onChange={(e) => setPlan(e.target.value)} className="bg-transparent border-none text-[13px] font-bold text-[#3b82f6] focus:outline-none cursor-pointer">
-              <option value="Starter">Starter (Free)</option>
-              <option value="Professional">Professional</option>
-              <option value="Business">Business</option>
-            </select>
+      <div className="flex justify-between items-center mb-8 md:-mt-12 md:pr-[250px] relative z-10 pointer-events-none">
+        <h1 className="text-[28px] font-bold text-[#0f172a] pointer-events-auto">Dashboard</h1>
+        <button className="bg-[#0f172a] text-white px-5 py-2.5 rounded-xl text-[13px] font-semibold hover:bg-gray-800 transition shadow-sm pointer-events-auto hidden md:block">
+          Add Custom Widget
+        </button>
+      </div>
+      <button className="bg-[#0f172a] text-white px-5 py-2.5 rounded-xl text-[13px] font-semibold hover:bg-gray-800 transition shadow-sm md:hidden mb-6 w-full">
+        Add Custom Widget
+      </button>
+
+      {/* Row 1: 3 Stat Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <StatCardImageStyle 
+          title="Total Revenue" 
+          value={stats.totalRevenue} 
+          change="2.3%" 
+          isPositive={false} 
+          color="bg-[#3b82f6]" 
+        />
+        <StatCardImageStyle 
+          title="Active Customers" 
+          value={stats.activeCustomers} 
+          change="1.4%" 
+          isPositive={false} 
+          color="bg-[#ef4444]" 
+        />
+        <StatCardImageStyle 
+          title="Total Orders" 
+          value={stats.totalOrders} 
+          change="5.1%" 
+          isPositive={true} 
+          color="bg-[#10b981]" 
+        />
+      </div>
+
+      {/* Row 2 */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6 flex-1">
+        {/* Card 1: Donut Chart */}
+        <div className="lg:col-span-3 bg-white border border-gray-100 p-6 rounded-[24px] flex flex-col items-center justify-center shadow-sm relative">
+          <div className="w-full text-left text-[14px] font-bold text-[#0f172a] mb-8">Return Rate</div>
+          <div className="relative w-36 h-36 flex items-center justify-center mb-4">
+             <svg viewBox="0 0 36 36" className="w-full h-full transform -rotate-90">
+               <path strokeDasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#f1f5f9" strokeWidth="6" />
+               <path strokeDasharray="72, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#10b981" strokeWidth="6" strokeLinecap="round" />
+             </svg>
+             <div className="absolute inset-0 flex items-center justify-center">
+               <span className="text-[36px] font-bold text-[#0f172a]">72%</span>
+             </div>
           </div>
-          <button onClick={() => setActiveTab('Customers')} className="bg-[#3b82f6] text-[#e8f0fe] px-5 py-2.5 rounded-lg text-[14px] font-semibold hover:bg-[#2563eb] shadow-sm">+ Add Customer</button>
+          <div className="text-[11px] text-gray-500">Deviation Index 2%</div>
         </div>
-      </div>
 
-      {/* Top Stats Cards */}
-      <div className="flex gap-4 md:gap-6 mb-10 overflow-x-auto pb-4 no-scrollbar">
-        <StatCard title="Total Revenue" value={stats.totalRevenue} change="0%" isPositive={true} />
-        <StatCard title="Active Customers" value={stats.activeCustomers} change="0%" isPositive={true} />
-        <StatCard title="Total Orders" value={stats.totalOrders} change="0%" isPositive={true} />
-        <StatCard title="Avg Order Value" value={stats.avgOrderValue} change="0%" isPositive={true} />
-        <StatCard title="Return Rate" value={stats.returnRate} change="0%" isPositive={true} />
-      </div>
-
-      {/* Upper Section: All 6 Activity/Business Boxes */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-10">
-        {/* Box 1: Inventory Alerts */}
-        <div className="bg-gradient-to-br from-[#0a1628]/70 to-[#0a1628]/80 backdrop-blur-md border border-[#93c5fd]/30 rounded-xl p-7 shadow-sm h-full flex flex-col hover:shadow-lg hover:border-[#3b82f6]/40 transition-all duration-300 relative overflow-hidden card-hover-lift animate-fade-in-up">
-          <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b from-[#3b82f6] to-[#93c5fd]"></div>
-          <div className="flex justify-between items-start mb-8">
-            <div className="flex flex-col">
-              <h3 className="font-bold text-[#1d4ed8] text-[18px]">Inventory Alerts</h3>
-              <span className="text-[12px] font-bold bg-[#fef2f2] text-[#ef4444] px-2.5 py-1 rounded w-fit mt-1.5">6 items low</span>
+        {/* Card 2: List */}
+        <div className="lg:col-span-4 bg-white border border-gray-100 p-6 rounded-[24px] flex flex-col shadow-sm">
+          <div className="text-[14px] font-bold text-[#0f172a] text-center mb-1">Customer Types</div>
+          <div className="text-[44px] font-bold text-[#0f172a] text-center mb-6">86%</div>
+          <div className="flex flex-col gap-3 mb-6">
+            <div className="flex justify-between text-[13px] font-medium text-gray-600 items-center">
+              <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-[#10b981]"></div> Retail</div>
+              <span>52%</span>
             </div>
-            <button onClick={() => setActiveTab('Inventory')} className="bg-[#3b82f6] text-[#e8f0fe] px-4 py-2 rounded-lg text-[14px] font-bold hover:bg-[#2563eb] transition-all shadow-sm">+ Add Stock</button>
-          </div>
-          <div className="flex flex-col gap-5 flex-1">
-            {[].map((c, i) => (
-              <div key={i} className="flex items-center justify-between py-1 border-b border-[#93c5fd]/10">
-                <div className="flex items-center gap-5">
-                  <div className={`w-11 h-11 rounded-full flex items-center justify-center text-[13px] font-bold ${c.c}`}>{c.initials}</div>
-                  <div className="text-[16px] font-bold text-[#e8f0fe]">{c.name}</div>
-                </div>
-                <div className="text-[16px] font-bold text-[#e8f0fe]">{c.ltv}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Box 5: Customer Segments */}
-        <div className="bg-gradient-to-br from-[#0a1628]/70 to-[#0a1628]/80 backdrop-blur-md border border-[#93c5fd]/30 rounded-xl p-7 shadow-sm h-full flex flex-col hover:shadow-lg hover:border-[#3b82f6]/40 transition-all duration-300 relative overflow-hidden card-hover-lift animate-fade-in-up" style={{ animationDelay: '300ms' }}>
-          <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b from-[#3b82f6] to-[#93c5fd]"></div>
-          <h3 className="font-bold text-[#1d4ed8] text-[18px] mb-8">Customer Segments</h3>
-          <div className="flex flex-col gap-5 flex-1">
-            <SegmentRow title="VIP / Loyalists" desc="AOV ₹4,800" users="112" colorClass="text-[#3b82f6] bg-[#0a1628]" />
-            <SegmentRow title="Repeat buyers" desc="AOV ₹2,100" users="1,056" colorClass="text-[#3b82f6] bg-[#0a1628]" />
-            <SegmentRow title="First time buyers" desc="AOV ₹1,450" users="893" colorClass="text-[#10b981] bg-[#ecfdf5]" />
-            <SegmentRow title="Dormant clients" desc="No activity 60d" users="245" colorClass="text-[#ef4444] bg-[#fef2f2]" />
-            <SegmentRow title="At Risk" desc="No order 30d" users="412" colorClass="text-[#f59e0b] bg-[#fffaf1]" />
-            <SegmentRow title="Recent Leads" desc="Joined this week" users="87" colorClass="text-[#06b6d4] bg-[#ecfeff]" />
-          </div>
-        </div>
-
-        {/* Box 6: Recent Activity */}
-        <div className="bg-gradient-to-br from-[#0a1628]/70 to-[#0a1628]/80 backdrop-blur-md border border-[#93c5fd]/30 rounded-xl p-7 shadow-sm h-full flex flex-col hover:shadow-lg hover:border-[#3b82f6]/40 transition-all duration-300 relative overflow-hidden card-hover-lift animate-fade-in-up" style={{ animationDelay: '400ms' }}>
-          <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b from-[#3b82f6] to-[#93c5fd]"></div>
-          <h3 className="font-bold text-[#1d4ed8] text-[18px] mb-8">Recent Activity</h3>
-          <div className="flex flex-col gap-6 flex-1 relative before:absolute before:left-[17.5px] before:top-2 before:bottom-2 before:w-[2px] before:bg-[#93c5fd]/20">
-            {[
-              { icon: '⭐', bg: 'bg-[#0a1628]', text: 'Priya R. upgraded to VIP', time: '2h ago' },
-              { icon: '⚠️', bg: 'bg-[#fef2f2]', text: 'Lavender Blazer stock alert', time: '3h ago' },
-              { icon: '✅', bg: 'bg-[#ecfdf5]', text: 'Summer flash sale live', time: 'Yesterday' },
-              { icon: '🛍️', bg: 'bg-[#0a1628]', text: '147 new orders processed', time: 'Yesterday' },
-              { icon: '🚚', bg: 'bg-[#fdf2f8]', text: 'Supplier order shipped', time: 'Yesterday' },
-              { icon: '🆕', bg: 'bg-[#ecfeff]', text: '87 new leads captured', time: '2 days ago' },
-              { icon: '💡', bg: 'bg-[#fef9c3]', text: 'New strategy report', time: '2 days ago' },
-            ].map((act, i) => (
-              <div key={i} className="flex items-start gap-4 relative z-10">
-                <div className={`w-9 h-9 shrink-0 rounded-full flex items-center justify-center text-[13px] border-[2px] border-[#3b82f6]/20 ${act.bg}`}>{act.icon}</div>
-                <div className="pt-1">
-                  <div className="text-[15px] font-bold text-[#e8f0fe] leading-tight">{act.text}</div>
-                  <div className="text-[12px] text-[#93c5fd] mt-0.5">{act.time}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Last Section: Revenue Growth Matrix (Full Width) */}
-      <div className="relative">
-        <div className="bg-gradient-to-br from-[#0a1628]/70 to-[#0a1628]/80 backdrop-blur-md border border-[#93c5fd]/30 rounded-xl p-8 shadow-sm flex flex-col min-h-[480px] hover:shadow-lg hover:border-[#3b82f6]/40 transition-all duration-300 relative overflow-hidden card-hover-lift animate-fade-in-up" style={{ animationDelay: '500ms' }}>
-          <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#3b82f6] to-[#93c5fd]"></div>
-          <h3 className="font-bold text-[#1d4ed8] text-xl underline decoration-[#93c5fd] decoration-4 underline-offset-8 mb-4">Revenue Growth Matrix</h3>
-          <p className="text-[14px] text-[#93c5fd] mb-6">Comprehensive tracking across all collection segments</p>
-          <div className="flex-1">
-            <PercentageAreaChart />
-          </div>
-        </div>
-
-        {plan === 'Professional' && (
-          <div className="absolute inset-0 z-20 backdrop-blur-[4px] bg-[#0a1628]/30 flex items-center justify-center rounded-xl border border-[#93c5fd]/20">
-            <div className="bg-[#0a1628] p-8 rounded-2xl shadow-2xl border border-[#0a1628] text-center max-w-[350px]">
-              <div className="text-4xl mb-4"><BarChart2 size={16} className="inline-block" /></div>
-              <h3 className="font-bold text-[#e8f0fe] mb-2">Upgrade to Business</h3>
-              <p className="text-[13px] text-[#93c5fd] mb-6">Unlock full growth matrix and advanced matrix metrics with the Business plan.</p>
-              <button onClick={() => setPlan('Business')} className="w-full bg-[#3b82f6] text-[#e8f0fe] py-3 rounded-xl font-bold hover:bg-[#2563eb] shadow-lg transition-all">Upgrade to Business</button>
+            <div className="flex justify-between text-[13px] font-medium text-gray-600 items-center">
+              <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-[#10b981] opacity-60"></div> Wholesale</div>
+              <span>22%</span>
+            </div>
+            <div className="flex justify-between text-[13px] font-medium text-gray-600 items-center">
+              <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-[#10b981] opacity-30"></div> Corporate</div>
+              <span>12%</span>
             </div>
           </div>
-        )}
+          <button className="w-full py-2.5 rounded-xl border border-gray-200 text-[#0f172a] text-[13px] font-semibold hover:bg-gray-50 transition mt-auto">
+            View Details
+          </button>
+        </div>
+
+        {/* Card 3: Map/Stats */}
+        <div className="lg:col-span-5 bg-white border border-gray-100 p-6 rounded-[24px] shadow-sm flex flex-col relative overflow-hidden">
+          <div className="text-[15px] font-bold text-[#0f172a] mb-1">Regional Sales Distribution</div>
+          <div className="text-[12px] text-gray-500 mb-6 max-w-[200px]">Percentage of sales across different regions in India.</div>
+          
+          <div className="flex z-10 h-full">
+            <div className="flex flex-col gap-4 w-1/2 justify-center">
+              <div className="flex items-center gap-2 text-[13px] font-medium text-[#0f172a]">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#ef4444]"></div> Maharashtra - 89%
+              </div>
+              <div className="flex items-center gap-2 text-[13px] font-medium text-[#0f172a]">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#ef4444] opacity-80"></div> Delhi - 82%
+              </div>
+              <div className="flex items-center gap-2 text-[13px] font-medium text-[#0f172a]">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#ef4444] opacity-60"></div> Karnataka - 85%
+              </div>
+              <div className="flex items-center gap-2 text-[13px] font-medium text-[#0f172a]">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#ef4444] opacity-40"></div> Gujarat - 80%
+              </div>
+              <div className="flex items-center gap-2 text-[13px] font-medium text-[#0f172a]">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#ef4444] opacity-30"></div> Others - 79%
+              </div>
+            </div>
+            
+            {/* Abstract Map Graphic */}
+            <div className="w-1/2 flex items-center justify-center relative">
+               <svg viewBox="0 0 100 100" className="w-[140px] h-[140px] text-[#ef4444] opacity-80" fill="currentColor">
+                 <path d="M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 90C27.9 90 10 72.1 10 50S27.9 10 50 10s40 17.9 40 40-17.9 40-40 40z" fillOpacity="0.1"/>
+                 <circle cx="30" cy="40" r="4" />
+                 <circle cx="60" cy="30" r="6" />
+                 <circle cx="45" cy="70" r="5" />
+                 <circle cx="70" cy="60" r="3" />
+                 <path d="M30 40 L60 30 L70 60 L45 70 Z" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.3"/>
+               </svg>
+               {/* Tooltip-like element over map */}
+               <div className="absolute top-[20%] -right-[5%] bg-[#0f172a] px-3 py-1.5 rounded-lg border border-gray-700 shadow-xl">
+                 <div className="text-[10px] font-bold text-white">Maharashtra</div>
+                 <div className="text-[9px] text-gray-400">High Level <span className="text-white ml-2">89%</span></div>
+               </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      {/* Row 3 */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        {/* Two small cards stacked */}
+        <div className="lg:col-span-5 flex flex-col gap-4 justify-between h-auto lg:h-[180px]">
+          {/* Dark Oval */}
+          <div className="bg-[#0f172a] px-6 py-4 rounded-[32px] flex items-center gap-5 shadow-lg flex-1">
+            <div className="w-[52px] h-[52px] rounded-full border-4 border-[#f97316] flex items-center justify-center text-[13px] font-bold text-white shrink-0">
+              76.2
+            </div>
+            <div>
+              <div className="text-[15px] font-bold text-white mb-0.5">Business Growth Index</div>
+              <div className="text-[12px] text-gray-400">Impact of AI insights on revenue</div>
+            </div>
+          </div>
+          
+          {/* Light Oval */}
+          <div className="bg-white border border-gray-100 px-6 py-4 rounded-[32px] flex items-center gap-5 shadow-sm flex-1">
+            <div className="w-[52px] h-[52px] rounded-full border-4 border-[#10b981] flex items-center justify-center text-[13px] font-bold text-[#0f172a] shrink-0">
+              57m
+            </div>
+            <div>
+              <div className="text-[15px] font-bold text-[#0f172a] mb-0.5">Active Daily Users</div>
+              <div className="text-[12px] text-gray-500">Average daily active sessions in minutes</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Community Banner */}
+        <div className="lg:col-span-7 bg-gradient-to-br from-[#1d4ed8] to-[#3b82f6] rounded-[32px] p-8 flex flex-col justify-between relative overflow-hidden shadow-lg min-h-[180px]">
+          {/* Abstract background shapes */}
+          <div className="absolute right-0 top-0 bottom-0 w-1/2 pointer-events-none overflow-hidden">
+             <svg viewBox="0 0 200 200" className="absolute -right-10 top-0 w-full h-full text-white/10" fill="currentColor">
+               <path d="M100,0 C155.228,0 200,44.772 200,100 C200,155.228 155.228,200 100,200 C44.772,200 0,155.228 0,100 C0,44.772 44.772,0 100,0 Z" />
+             </svg>
+             <svg viewBox="0 0 200 200" className="absolute -right-20 -bottom-10 w-[120%] h-[120%] text-white/5" fill="currentColor">
+               <path d="M100,0 C155.228,0 200,44.772 200,100 C200,155.228 155.228,200 100,200 C44.772,200 0,155.228 0,100 C0,44.772 44.772,0 100,0 Z" />
+             </svg>
+          </div>
+          
+          <div className="flex items-center justify-between w-full relative z-10 mb-2">
+            <div className="flex items-center gap-2 text-white/90 text-[13px] font-bold">
+              <svg viewBox="0 0 24 24" className="w-4 h-4 text-white" fill="currentColor"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9zM12 4.15L6.04 7.5 12 10.85l5.96-3.35L12 4.15z"/></svg>
+              KapdeCRM Global
+            </div>
+            <div className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center text-white cursor-pointer hover:bg-white/10 transition">
+              ↗
+            </div>
+          </div>
+          
+          <div className="relative z-10 flex justify-between items-end mt-auto">
+            <div>
+              <div className="text-[32px] font-bold text-white leading-[1.1] mb-4 max-w-[280px]">
+                Let's join our community
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="flex -space-x-2">
+                  <img src="https://i.pravatar.cc/100?img=1" alt="user" className="w-8 h-8 rounded-full border-2 border-[#1d4ed8]" />
+                  <img src="https://i.pravatar.cc/100?img=2" alt="user" className="w-8 h-8 rounded-full border-2 border-[#1d4ed8]" />
+                  <img src="https://i.pravatar.cc/100?img=3" alt="user" className="w-8 h-8 rounded-full border-2 border-[#1d4ed8]" />
+                </div>
+                <div className="text-white text-[13px] font-medium">230k+ people</div>
+              </div>
+            </div>
+            
+            {/* Tags */}
+            <div className="flex flex-col gap-2 items-end">
+               <div className="bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-lg text-[10px] text-white font-semibold">Ecology Systems</div>
+               <div className="bg-white text-[#1d4ed8] px-3 py-1.5 rounded-lg text-[10px] font-bold shadow-lg flex items-center gap-2">Global Statistic <div className="w-1.5 h-1.5 rounded-full bg-[#1d4ed8] animate-pulse"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 };

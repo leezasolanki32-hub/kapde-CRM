@@ -113,3 +113,30 @@ body {
   transform: translateY(-4px) scale(1.01);
   box-shadow: 0 15px 30px -10px rgba(59, 130, 246, 0.2);
 }
+
+/* --- Global Theme Fixes for Light Dashboard Area --- */
+.bg-\[\#f8f9fa\] .text-\[\#e8f0fe\] {
+  color: #0f172a !important;
+}
+.bg-\[\#f8f9fa\] .text-\[\#93c5fd\] {
+  color: #64748b !important;
+}
+
+/* Revert text colors inside dark cards within the light area */
+.bg-\[\#f8f9fa\] .bg-\[\#0a1628\] .text-\[\#e8f0fe\],
+.bg-\[\#f8f9fa\] .bg-\[\#080d1a\] .text-\[\#e8f0fe\],
+.bg-\[\#f8f9fa\] .bg-\[\#05080f\] .text-\[\#e8f0fe\],
+.bg-\[\#f8f9fa\] .bg-\[\#0a1628\].text-\[\#e8f0fe\],
+.bg-\[\#f8f9fa\] .bg-\[\#080d1a\].text-\[\#e8f0fe\],
+.bg-\[\#f8f9fa\] .bg-\[\#05080f\].text-\[\#e8f0fe\] {
+  color: #e8f0fe !important;
+}
+
+.bg-\[\#f8f9fa\] .bg-\[\#0a1628\] .text-\[\#93c5fd\],
+.bg-\[\#f8f9fa\] .bg-\[\#080d1a\] .text-\[\#93c5fd\],
+.bg-\[\#f8f9fa\] .bg-\[\#05080f\] .text-\[\#93c5fd\],
+.bg-\[\#f8f9fa\] .bg-\[\#0a1628\].text-\[\#93c5fd\],
+.bg-\[\#f8f9fa\] .bg-\[\#080d1a\].text-\[\#93c5fd\],
+.bg-\[\#f8f9fa\] .bg-\[\#05080f\].text-\[\#93c5fd\] {
+  color: #93c5fd !important;
+}
