@@ -64,13 +64,7 @@ const Overview = ({ plan, setPlan, setActiveTab, currentUser }) => {
       {/* Header */}
       <div className="flex justify-between items-center mb-8 md:-mt-12 md:pr-[250px] relative z-10 pointer-events-none">
         <h1 className="text-[28px] font-bold text-[#0f172a] pointer-events-auto">Dashboard</h1>
-        <button className="bg-[#0f172a] text-white px-5 py-2.5 rounded-xl text-[13px] font-semibold hover:bg-gray-800 transition shadow-sm pointer-events-auto hidden md:block">
-          Add Custom Widget
-        </button>
       </div>
-      <button className="bg-[#0f172a] text-white px-5 py-2.5 rounded-xl text-[13px] font-semibold hover:bg-gray-800 transition shadow-sm md:hidden mb-6 w-full">
-        Add Custom Widget
-      </button>
 
       {/* Row 1: 3 Stat Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
@@ -132,7 +126,10 @@ const Overview = ({ plan, setPlan, setActiveTab, currentUser }) => {
               <span>12%</span>
             </div>
           </div>
-          <button className="w-full py-2.5 rounded-xl border border-gray-200 text-[#0f172a] text-[13px] font-semibold hover:bg-gray-50 transition mt-auto">
+          <button 
+            onClick={() => setActiveTab('Customers')}
+            className="w-full py-2.5 rounded-xl border border-gray-200 text-[#0f172a] text-[13px] font-semibold hover:bg-gray-50 transition mt-auto"
+          >
             View Details
           </button>
         </div>
@@ -142,8 +139,8 @@ const Overview = ({ plan, setPlan, setActiveTab, currentUser }) => {
           <div className="text-[15px] font-bold text-[#0f172a] mb-1">Regional Sales Distribution</div>
           <div className="text-[12px] text-gray-500 mb-6 max-w-[200px]">Percentage of sales across different regions in India.</div>
           
-          <div className="flex z-10 h-full">
-            <div className="flex flex-col gap-4 w-1/2 justify-center">
+          <div className="flex flex-col sm:flex-row z-10 h-full">
+            <div className="flex flex-col gap-4 w-full sm:w-1/2 justify-center mb-6 sm:mb-0">
               <div className="flex items-center gap-2 text-[13px] font-medium text-[#0f172a]">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#ef4444]"></div> Maharashtra - 89%
               </div>
@@ -162,7 +159,7 @@ const Overview = ({ plan, setPlan, setActiveTab, currentUser }) => {
             </div>
             
             {/* Abstract Map Graphic */}
-            <div className="w-1/2 flex items-center justify-center relative">
+            <div className="w-full sm:w-1/2 flex items-center justify-center relative mt-4 sm:mt-0">
                <svg viewBox="0 0 100 100" className="w-[140px] h-[140px] text-[#ef4444] opacity-80" fill="currentColor">
                  <path d="M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 90C27.9 90 10 72.1 10 50S27.9 10 50 10s40 17.9 40 40-17.9 40-40 40z" fillOpacity="0.1"/>
                  <circle cx="30" cy="40" r="4" />
@@ -230,7 +227,7 @@ const Overview = ({ plan, setPlan, setActiveTab, currentUser }) => {
             </div>
           </div>
           
-          <div className="relative z-10 flex justify-between items-end mt-auto">
+          <div className="relative z-10 flex flex-col sm:flex-row sm:justify-between sm:items-end mt-auto gap-6 sm:gap-0">
             <div>
               <div className="text-[32px] font-bold text-white leading-[1.1] mb-4 max-w-[280px]">
                 Let's join our community

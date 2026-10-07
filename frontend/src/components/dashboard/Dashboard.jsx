@@ -260,7 +260,7 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
           <SidebarItem icon={<ClipboardList size={18} />} label="Leads" active={activeTab === 'Leads'} onClick={() => setActiveTab('Leads')} isCollapsed={isCollapsed} locked={isLocked('Leads')} />
         </div>
 
-        <div className={`text-[11px] font-bold text-[#3b82f6]/60 uppercase tracking-wider mb-2 ${isCollapsed ? 'text-center' : 'px-4'}`}>
+        {/* <div className={`text-[11px] font-bold text-[#3b82f6]/60 uppercase tracking-wider mb-2 ${isCollapsed ? 'text-center' : 'px-4'}`}>
           {isCollapsed ? '•••' : 'Operations'}
         </div>
         <div className="flex flex-col gap-1 mb-6">
@@ -271,7 +271,7 @@ export const Dashboard = ({ setView, currentUser, setCurrentUser }) => {
           <SidebarItem icon={<Factory size={18} />} label="Manufacturing" active={activeTab === 'Manufacturing'} onClick={() => setActiveTab('Manufacturing')} isCollapsed={isCollapsed} locked={isLocked('Manufacturing')} />
           <SidebarItem icon={<ClipboardList size={18} />} label="Tasks" active={activeTab === 'Tasks'} onClick={() => setActiveTab('Tasks')} isCollapsed={isCollapsed} locked={isLocked('Tasks')} />
           <SidebarItem icon={<Users size={18} />} label="Suppliers" active={activeTab === 'Suppliers'} onClick={() => setActiveTab('Suppliers')} isCollapsed={isCollapsed} locked={isLocked('Suppliers')} />
-        </div>
+        </div> */}
 
         <div className={`text-[11px] font-bold text-[#3b82f6]/60 uppercase tracking-wider mb-2 ${isCollapsed ? 'text-center' : 'px-4'}`}>
           {isCollapsed ? '•••' : 'Network'}
