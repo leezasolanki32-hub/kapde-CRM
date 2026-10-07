@@ -25,41 +25,41 @@ const RecoveryRow = ({ name, amount, daysOverdue, lastReminder, risk }) => {
   };
 
   return (
-    <div className="flex items-center justify-between p-4 hover:bg-[#fafafc] transition-all border-b border-[#f1f1f4] group">
+    <div className="flex items-center justify-between p-5 hover:bg-blue-50/30 transition-all border-b border-gray-100 group bg-white">
       <div className="flex items-center gap-4 flex-1">
-        <div className="w-10 h-10 rounded-full bg-[#0a1628] flex items-center justify-center text-[#3b82f6] font-bold">
+        <div className="w-11 h-11 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-[14px]">
           {name.split(' ').map(n => n[0]).join('')}
         </div>
         <div>
-          <h4 className="font-bold text-[#0a1628]">{name}</h4>
-          <div className="text-[11px] text-[#334155]">Last reminder: {lastReminder}</div>
+          <h4 className="font-bold text-[#0f172a] text-[15px]">{name}</h4>
+          <div className="text-[12px] text-gray-500 font-medium">Last reminder: {lastReminder}</div>
         </div>
       </div>
 
-      <div className="flex-1 text-center font-bold text-[#0a1628]">
+      <div className="flex-1 text-center font-bold text-[#0f172a] text-[16px]">
         ₹ {amount}
       </div>
 
       <div className="flex-1 text-center">
-        <div className={`inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold border ${getRiskColor(risk)} uppercase tracking-wider`}>
+        <div className={`inline-block px-3 py-1 rounded-full text-[11px] font-bold border ${getRiskColor(risk)} uppercase tracking-wider shadow-sm`}>
           {risk} Risk
         </div>
       </div>
 
       <div className="flex-1 text-center">
-        <div className={`text-[13px] font-bold ${daysOverdue > 30 ? 'text-[#ef4444]' : 'text-[#f59e0b]'}`}>
+        <div className={`text-[15px] font-bold ${daysOverdue > 30 ? 'text-red-500' : 'text-amber-500'}`}>
           {daysOverdue} days
         </div>
-        <div className="text-[10px] text-[#334155] uppercase font-bold tracking-tighter">Overdue</div>
+        <div className="text-[11px] text-gray-500 uppercase font-bold tracking-tighter">Overdue</div>
       </div>
 
-      <div className="flex items-center gap-2">
-        <button className="p-2.5 bg-[#0a1628] border border-[#1e3a5f] rounded-lg text-[#334155] hover:bg-[#3b82f6] hover:text-[#0a1628] hover:border-[#3b82f6] transition-all shadow-sm" title="Call Customer">
-          <Phone size={14} />
+      <div className="flex items-center gap-3">
+        <button className="p-2.5 bg-white border border-gray-200 rounded-xl text-gray-500 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all shadow-sm" title="Call Customer">
+          <Phone size={16} />
         </button>
-        <button className="p-2.5 bg-[#0a1628] text-[#3b82f6] rounded-lg border border-[#93c5fd] hover:bg-[#3b82f6] hover:text-[#0a1628] transition-all shadow-sm flex items-center gap-2" title="Send WhatsApp/SMS">
-          <Send size={14} />
-          <span className="text-[12px] font-bold pr-1">Remind</span>
+        <button className="p-2.5 bg-white border border-gray-200 text-blue-600 rounded-xl hover:bg-blue-50 hover:border-blue-200 transition-all shadow-sm flex items-center gap-2" title="Send WhatsApp/SMS">
+          <Send size={16} />
+          <span className="text-[13px] font-bold pr-1">Remind</span>
         </button>
       </div>
     </div>
@@ -70,10 +70,10 @@ const Recovery = ({ setActiveTab }) => {
   const [filterActive, setFilterActive] = useState(false);
 
   const stats = [
-    { title: 'Total Outstanding', value: '₹14.8L', change: '8.2% from last wk', isPositive: false, icon: <IndianRupee size={20} /> },
-    { title: 'Overdue > 30 Days', value: '₹4.2L', change: '12% recovery rate', isPositive: true, icon: <AlertCircle size={20} /> },
-    { title: 'Avg. Collection Period', value: '24 Days', change: '2 days faster', isPositive: true, icon: <TrendingUp size={20} /> },
-    { title: 'Projected Recovery', value: '₹8.4L', change: 'Next 15 days', isPositive: true, icon: <Calendar size={20} /> },
+    { title: 'Total Outstanding', value: '₹14.8L', change: '8.2% from last wk', isPositive: false, icon: <IndianRupee size={22} /> },
+    { title: 'Overdue > 30 Days', value: '₹4.2L', change: '12% recovery rate', isPositive: true, icon: <AlertCircle size={22} /> },
+    { title: 'Avg. Collection Period', value: '24 Days', change: '2 days faster', isPositive: true, icon: <TrendingUp size={22} /> },
+    { title: 'Projected Recovery', value: '₹8.4L', change: 'Next 15 days', isPositive: true, icon: <Calendar size={22} /> },
   ];
 
   const debtors = [
@@ -85,30 +85,32 @@ const Recovery = ({ setActiveTab }) => {
   ];
 
   return (
-    <div className="animate-[slideUpFade_0.4s_ease-out] max-w-[1200px] mx-auto">
+    <div className="animate-[slideUpFade_0.4s_ease-out] w-full max-w-[1600px] mx-auto pb-10">
       {/* Page Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between mb-8">
-        <div>
-          <h1 className="text-[28px] font-bold text-[#e8f0fe] tracking-tight flex items-center gap-3">
+      <div className="flex flex-col md:flex-row md:items-center justify-between mb-10 bg-white p-8 rounded-[24px] border border-gray-100 shadow-sm relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-red-50 to-transparent rounded-full -translate-y-1/2 translate-x-1/2"></div>
+        <div className="relative z-10">
+          <h1 className="text-[32px] font-bold text-[#0f172a] tracking-tight flex items-center gap-4 mb-2">
             Payment Recovery 
-            <span className="px-2.5 py-0.5 bg-[#fef2f2] text-[#ef4444] text-[11px] font-bold rounded-full border border-[#fee2e2]">
+            <span className="px-3 py-1 bg-red-50 text-red-600 text-[13px] font-bold rounded-full border border-red-100 shadow-sm flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
               12 Overdue
             </span>
           </h1>
-          <p className="text-[#93c5fd] text-[14px] mt-1">Monitor and accelerate your accounts receivable collections</p>
+          <p className="text-gray-500 text-[15px] font-medium">Monitor and accelerate your accounts receivable collections.</p>
         </div>
-        <div className="flex gap-3 mt-4 md:mt-0">
+        <div className="flex gap-4 mt-6 md:mt-0 relative z-10">
           <button 
             onClick={() => setActiveTab('CreateAppointment')}
-            className="bg-[#0a1628] border border-[#1e3a5f] text-[#0a1628] px-4 py-2.5 rounded-xl text-[14px] font-bold hover:bg-[#f9f9f9] transition shadow-sm flex items-center gap-2"
+            className="bg-white border border-gray-200 text-gray-700 px-5 py-3 rounded-xl text-[14px] font-bold hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm flex items-center gap-2"
           >
-            <Calendar size={16} /> Appointments
+            <Calendar size={18} /> Appointments
           </button>
           <button 
             onClick={() => setActiveTab('CreateRecoveryEntry')}
-            className="bg-[#3b82f6] text-[#e8f0fe] px-5 py-2.5 rounded-xl text-[14px] font-bold hover:bg-[#2563eb] transition shadow-sm flex items-center gap-2"
+            className="bg-[#3b82f6] text-white px-6 py-3 rounded-xl text-[15px] font-bold hover:bg-[#2563eb] transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2"
           >
-            <UserPlus size={16} /> New Entry
+            <UserPlus size={18} /> New Entry
           </button>
         </div>
       </div>
@@ -116,17 +118,17 @@ const Recovery = ({ setActiveTab }) => {
       {/* KPI Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
         {stats.map((s, i) => (
-          <div key={i} className="bg-[#0a1628] p-6 rounded-2xl border border-[#1e3a5f] shadow-sm hover:shadow-md transition-all group">
-            <div className="flex items-center justify-between mb-4">
-              <div className="w-10 h-10 bg-[#0a1628] text-[#3b82f6] rounded-xl flex items-center justify-center group-hover:bg-[#3b82f6] group-hover:text-[#e8f0fe] transition-colors">
+          <div key={i} className="bg-white p-6 rounded-[24px] border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 hover:-translate-y-1 transition-all duration-300 group">
+            <div className="flex items-center justify-between mb-5">
+              <div className="w-12 h-12 bg-gray-50 text-gray-500 rounded-xl flex items-center justify-center group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors border border-gray-100 group-hover:border-blue-100">
                 {s.icon}
               </div>
-              <ChevronRight size={16} className="text-[#1e3a5f]" />
+              <ChevronRight size={18} className="text-gray-300 group-hover:text-blue-400 transition-colors" />
             </div>
-            <div className="text-[12px] font-bold text-[#93c5fd] uppercase tracking-wider">{s.title}</div>
-            <div className="text-[28px] font-bold text-[#e8f0fe] mt-1">{s.value}</div>
-            <div className="flex items-center gap-1.5 mt-2">
-              <span className={`text-[12px] font-bold ${s.isPositive ? 'text-green-600' : 'text-red-500'}`}>
+            <div className="text-[13px] font-bold text-gray-500 uppercase tracking-wider mb-1">{s.title}</div>
+            <div className="text-[32px] font-bold text-[#0f172a] tracking-tight">{s.value}</div>
+            <div className="flex items-center gap-1.5 mt-3">
+              <span className={`text-[13px] font-bold px-2 py-0.5 rounded-md ${s.isPositive ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
                 {s.change}
               </span>
             </div>
@@ -138,32 +140,37 @@ const Recovery = ({ setActiveTab }) => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column: Debtors List */}
         <div className="lg:col-span-2">
-          <div className="bg-[#0a1628] border border-[#1e3a5f] rounded-2xl shadow-sm overflow-hidden">
-            <div className="px-6 py-5 border-b border-[#f1f1f4] flex justify-between items-center bg-[#fafafc]">
-              <h3 className="font-bold text-[#0a1628]">Pending Collections</h3>
-              <div className="flex items-center gap-2">
+          <div className="bg-white border border-gray-100 rounded-[24px] shadow-sm overflow-hidden flex flex-col h-full">
+            <div className="px-8 py-6 border-b border-gray-100 flex flex-col sm:flex-row sm:justify-between sm:items-center bg-gray-50/50 gap-4">
+              <h3 className="font-bold text-[18px] text-[#0f172a]">Pending Collections</h3>
+              <div className="flex items-center gap-3">
                 <button 
                   onClick={() => setFilterActive(!filterActive)}
-                  className={`p-2 rounded-lg border transition-all ${filterActive ? 'bg-[#3b82f6] text-[#0a1628] border-[#3b82f6]' : 'bg-[#0a1628] text-[#334155] border-[#1e3a5f] hover:bg-[#f9f9f9]'}`}
+                  className={`p-2.5 rounded-xl border transition-all ${filterActive ? 'bg-blue-50 text-blue-600 border-blue-200' : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50 hover:border-gray-300'}`}
                 >
-                  <Filter size={14} />
+                  <Filter size={16} />
                 </button>
-                <select className="bg-[#0a1628] border border-[#1e3a5f] rounded-lg px-3 py-1.5 text-[12px] font-bold text-[#e8f0fe] focus:outline-none focus:border-[#3b82f6]">
-                  <option>Newest First</option>
-                  <option>Highest Amount</option>
-                  <option>Risk Level</option>
-                </select>
+                <div className="relative">
+                  <select className="bg-white border border-gray-200 rounded-xl px-4 py-2.5 pr-8 text-[14px] font-bold text-[#0f172a] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-50 appearance-none shadow-sm cursor-pointer transition-all">
+                    <option>Newest First</option>
+                    <option>Highest Amount</option>
+                    <option>Risk Level</option>
+                  </select>
+                  <span className="absolute right-3 top-3 text-gray-400 pointer-events-none">▼</span>
+                </div>
               </div>
             </div>
 
-            <div className="flex flex-col">
+            <div className="flex flex-col flex-1">
               {debtors.map((debtor, i) => (
                 <RecoveryRow key={i} {...debtor} />
               ))}
             </div>
 
-            <div className="p-4 bg-[#fafafc] border-t border-[#f1f1f4] text-center">
-              <button className="text-[13px] font-bold text-[#3b82f6] hover:underline">View All Receivables →</button>
+            <div className="p-5 bg-gray-50/50 border-t border-gray-100 text-center mt-auto">
+              <button className="text-[14px] font-bold text-blue-600 hover:text-blue-700 hover:underline transition-all">
+                View All Receivables →
+              </button>
             </div>
           </div>
         </div>
@@ -171,8 +178,11 @@ const Recovery = ({ setActiveTab }) => {
         {/* Right Column: Insights & Training */}
         <div className="flex flex-col gap-8">
           {/* Collection Health */}
-          <div className="bg-[#0a1628] border border-[#1e3a5f] rounded-2xl p-6 shadow-sm">
-            <h3 className="font-bold text-[#e8f0fe] mb-6">Aging Analysis</h3>
+          <div className="bg-white border border-gray-100 rounded-[24px] p-8 shadow-sm">
+            <h3 className="font-bold text-[18px] text-[#0f172a] mb-6 flex items-center gap-2">
+              <TrendingUp size={20} className="text-blue-500" />
+              Aging Analysis
+            </h3>
             <div className="space-y-6">
               {[
                 { label: '0-30 Days', value: '₹8.4L', pct: 65, color: 'bg-emerald-500' },
@@ -181,52 +191,56 @@ const Recovery = ({ setActiveTab }) => {
               ].map((item, i) => (
                 <div key={i}>
                   <div className="flex justify-between items-end mb-2">
-                    <span className="text-[13px] font-bold text-[#e8f0fe]">{item.label}</span>
-                    <span className="text-[13px] font-bold text-[#e8f0fe]">{item.value}</span>
+                    <span className="text-[14px] font-bold text-gray-600">{item.label}</span>
+                    <span className="text-[15px] font-bold text-[#0f172a]">{item.value}</span>
                   </div>
-                  <div className="w-full h-2 bg-[#f1f1f4] rounded-full overflow-hidden">
-                    <div className={`h-full ${item.color}`} style={{ width: `${item.pct}%` }}></div>
+                  <div className="w-full h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                    <div className={`h-full ${item.color} rounded-full`} style={{ width: `${item.pct}%` }}></div>
                   </div>
                 </div>
               ))}
             </div>
-            <div className="mt-8 p-4 bg-[#fefce8] border border-[#fef08a] rounded-xl">
-              <div className="flex gap-2">
-                <AlertCircle size={16} className="text-[#a16207] shrink-0" />
-                <p className="text-[12px] text-[#854d0e] leading-relaxed">
-                  <strong>Advice:</strong> 3 invoices are reaching critical 60-day limit. Manual intervention recommended.
+            
+            <div className="mt-8 p-5 bg-amber-50 border border-amber-200 rounded-2xl">
+              <div className="flex gap-3">
+                <AlertCircle size={20} className="text-amber-600 shrink-0 mt-0.5" />
+                <p className="text-[13px] text-amber-900 leading-relaxed font-medium">
+                  <strong className="font-bold">Action Required:</strong> 3 invoices are reaching the critical 60-day limit. Manual intervention is highly recommended today.
                 </p>
               </div>
             </div>
           </div>
 
           {/* Training Resources */}
-          <div className="bg-[#e8f0fe] rounded-2xl p-6 text-[#0a1628] shadow-lg overflow-hidden relative">
-            <div className="absolute top-[-20px] right-[-20px] w-32 h-32 bg-[#3b82f6] opacity-20 blur-3xl rounded-full"></div>
-            <h3 className="font-bold text-[16px] mb-4 relative z-10">Collection Suite™</h3>
-            <p className="text-[12px] text-gray-400 mb-6 leading-relaxed relative z-10">Master the art of professional debt recovery with our exclusive resources.</p>
+          <div className="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-[24px] p-8 text-[#0f172a] shadow-sm border border-blue-100 relative overflow-hidden">
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-white opacity-40 blur-3xl rounded-full"></div>
             
-            <div className="space-y-3 relative z-10">
-              <button className="w-full flex items-center justify-between p-3 bg-[#0a1628] bg-opacity-10 rounded-xl hover:bg-opacity-20 transition-all border border-[#3b82f6]/20 border-opacity-5">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-[#3b82f6] rounded-lg">
-                    <BookOpen size={14} />
+            <h3 className="font-bold text-[18px] mb-2 relative z-10 text-indigo-900">Collection Suite™</h3>
+            <p className="text-[14px] text-indigo-700/80 mb-8 leading-relaxed relative z-10 font-medium">Master the art of professional debt recovery with our exclusive resources.</p>
+            
+            <div className="space-y-4 relative z-10">
+              <button className="w-full flex items-center justify-between p-4 bg-white/60 hover:bg-white rounded-xl transition-all border border-white/40 shadow-sm group">
+                <div className="flex items-center gap-4">
+                  <div className="p-2.5 bg-indigo-100 text-indigo-600 rounded-lg group-hover:scale-110 transition-transform">
+                    <BookOpen size={18} />
                   </div>
-                  <span className="text-[13px] font-bold">Training Guide</span>
+                  <span className="text-[14px] font-bold text-indigo-900">Training Guide</span>
                 </div>
-                <ChevronRight size={14} className="text-gray-500" />
+                <ChevronRight size={18} className="text-indigo-400 group-hover:text-indigo-600 transition-colors" />
               </button>
-              <button className="w-full flex items-center justify-between p-3 bg-[#0a1628] bg-opacity-10 rounded-xl hover:bg-opacity-20 transition-all border border-[#3b82f6]/20 border-opacity-5">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-[#ef4444] rounded-lg">
-                    <PlayCircle size={14} />
+              
+              <button className="w-full flex items-center justify-between p-4 bg-white/60 hover:bg-white rounded-xl transition-all border border-white/40 shadow-sm group">
+                <div className="flex items-center gap-4">
+                  <div className="p-2.5 bg-blue-100 text-blue-600 rounded-lg group-hover:scale-110 transition-transform">
+                    <PlayCircle size={18} />
                   </div>
-                  <span className="text-[13px] font-bold">Collection Scripts</span>
+                  <span className="text-[14px] font-bold text-indigo-900">Collection Scripts</span>
                 </div>
-                <ChevronRight size={14} className="text-gray-500" />
+                <ChevronRight size={18} className="text-indigo-400 group-hover:text-indigo-600 transition-colors" />
               </button>
             </div>
           </div>
+          
         </div>
       </div>
     </div>
