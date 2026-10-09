@@ -86,7 +86,7 @@ const CreateTicket = ({ setActiveTab }) => {
                     required
                     value={formData.customerName}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                    className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                     placeholder="Enter customer name"
                   />
                 </div>
@@ -100,7 +100,7 @@ const CreateTicket = ({ setActiveTab }) => {
                       required
                       value={formData.ticketDate}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                      className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                     />
                   </div>
                   <div>
@@ -111,7 +111,7 @@ const CreateTicket = ({ setActiveTab }) => {
                       required
                       value={formData.ticketNo}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                      className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                     />
                   </div>
                 </div>
@@ -124,7 +124,7 @@ const CreateTicket = ({ setActiveTab }) => {
                     required
                     value={formData.dueDate}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                    className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                   />
                 </div>
               </div>
@@ -144,7 +144,7 @@ const CreateTicket = ({ setActiveTab }) => {
                     value={formData.billingAddress}
                     onChange={handleInputChange}
                     rows="2"
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628] resize-none"
+                    className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f] resize-none"
                     placeholder="Enter billing address"
                   ></textarea>
                 </div>
@@ -169,7 +169,7 @@ const CreateTicket = ({ setActiveTab }) => {
                       value={formData.shippingAddress}
                       onChange={handleInputChange}
                       rows="2"
-                      className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628] resize-none mt-2"
+                      className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f] resize-none mt-2"
                       placeholder="Enter shipping address"
                     ></textarea>
                   )}
@@ -194,7 +194,7 @@ const CreateTicket = ({ setActiveTab }) => {
                     required
                     value={formData.product}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                    className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                     placeholder="Enter product or service"
                   />
                   <label className="flex items-center gap-2 cursor-pointer w-fit mt-1">
@@ -221,7 +221,7 @@ const CreateTicket = ({ setActiveTab }) => {
                       required
                       value={formData.rate}
                       onChange={handleInputChange}
-                      className="w-full pl-8 pr-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628] font-bold text-[#e8f0fe]"
+                      className="w-full pl-8 pr-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f] font-bold text-[#e8f0fe]"
                     />
                   </div>
                   <span className="text-[13px] font-medium text-[#93c5fd]">/ no.s</span>
@@ -236,7 +236,7 @@ const CreateTicket = ({ setActiveTab }) => {
                 value={formData.notes}
                 onChange={handleInputChange}
                 rows="3"
-                className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628] resize-none"
+                className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f] resize-none"
                 placeholder="Detailed description of the issue or requirement..."
               ></textarea>
             </div>

@@ -59,7 +59,7 @@ const CreateRecoveryEntry = ({ setActiveTab }) => {
                   required
                   value={formData.customerName}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                   placeholder="e.g., Vogue Boutique"
                 />
               </div>
@@ -74,7 +74,7 @@ const CreateRecoveryEntry = ({ setActiveTab }) => {
                     required
                     value={formData.invoiceRef}
                     onChange={handleInputChange}
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                     placeholder="INV-2026-..."
                   />
                 </div>
@@ -101,7 +101,7 @@ const CreateRecoveryEntry = ({ setActiveTab }) => {
                     step="0.01"
                     value={formData.amount}
                     onChange={handleInputChange}
-                    className="w-full pl-8 pr-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628] font-bold text-[#e8f0fe]"
+                    className="w-full pl-8 pr-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f] font-bold text-[#e8f0fe]"
                     placeholder="0.00"
                   />
                 </div>
@@ -117,7 +117,7 @@ const CreateRecoveryEntry = ({ setActiveTab }) => {
                   required
                   value={formData.dueDate}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                 />
               </div>
             </div>
@@ -133,7 +133,7 @@ const CreateRecoveryEntry = ({ setActiveTab }) => {
               <label className="block text-[12px] font-bold text-[#93c5fd] uppercase mb-1.5">Risk Level *</label>
               <div className="flex gap-4">
                 {['Low', 'Medium', 'High'].map((level) => (
-                  <label key={level} className={`flex-1 flex items-center justify-center gap-2 p-3 rounded-xl border cursor-pointer transition-all ${formData.riskLevel === level ? (level === 'Low' ? 'border-emerald-500 bg-emerald-50 text-emerald-700 font-bold' : level === 'Medium' ? 'border-amber-500 bg-amber-50 text-amber-700 font-bold' : 'border-red-500 bg-red-50 text-red-700 font-bold') : 'border-[#1e3a5f] hover:bg-slate-50 text-[#93c5fd] font-medium'}`}>
+                  <label key={level} className={`flex-1 flex items-center justify-center gap-2 p-3 rounded-xl border cursor-pointer transition-all ${formData.riskLevel === level ? (level === 'Low' ? 'border-emerald-500 bg-emerald-50 text-emerald-700 font-bold' : level === 'Medium' ? 'border-amber-500 bg-amber-50 text-amber-700 font-bold' : 'border-red-500 bg-red-50 text-red-700 font-bold') : 'border-[#1e3a5f] hover:bg-[#1e3a5f] text-[#93c5fd] font-medium'}`}>
                     <input
                       type="radio"
                       name="riskLevel"
@@ -155,7 +155,7 @@ const CreateRecoveryEntry = ({ setActiveTab }) => {
                 value={formData.notes}
                 onChange={handleInputChange}
                 rows="3"
-                className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628] resize-none"
+                className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f] resize-none"
                 placeholder="E.g., Customer promised to pay next week..."
               ></textarea>
             </div>
@@ -166,7 +166,7 @@ const CreateRecoveryEntry = ({ setActiveTab }) => {
             <button
               type="button"
               onClick={() => setActiveTab('Recovery')}
-              className="px-6 py-2.5 rounded-xl border border-[#1e3a5f] text-[#93c5fd] font-bold text-[14px] hover:bg-slate-50 transition-colors"
+              className="px-6 py-2.5 rounded-xl border border-[#1e3a5f] text-[#93c5fd] font-bold text-[14px] hover:bg-[#1e3a5f] transition-colors"
             >
               Cancel
             </button>

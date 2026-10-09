@@ -49,7 +49,7 @@ const CreateDebitNote = ({ setActiveTab, previousTab = 'Purchases' }) => {
     setTimeout(() => setActiveTab(previousTab), 1500);
   };
 
-  const inputClass = "w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]";
+  const inputClass = "w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]";
   const labelClass = "block text-[12px] font-bold text-[#93c5fd] uppercase mb-1.5 flex items-center gap-1.5";
 
   const reasons = [
@@ -163,18 +163,18 @@ const CreateDebitNote = ({ setActiveTab, previousTab = 'Purchases' }) => {
                 {items.map((item, index) => (
                   <tr key={index}>
                     <td className="py-2 pr-3">
-                      <input type="text" value={item.description} onChange={(e) => handleItemChange(index, 'description', e.target.value)} className="w-full px-3 py-2 rounded-lg border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] text-[13px] bg-slate-50 focus:bg-[#0a1628] transition" placeholder="Item description" />
+                      <input type="text" value={item.description} onChange={(e) => handleItemChange(index, 'description', e.target.value)} className="w-full px-3 py-2 rounded-lg border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] text-[13px] bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f] transition" placeholder="Item description" />
                     </td>
                     <td className="py-2 px-2">
-                      <input type="number" min="0" value={item.qty} onChange={(e) => handleItemChange(index, 'qty', e.target.value)} className="w-full px-3 py-2 rounded-lg border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] text-[13px] text-center bg-slate-50 focus:bg-[#0a1628] transition" placeholder="0" />
+                      <input type="number" min="0" value={item.qty} onChange={(e) => handleItemChange(index, 'qty', e.target.value)} className="w-full px-3 py-2 rounded-lg border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] text-[13px] text-center bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f] transition" placeholder="0" />
                     </td>
                     <td className="py-2 px-2">
-                      <select value={item.unit} onChange={(e) => handleItemChange(index, 'unit', e.target.value)} className="w-full px-2 py-2 rounded-lg border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] text-[13px] bg-slate-50 focus:bg-[#0a1628] transition">
+                      <select value={item.unit} onChange={(e) => handleItemChange(index, 'unit', e.target.value)} className="w-full px-2 py-2 rounded-lg border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] text-[13px] bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f] transition">
                         <option>Pcs</option><option>Mtr</option><option>Kg</option><option>Box</option><option>Set</option>
                       </select>
                     </td>
                     <td className="py-2 px-2">
-                      <input type="number" min="0" value={item.rate} onChange={(e) => handleItemChange(index, 'rate', e.target.value)} className="w-full px-3 py-2 rounded-lg border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] text-[13px] text-right bg-slate-50 focus:bg-[#0a1628] transition" placeholder="0.00" />
+                      <input type="number" min="0" value={item.rate} onChange={(e) => handleItemChange(index, 'rate', e.target.value)} className="w-full px-3 py-2 rounded-lg border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] text-[13px] text-right bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f] transition" placeholder="0.00" />
                     </td>
                     <td className="py-2 px-2">
                       <input type="text" readOnly value={item.amount ? `₹${item.amount}` : ''} className="w-full px-3 py-2 rounded-lg border border-[#1e3a5f] text-[13px] text-right bg-[#0a1628] text-[#e8f0fe] font-bold" placeholder="₹0.00" />
@@ -232,7 +232,7 @@ const CreateDebitNote = ({ setActiveTab, previousTab = 'Purchases' }) => {
 
         {/* Actions */}
         <div className="flex flex-col sm:flex-row justify-end gap-3 pt-2">
-          <button type="button" onClick={() => setActiveTab(previousTab)} className="px-6 py-2.5 rounded-xl border border-[#1e3a5f] text-[#93c5fd] font-bold text-[14px] hover:bg-slate-50 transition-colors">
+          <button type="button" onClick={() => setActiveTab(previousTab)} className="px-6 py-2.5 rounded-xl border border-[#1e3a5f] text-[#93c5fd] font-bold text-[14px] hover:bg-[#1e3a5f] transition-colors">
             Cancel
           </button>
           <button type="submit" className="flex items-center justify-center gap-2 px-8 py-2.5 bg-[#e8f0fe] text-[#0a1628] rounded-xl font-bold text-[14px] hover:bg-[#333] transition-all shadow-md">

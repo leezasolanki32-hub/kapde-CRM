@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useGoogleLogin } from '@react-oauth/google';
 import { API_AUTH_URL } from '../../config';
 
 
@@ -220,6 +221,26 @@ export const RegisterPage = ({ setView }) => {
             {loading ? 'Registering...' : 'Register Shop'}
           </button>
         </form>
+
+        <div className="flex items-center my-6">
+          <div className="flex-1 border-t border-white/10"></div>
+          <span className="px-4 text-[11px] text-white/40 font-bold uppercase tracking-wider">Or continue with</span>
+          <div className="flex-1 border-t border-white/10"></div>
+        </div>
+        
+        <button 
+          type="button" 
+          onClick={() => alert('Google authentication coming soon!')}
+          className="w-full flex items-center justify-center gap-3 bg-white/5 border border-white/10 text-white font-bold py-3.5 rounded-lg hover:bg-white/10 transition-all transform hover:-translate-y-0.5"
+        >
+          <svg className="w-5 h-5" viewBox="0 0 24 24">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          Sign up with Google
+        </button>
         <div className="mt-6 text-center text-[13px] text-white/60">
           Already have an account?{' '}
           <span className="text-[#3878ff] font-bold cursor-pointer hover:underline" onClick={() => setView('login')}>
@@ -345,105 +366,143 @@ export const LoginPage = ({ setView, setCurrentUser }) => {
     }
   };
 
-  return (
-    <LoginLayout>
-      <div className="w-full max-w-md bg-[#05080f]/80 backdrop-blur-xl p-8 lg:p-10 rounded-2xl shadow-[0_0_40px_rgba(56,120,255,0.15)] border border-white/10 animate-[slideUpFade_0.6s_ease-out]">
-        
-        {error && (
-          <div className="mb-6 p-3 bg-red-900/50 border border-red-500/50 text-red-200 text-[13px] rounded-lg text-center">
-            {error}
-          </div>
-        )}
+    const handleGoogleLogin = useGoogleLogin({
+      onSuccess: codeResponse => {
+        // This is where you would send the token to your backend.
+        // For demonstration without a real backend, we mock a successful login
+        // as a standard user.
+        if (setCurrentUser) {
+          setCurrentUser({ 
+            id: `google-user-${Math.floor(Math.random() * 1000)}`, 
+            name: 'Google User', 
+            email: 'user@gmail.com',
+            role: 'user'
+          });
+        }
+        setView('dashboard');
+      },
+      onError: error => console.log('Login Failed:', error)
+    });
 
-        {step === 1 && (
-          <>
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center gap-2 bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-[11px] font-bold mb-4 border border-green-500/30 animate-[pulse_2s_infinite]">
-                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 4.908 3.067 9.126 7.403 10.796a.75.75 0 00.594 0C14.333 16.126 17.4 11.908 17.4 7c0-.681-.056-1.351-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clipRule="evenodd" /></svg>
-                Secure Connection Verified
-              </div>
-              <h2 className="font-serif text-[32px] font-bold text-white mb-2">Welcome Back</h2>
-              <p className="text-white/60 text-[14px]">Log in to your Kapde CRM dashboard.</p>
+    return (
+      <LoginLayout>
+        <div className="w-full max-w-md bg-[#05080f]/80 backdrop-blur-xl p-8 lg:p-10 rounded-2xl shadow-[0_0_40px_rgba(56,120,255,0.15)] border border-white/10 animate-[slideUpFade_0.6s_ease-out] relative overflow-hidden">
+          
+          {error && (
+            <div className="mb-6 p-3 bg-red-900/50 border border-red-500/50 text-red-200 text-[13px] rounded-lg text-center">
+              {error}
             </div>
-            <form className="flex flex-col gap-5" onSubmit={handleLoginSubmit}>
-              <div>
-                <label className="block text-[13px] font-bold text-white/90 mb-1.5 uppercase tracking-wide">Mobile Number / Email</label>
-                <input 
-                  type="text" 
-                  required 
-                  value={identifier}
-                  onChange={(e) => setIdentifier(e.target.value)}
-                  placeholder="Enter registered mobile or email" 
-                  className="w-full px-4 py-3 rounded-lg border border-white/10 focus:outline-none focus:border-[#3878ff] focus:ring-2 focus:ring-[#3878ff]/30 transition-all bg-black/40 text-white placeholder-white/30 text-[16px]" 
-                />
-              </div>
-              <div>
-                <label className="block text-[13px] font-bold text-white/90 mb-1.5 uppercase tracking-wide">Password</label>
-                <input 
-                  type="password" 
-                  required 
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password" 
-                  className="w-full px-4 py-3 rounded-lg border border-white/10 focus:outline-none focus:border-[#3878ff] focus:ring-2 focus:ring-[#3878ff]/30 transition-all bg-black/40 text-white placeholder-white/30 text-[16px]" 
-                />
-              </div>
-              <button disabled={loading} type="submit" className="mt-2 w-full bg-gradient-to-r from-[#3878ff] to-[#508cff] text-white font-bold py-3.5 rounded-lg shadow-[0_4px_15px_rgba(56,120,255,0.3)] hover:shadow-[0_6px_20px_rgba(56,120,255,0.4)] transition-all transform hover:-translate-y-0.5 disabled:opacity-70">
-                {loading ? 'Logging in...' : 'Login securely'}
-              </button>
-            </form>
-            <div className="mt-6 text-center text-[13px] text-white/60">
-              Don't have an account yet?{' '}
-              <span className="text-[#3878ff] font-bold cursor-pointer hover:underline" onClick={() => setView('register')}>
-                Register now
-              </span>
-            </div>
-          </>
-        )}
+          )}
 
-        {step === 2 && (
-          <div className="animate-[slideUpFade_0.4s_ease-out]">
-            <div className="text-center mb-8">
-              <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-500/30">
-                <svg className="w-8 h-8 text-[#3878ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+          {step === 1 && (
+            <>
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center gap-2 bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-[11px] font-bold mb-4 border border-green-500/30 animate-[pulse_2s_infinite]">
+                  <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 4.908 3.067 9.126 7.403 10.796a.75.75 0 00.594 0C14.333 16.126 17.4 11.908 17.4 7c0-.681-.056-1.351-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clipRule="evenodd" /></svg>
+                  Secure Connection Verified
+                </div>
+                <h2 className="font-serif text-[32px] font-bold text-white mb-2">Welcome Back</h2>
+                <p className="text-white/60 text-[14px]">Log in to your Kapde CRM dashboard.</p>
               </div>
-              <h2 className="font-serif text-[28px] font-bold text-white mb-2">Two-Factor Auth</h2>
-              <p className="text-white/60 text-[14px]">Please enter the 6-digit OTP sent to your registered email <strong className="text-white/90">{emailTarget || 'address'}</strong>.</p>
-            </div>
-            <form className="flex flex-col gap-6" onSubmit={handleOTPSubmit}>
-              <div className="flex justify-between gap-2 px-2">
-                {otp.map((digit, i) => (
+              <form className="flex flex-col gap-5" onSubmit={handleLoginSubmit}>
+                <div>
+                  <label className="block text-[13px] font-bold text-white/90 mb-1.5 uppercase tracking-wide">Mobile Number / Email</label>
                   <input 
-                    key={i} 
-                    ref={el => otpRefs.current[i] = el}
                     type="text" 
-                    maxLength="1" 
-                    value={digit}
-                    onChange={(e) => handleOTPChange(i, e.target.value)}
-                    onKeyDown={(e) => handleKeyDown(i, e)}
-                    className="w-12 h-14 text-center text-[24px] font-bold rounded-lg border border-white/10 focus:outline-none focus:border-[#3878ff] focus:ring-2 focus:ring-[#3878ff]/30 transition-all bg-black/40 text-white" 
+                    required 
+                    value={identifier}
+                    onChange={(e) => setIdentifier(e.target.value)}
+                    placeholder="Enter registered mobile or email" 
+                    className="w-full px-4 py-3 rounded-lg border border-white/10 focus:outline-none focus:border-[#3878ff] focus:ring-2 focus:ring-[#3878ff]/30 transition-all bg-black/40 text-white placeholder-white/30 text-[16px]" 
                   />
-                ))}
-              </div>
-              <button disabled={loading} type="submit" className="w-full bg-gradient-to-r from-[#3878ff] to-[#508cff] text-white font-bold py-3.5 rounded-lg shadow-[0_4px_15px_rgba(56,120,255,0.3)] hover:shadow-[0_6px_20px_rgba(56,120,255,0.4)] transition-all transform hover:-translate-y-0.5 disabled:opacity-70">
-                {loading ? 'Verifying OTP...' : 'Verify & Sign In'}
-              </button>
-            </form>
-            <div className="mt-6 text-center text-[13px] text-white/60">
-              Didn't receive the code?{' '}
-              <span className="text-[#3878ff] font-bold cursor-pointer hover:underline" onClick={handleLoginSubmit}>
-                Resend OTP
-              </span>
-            </div>
-            <div className="mt-4 text-center">
-              <span className="text-white/60 text-[13px] cursor-pointer hover:text-white underline decoration-dotted" onClick={() => setStep(1)}>
-                &larr; Back to Login
-              </span>
-            </div>
-          </div>
-        )}
+                </div>
+                <div>
+                  <label className="block text-[13px] font-bold text-white/90 mb-1.5 uppercase tracking-wide">Password</label>
+                  <input 
+                    type="password" 
+                    required 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter your password" 
+                    className="w-full px-4 py-3 rounded-lg border border-white/10 focus:outline-none focus:border-[#3878ff] focus:ring-2 focus:ring-[#3878ff]/30 transition-all bg-black/40 text-white placeholder-white/30 text-[16px]" 
+                  />
+                </div>
+                <button disabled={loading} type="submit" className="mt-2 w-full bg-gradient-to-r from-[#3878ff] to-[#508cff] text-white font-bold py-3.5 rounded-lg shadow-[0_4px_15px_rgba(56,120,255,0.3)] hover:shadow-[0_6px_20px_rgba(56,120,255,0.4)] transition-all transform hover:-translate-y-0.5 disabled:opacity-70">
+                  {loading ? 'Logging in...' : 'Login securely'}
+                </button>
+              </form>
 
-      </div>
-    </LoginLayout>
-  );
-};
+              <div className="flex items-center my-6">
+                <div className="flex-1 border-t border-white/10"></div>
+                <span className="px-4 text-[11px] text-white/40 font-bold uppercase tracking-wider">Or continue with</span>
+                <div className="flex-1 border-t border-white/10"></div>
+              </div>
+              
+              <button 
+                type="button" 
+                onClick={handleGoogleLogin}
+                className="w-full flex items-center justify-center gap-3 bg-white/5 border border-white/10 text-white font-bold py-3.5 rounded-lg hover:bg-white/10 transition-all transform hover:-translate-y-0.5"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                Sign in with Google
+              </button>
+              <div className="mt-6 text-center text-[13px] text-white/60">
+                Don't have an account yet?{' '}
+                <span className="text-[#3878ff] font-bold cursor-pointer hover:underline" onClick={() => setView('register')}>
+                  Register now
+                </span>
+              </div>
+            </>
+          )}
+
+          {step === 2 && (
+            <div className="animate-[slideUpFade_0.4s_ease-out]">
+              <div className="text-center mb-8">
+                <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-500/30">
+                  <svg className="w-8 h-8 text-[#3878ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                </div>
+                <h2 className="font-serif text-[28px] font-bold text-white mb-2">Two-Factor Auth</h2>
+                <p className="text-white/60 text-[14px]">Please enter the 6-digit OTP sent to your registered email <strong className="text-white/90">{emailTarget || 'address'}</strong>.</p>
+              </div>
+              <form className="flex flex-col gap-6" onSubmit={handleOTPSubmit}>
+                <div className="flex justify-between gap-2 px-2">
+                  {otp.map((digit, i) => (
+                    <input 
+                      key={i} 
+                      ref={el => otpRefs.current[i] = el}
+                      type="text" 
+                      maxLength="1" 
+                      value={digit}
+                      onChange={(e) => handleOTPChange(i, e.target.value)}
+                      onKeyDown={(e) => handleKeyDown(i, e)}
+                      className="w-12 h-14 text-center text-[24px] font-bold rounded-lg border border-white/10 focus:outline-none focus:border-[#3878ff] focus:ring-2 focus:ring-[#3878ff]/30 transition-all bg-black/40 text-white" 
+                    />
+                  ))}
+                </div>
+                <button disabled={loading} type="submit" className="w-full bg-gradient-to-r from-[#3878ff] to-[#508cff] text-white font-bold py-3.5 rounded-lg shadow-[0_4px_15px_rgba(56,120,255,0.3)] hover:shadow-[0_6px_20px_rgba(56,120,255,0.4)] transition-all transform hover:-translate-y-0.5 disabled:opacity-70">
+                  {loading ? 'Verifying OTP...' : 'Verify & Sign In'}
+                </button>
+              </form>
+              <div className="mt-6 text-center text-[13px] text-white/60">
+                Didn't receive the code?{' '}
+                <span className="text-[#3878ff] font-bold cursor-pointer hover:underline" onClick={handleLoginSubmit}>
+                  Resend OTP
+                </span>
+              </div>
+              <div className="mt-4 text-center">
+                <span className="text-white/60 text-[13px] cursor-pointer hover:text-white underline decoration-dotted" onClick={() => setStep(1)}>
+                  &larr; Back to Login
+                </span>
+              </div>
+            </div>
+          )}
+
+        </div>
+      </LoginLayout>
+    );
+  };

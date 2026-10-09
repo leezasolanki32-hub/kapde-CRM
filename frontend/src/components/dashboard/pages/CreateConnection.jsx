@@ -96,7 +96,7 @@ const CreateConnection = ({ setActiveTab, previousTab = 'Support' }) => {
                 required
                 value={formData.business}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                 placeholder="Enter business name"
               />
             </div>
@@ -111,7 +111,7 @@ const CreateConnection = ({ setActiveTab, previousTab = 'Support' }) => {
                   name="title"
                   value={formData.title}
                   onChange={handleInputChange}
-                  className="w-[90px] px-3 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                  className="w-[90px] px-3 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                 >
                   <option value="Mr.">Mr.</option>
                   <option value="Ms.">Ms.</option>
@@ -124,7 +124,7 @@ const CreateConnection = ({ setActiveTab, previousTab = 'Support' }) => {
                   required
                   value={formData.firstName}
                   onChange={handleInputChange}
-                  className="flex-1 px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                  className="flex-1 px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                   placeholder="First Name"
                 />
                 <input
@@ -133,7 +133,7 @@ const CreateConnection = ({ setActiveTab, previousTab = 'Support' }) => {
                   required
                   value={formData.lastName}
                   onChange={handleInputChange}
-                  className="flex-1 px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                  className="flex-1 px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                   placeholder="Last Name"
                 />
               </div>
@@ -150,7 +150,7 @@ const CreateConnection = ({ setActiveTab, previousTab = 'Support' }) => {
                     name="countryCode"
                     value={formData.countryCode}
                     onChange={handleInputChange}
-                    className="w-[90px] px-3 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                    className="w-[90px] px-3 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                   >
                     <option value="+91">+91</option>
                     <option value="+1">+1</option>
@@ -161,7 +161,7 @@ const CreateConnection = ({ setActiveTab, previousTab = 'Support' }) => {
                     name="mobile"
                     value={formData.mobile}
                     onChange={handleInputChange}
-                    className="flex-1 px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                    className="flex-1 px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                     placeholder="Enter mobile number"
                   />
                 </div>
@@ -178,7 +178,7 @@ const CreateConnection = ({ setActiveTab, previousTab = 'Support' }) => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                   placeholder="Enter email address"
                 />
               </div>

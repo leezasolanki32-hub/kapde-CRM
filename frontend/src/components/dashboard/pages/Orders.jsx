@@ -226,7 +226,7 @@ const Orders = ({ currentUser }) => {
                   required
                   type="text"
                   placeholder="Enter customer name"
-                  className="w-full border border-[#1e3a5f] rounded-lg px-4 py-2.5 text-[14px] focus:outline-none focus:border-[#3b82f6] bg-[#0a1628] transition"
+                  className="w-full border border-[#1e3a5f] rounded-lg px-4 py-2.5 text-[14px] text-[#e8f0fe] focus:outline-none focus:border-[#3b82f6] bg-[#0a1628] transition"
                   value={newOrder.cust}
                   onChange={(e) => setNewOrder({ ...newOrder, cust: e.target.value })}
                 />
@@ -238,7 +238,7 @@ const Orders = ({ currentUser }) => {
                     required
                     type="number"
                     placeholder="0.00"
-                    className="w-full border border-[#1e3a5f] rounded-lg px-4 py-2.5 text-[14px] focus:outline-none focus:border-[#3b82f6] bg-[#0a1628] transition"
+                    className="w-full border border-[#1e3a5f] rounded-lg px-4 py-2.5 text-[14px] text-[#e8f0fe] focus:outline-none focus:border-[#3b82f6] bg-[#0a1628] transition"
                     value={newOrder.amt}
                     onChange={(e) => setNewOrder({ ...newOrder, amt: e.target.value })}
                   />
@@ -246,7 +246,7 @@ const Orders = ({ currentUser }) => {
                 <div>
                   <label className="block text-[12px] font-bold text-[#93c5fd] uppercase mb-1">Status</label>
                   <select
-                    className="w-full border border-[#1e3a5f] rounded-lg px-4 py-2.5 text-[14px] focus:outline-none focus:border-[#3b82f6] bg-[#0a1628] transition cursor-pointer"
+                    className="w-full border border-[#1e3a5f] rounded-lg px-4 py-2.5 text-[14px] text-[#e8f0fe] focus:outline-none focus:border-[#3b82f6] bg-[#0a1628] transition cursor-pointer"
                     value={newOrder.status}
                     onChange={(e) => setNewOrder({ ...newOrder, status: e.target.value })}
                   >
@@ -261,7 +261,7 @@ const Orders = ({ currentUser }) => {
                 <div>
                   <label className="block text-[12px] font-bold text-[#93c5fd] uppercase mb-1">Source</label>
                   <select
-                    className="w-full border border-[#1e3a5f] rounded-lg px-4 py-2.5 text-[14px] focus:outline-none focus:border-[#3b82f6] bg-[#0a1628] transition cursor-pointer"
+                    className="w-full border border-[#1e3a5f] rounded-lg px-4 py-2.5 text-[14px] text-[#e8f0fe] focus:outline-none focus:border-[#3b82f6] bg-[#0a1628] transition cursor-pointer"
                     value={newOrder.src}
                     onChange={(e) => setNewOrder({ ...newOrder, src: e.target.value })}
                   >
@@ -273,7 +273,7 @@ const Orders = ({ currentUser }) => {
                 <div>
                   <label className="block text-[12px] font-bold text-[#93c5fd] uppercase mb-1">Executive</label>
                   <select
-                    className="w-full border border-[#1e3a5f] rounded-lg px-4 py-2.5 text-[14px] focus:outline-none focus:border-[#3b82f6] bg-[#0a1628] transition cursor-pointer"
+                    className="w-full border border-[#1e3a5f] rounded-lg px-4 py-2.5 text-[14px] text-[#e8f0fe] focus:outline-none focus:border-[#3b82f6] bg-[#0a1628] transition cursor-pointer"
                     value={newOrder.exec}
                     onChange={(e) => setNewOrder({ ...newOrder, exec: e.target.value })}
                   >
@@ -330,7 +330,7 @@ const Orders = ({ currentUser }) => {
                 <div>
                   <label className="block text-[12px] font-bold text-[#93c5fd] uppercase mb-1">Paper Size</label>
                   <select
-                    className="w-full border border-[#1e3a5f] rounded-lg px-3 py-2 text-[13px] focus:outline-none focus:border-[#3b82f6] bg-[#0a1628] transition cursor-pointer"
+                    className="w-full border border-[#1e3a5f] rounded-lg px-3 py-2 text-[13px] text-[#e8f0fe] focus:outline-none focus:border-[#3b82f6] bg-[#0a1628] transition cursor-pointer"
                     value={printSettings.paperSize}
                     onChange={(e) => setPrintSettings({ ...printSettings, paperSize: e.target.value })}
                   >
@@ -342,7 +342,7 @@ const Orders = ({ currentUser }) => {
                 <div>
                   <label className="block text-[12px] font-bold text-[#93c5fd] uppercase mb-1">Orientation</label>
                   <select
-                    className="w-full border border-[#1e3a5f] rounded-lg px-3 py-2 text-[13px] focus:outline-none focus:border-[#3b82f6] bg-[#0a1628] transition cursor-pointer"
+                    className="w-full border border-[#1e3a5f] rounded-lg px-3 py-2 text-[13px] text-[#e8f0fe] focus:outline-none focus:border-[#3b82f6] bg-[#0a1628] transition cursor-pointer"
                     value={printSettings.orientation}
                     onChange={(e) => setPrintSettings({ ...printSettings, orientation: e.target.value })}
                   >

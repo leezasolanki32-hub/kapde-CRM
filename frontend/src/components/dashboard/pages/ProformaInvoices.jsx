@@ -63,7 +63,7 @@ const ProformaInvoices = ({ setActiveTab }) => {
         <div className="flex items-center gap-3">
           <button 
             onClick={() => setShowPrintModal(true)}
-            className="flex items-center gap-2 px-4 py-2.5 bg-[#0a1628] border border-[#1e3a5f] rounded-xl text-[14px] font-bold text-[#e8f0fe] hover:bg-slate-50 transition-all shadow-sm"
+            className="flex items-center gap-2 px-4 py-2.5 bg-[#0a1628] border border-[#1e3a5f] rounded-xl text-[14px] font-bold text-[#e8f0fe] hover:bg-[#1e3a5f] transition-all shadow-sm"
           >
             <Printer size={18} className="text-[#93c5fd]" /> Print Settings
           </button>
@@ -101,7 +101,7 @@ const ProformaInvoices = ({ setActiveTab }) => {
               placeholder="Search proformas..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-transparent rounded-xl text-[13px] focus:bg-[#0a1628] focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 outline-none transition-all"
+              className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-transparent rounded-xl text-[13px] focus:bg-[#0a1628] focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 outline-none transition-all"
             />
           </div>
           <button 
@@ -130,7 +130,7 @@ const ProformaInvoices = ({ setActiveTab }) => {
             </thead>
             <tbody className="divide-y divide-[#f8f8f8]">
               {filteredProformas.length > 0 ? filteredProformas.map((pi) => (
-                <tr key={pi.id} className="hover:bg-slate-50/50 transition-colors group">
+                <tr key={pi.id} className="hover:bg-[#1e3a5f]/50 transition-colors group">
                   <td className="py-5 px-6">
                     <div className="flex items-center gap-3">
                       <div className="p-2 bg-purple-50 text-[#3b82f6] rounded-lg">

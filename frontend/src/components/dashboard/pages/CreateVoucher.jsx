@@ -25,7 +25,7 @@ const CreateVoucher = ({ setActiveTab, previousTab = 'Accounts' }) => {
     setActiveTab(previousTab);
   };
 
-  const inputClass = "w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]";
+  const inputClass = "w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]";
   const labelClass = "block text-[12px] font-bold text-[#93c5fd] uppercase mb-1.5 flex items-center gap-1.5";
 
   const voucherTypes = ['Payment', 'Receipt', 'Contra', 'Journal', 'Sales', 'Purchase'];
@@ -180,7 +180,7 @@ const CreateVoucher = ({ setActiveTab, previousTab = 'Accounts' }) => {
             <button
               type="button"
               onClick={() => setActiveTab(previousTab)}
-              className="px-6 py-2.5 rounded-xl border border-[#1e3a5f] text-[#93c5fd] font-bold text-[14px] hover:bg-slate-50 transition-colors"
+              className="px-6 py-2.5 rounded-xl border border-[#1e3a5f] text-[#93c5fd] font-bold text-[14px] hover:bg-[#1e3a5f] transition-colors"
             >
               Cancel
             </button>

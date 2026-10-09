@@ -57,7 +57,7 @@ const CreateAppointment = ({ setActiveTab, previousTab = 'Recovery' }) => {
                 required
                 value={formData.customerName}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                 placeholder="Select or type customer name"
               />
             </div>
@@ -80,7 +80,7 @@ const CreateAppointment = ({ setActiveTab, previousTab = 'Recovery' }) => {
                   required
                   value={formData.appointmentDate}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                 />
               </div>
               
@@ -94,7 +94,7 @@ const CreateAppointment = ({ setActiveTab, previousTab = 'Recovery' }) => {
                   required
                   value={formData.appointmentTime}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                 />
               </div>
             </div>
@@ -113,7 +113,7 @@ const CreateAppointment = ({ setActiveTab, previousTab = 'Recovery' }) => {
                 required
                 value={formData.purpose}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
               >
                 <option value="" disabled>Select purpose</option>
                 <option value="Initial Consultation">Initial Consultation</option>
@@ -131,7 +131,7 @@ const CreateAppointment = ({ setActiveTab, previousTab = 'Recovery' }) => {
                 value={formData.notes}
                 onChange={handleInputChange}
                 rows="4"
-                className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628] resize-none"
+                className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f] resize-none"
                 placeholder="Any special requirements or instructions..."
               ></textarea>
             </div>
@@ -142,7 +142,7 @@ const CreateAppointment = ({ setActiveTab, previousTab = 'Recovery' }) => {
             <button
               type="button"
               onClick={() => setActiveTab(previousTab)}
-              className="px-6 py-2.5 rounded-xl border border-[#1e3a5f] text-[#93c5fd] font-bold text-[14px] hover:bg-slate-50 transition-colors"
+              className="px-6 py-2.5 rounded-xl border border-[#1e3a5f] text-[#93c5fd] font-bold text-[14px] hover:bg-[#1e3a5f] transition-colors"
             >
               Cancel
             </button>

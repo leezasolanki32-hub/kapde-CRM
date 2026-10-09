@@ -51,7 +51,7 @@ const AddLedgerModal = ({ onClose }) => {
           </div>
         </div>
         <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-[#1e3a5f] bg-[#0a1628] rounded-b-2xl">
-          <button onClick={onClose} className="px-5 py-2 rounded-md border border-[#1e3a5f] text-[13px] font-medium hover:bg-slate-50 transition">Cancel</button>
+          <button onClick={onClose} className="px-5 py-2 rounded-md border border-[#1e3a5f] text-[13px] font-medium hover:bg-[#1e3a5f] transition">Cancel</button>
           <button onClick={onClose} className="px-6 py-2 rounded-md bg-[#3b82f6] text-[#e8f0fe] text-[13px] font-bold hover:bg-[#2563eb] shadow-sm">Save Ledger</button>
         </div>
       </div>
@@ -66,7 +66,7 @@ const FindLedgerModal = ({ onClose }) => {
       <div className="bg-[#0a1628] rounded-2xl shadow-2xl w-full max-w-lg mx-4 animate-[slideUpFade_0.3s_ease-out]">
         <div className="px-6 py-5 border-b border-[#1e3a5f]">
           <div className="relative">
-            <input autoFocus type="text" placeholder="Type to search ledgers (e.g. Sales, Cash...)" className="w-full pl-10 pr-4 py-3 border border-[#1e3a5f] rounded-xl text-[15px] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 transition-all shadow-sm" />
+            <input autoFocus type="text" placeholder="Type to search ledgers (e.g. Sales, Cash...)" className="w-full pl-10 pr-4 py-3 border border-[#1e3a5f] rounded-xl text-[15px] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 transition-all shadow-sm" />
             <span className="absolute left-3.5 top-3.5 text-[18px]"><Search size={16} className="inline-block" /></span>
           </div>
         </div>

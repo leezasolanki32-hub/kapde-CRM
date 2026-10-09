@@ -141,7 +141,7 @@ const BOMModal = ({ onClose }) => {
                   </thead>
                   <tbody className="divide-y divide-[#1e3a5f]">
                     {bom.materials.map((m, mIdx) => (
-                      <tr key={mIdx} className="hover:bg-slate-50 transition-colors">
+                      <tr key={mIdx} className="hover:bg-[#1e3a5f] transition-colors">
                         <td className="px-4 py-3 text-[#e8f0fe] font-medium">{m.name}</td>
                         <td className="px-4 py-3 text-right font-bold text-[#93c5fd]">{m.qty}</td>
                       </tr>

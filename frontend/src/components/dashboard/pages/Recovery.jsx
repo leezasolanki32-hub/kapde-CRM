@@ -54,10 +54,18 @@ const RecoveryRow = ({ name, amount, daysOverdue, lastReminder, risk }) => {
       </div>
 
       <div className="flex items-center gap-3">
-        <button className="p-2.5 bg-white border border-gray-200 rounded-xl text-gray-500 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all shadow-sm" title="Call Customer">
+        <button 
+          onClick={() => alert(`Calling ${name} at registered number...`)}
+          className="p-2.5 bg-white border border-gray-200 rounded-xl text-gray-500 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 active:scale-95 cursor-pointer transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20" 
+          title="Call Customer"
+        >
           <Phone size={16} />
         </button>
-        <button className="p-2.5 bg-white border border-gray-200 text-blue-600 rounded-xl hover:bg-blue-50 hover:border-blue-200 transition-all shadow-sm flex items-center gap-2" title="Send WhatsApp/SMS">
+        <button 
+          onClick={() => alert(`Sending automated reminder to ${name}...`)}
+          className="p-2.5 bg-white border border-gray-200 text-blue-600 rounded-xl hover:bg-blue-50 hover:border-blue-200 active:scale-95 cursor-pointer transition-all shadow-sm flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-500/20" 
+          title="Send WhatsApp/SMS"
+        >
           <Send size={16} />
           <span className="text-[13px] font-bold pr-1">Remind</span>
         </button>
@@ -102,13 +110,13 @@ const Recovery = ({ setActiveTab }) => {
         <div className="flex gap-4 mt-6 md:mt-0 relative z-10">
           <button 
             onClick={() => setActiveTab('CreateAppointment')}
-            className="bg-white border border-gray-200 text-gray-700 px-5 py-3 rounded-xl text-[14px] font-bold hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm flex items-center gap-2"
+            className="bg-white border border-gray-200 text-gray-700 px-5 py-3 rounded-xl text-[14px] font-bold hover:bg-gray-50 hover:border-gray-300 active:scale-95 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-200 transition-all shadow-sm flex items-center gap-2"
           >
             <Calendar size={18} /> Appointments
           </button>
           <button 
             onClick={() => setActiveTab('CreateRecoveryEntry')}
-            className="bg-[#3b82f6] text-white px-6 py-3 rounded-xl text-[15px] font-bold hover:bg-[#2563eb] transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2"
+            className="bg-[#3b82f6] text-white px-6 py-3 rounded-xl text-[15px] font-bold hover:bg-[#2563eb] active:scale-95 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all shadow-md hover:shadow-lg flex items-center gap-2"
           >
             <UserPlus size={18} /> New Entry
           </button>
@@ -219,7 +227,10 @@ const Recovery = ({ setActiveTab }) => {
             <p className="text-[14px] text-indigo-700/80 mb-8 leading-relaxed relative z-10 font-medium">Master the art of professional debt recovery with our exclusive resources.</p>
             
             <div className="space-y-4 relative z-10">
-              <button className="w-full flex items-center justify-between p-4 bg-white/60 hover:bg-white rounded-xl transition-all border border-white/40 shadow-sm group">
+              <button 
+                onClick={() => alert('Opening Training Guide...')}
+                className="w-full flex items-center justify-between p-4 bg-white/60 hover:bg-white active:scale-[0.98] cursor-pointer rounded-xl transition-all border border-white/40 shadow-sm group focus:outline-none focus:ring-2 focus:ring-indigo-500/30"
+              >
                 <div className="flex items-center gap-4">
                   <div className="p-2.5 bg-indigo-100 text-indigo-600 rounded-lg group-hover:scale-110 transition-transform">
                     <BookOpen size={18} />
@@ -229,7 +240,10 @@ const Recovery = ({ setActiveTab }) => {
                 <ChevronRight size={18} className="text-indigo-400 group-hover:text-indigo-600 transition-colors" />
               </button>
               
-              <button className="w-full flex items-center justify-between p-4 bg-white/60 hover:bg-white rounded-xl transition-all border border-white/40 shadow-sm group">
+              <button 
+                onClick={() => alert('Opening Collection Scripts...')}
+                className="w-full flex items-center justify-between p-4 bg-white/60 hover:bg-white active:scale-[0.98] cursor-pointer rounded-xl transition-all border border-white/40 shadow-sm group focus:outline-none focus:ring-2 focus:ring-indigo-500/30"
+              >
                 <div className="flex items-center gap-4">
                   <div className="p-2.5 bg-blue-100 text-blue-600 rounded-lg group-hover:scale-110 transition-transform">
                     <PlayCircle size={18} />

@@ -56,7 +56,7 @@ const CreateLead = ({ setActiveTab, previousTab = 'Leads' }) => {
                   name="title"
                   value={formData.title}
                   onChange={handleInputChange}
-                  className="w-[90px] px-3 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                  className="w-[90px] px-3 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                 >
                   <option value="Mr.">Mr.</option>
                   <option value="Ms.">Ms.</option>
@@ -69,7 +69,7 @@ const CreateLead = ({ setActiveTab, previousTab = 'Leads' }) => {
                   required
                   value={formData.firstName}
                   onChange={handleInputChange}
-                  className="flex-1 px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                  className="flex-1 px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                   placeholder="First Name"
                 />
                 <input
@@ -78,7 +78,7 @@ const CreateLead = ({ setActiveTab, previousTab = 'Leads' }) => {
                   required
                   value={formData.lastName}
                   onChange={handleInputChange}
-                  className="flex-1 px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                  className="flex-1 px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                   placeholder="Last Name"
                 />
               </div>
@@ -95,7 +95,7 @@ const CreateLead = ({ setActiveTab, previousTab = 'Leads' }) => {
                     name="countryCode"
                     value={formData.countryCode}
                     onChange={handleInputChange}
-                    className="w-[90px] px-3 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                    className="w-[90px] px-3 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                   >
                     <option value="+91">+91</option>
                     <option value="+1">+1</option>
@@ -106,7 +106,7 @@ const CreateLead = ({ setActiveTab, previousTab = 'Leads' }) => {
                     name="mobile"
                     value={formData.mobile}
                     onChange={handleInputChange}
-                    className="flex-1 px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                    className="flex-1 px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                     placeholder="Enter mobile number"
                   />
                 </div>
@@ -121,7 +121,7 @@ const CreateLead = ({ setActiveTab, previousTab = 'Leads' }) => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                   placeholder="Enter email address"
                 />
               </div>
@@ -137,7 +137,7 @@ const CreateLead = ({ setActiveTab, previousTab = 'Leads' }) => {
                   name="source"
                   value={formData.source}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                 >
                   <option value="Website Inquiry">Website Inquiry</option>
                   <option value="Instagram Ad">Instagram Ad</option>
@@ -158,7 +158,7 @@ const CreateLead = ({ setActiveTab, previousTab = 'Leads' }) => {
                   name="status"
                   value={formData.status}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628]"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f]"
                 >
                   <option value="New">New</option>
                   <option value="Raw">Raw</option>
@@ -178,7 +178,7 @@ const CreateLead = ({ setActiveTab, previousTab = 'Leads' }) => {
                 value={formData.notes}
                 onChange={handleInputChange}
                 rows="3"
-                className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-purple-50 text-[14px] transition-all bg-slate-50 focus:bg-[#0a1628] resize-none"
+                className="w-full px-4 py-2.5 rounded-xl border border-[#1e3a5f] focus:outline-none focus:border-[#3b82f6] focus:ring-4 focus:ring-blue-900/30 text-[14px] transition-all bg-[#0f213a] text-[#e8f0fe] focus:bg-[#1e3a5f] resize-none"
                 placeholder="E.g. Looking for a bridal outfit, budget is around 50k..."
               ></textarea>
             </div>
@@ -190,7 +190,7 @@ const CreateLead = ({ setActiveTab, previousTab = 'Leads' }) => {
             <button
               type="button"
               onClick={() => setActiveTab(previousTab)}
-              className="px-6 py-2.5 rounded-xl border border-[#1e3a5f] text-[#93c5fd] font-bold text-[14px] hover:bg-slate-50 transition-colors"
+              className="px-6 py-2.5 rounded-xl border border-[#1e3a5f] text-[#93c5fd] font-bold text-[14px] hover:bg-[#1e3a5f] transition-colors"
             >
               Cancel
             </button>
